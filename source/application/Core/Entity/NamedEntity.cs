@@ -4,6 +4,11 @@
 
 	public class NamedEntity : EntityBase
 	{
-		public string Name { get; set; }
+		public NamedEntity(string id, string name)
+			: base(id)
+		{
+			this.Name = name;
+		}
+		public string Name { get; protected set; }
 	}
 }

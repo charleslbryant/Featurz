@@ -1,4 +1,4 @@
-﻿namespace Archer.Infrastructure.Data
+﻿namespace Archer.Infrastructure.Data.MongoDb
 {
 	using System;
 	using System.Collections.Generic;

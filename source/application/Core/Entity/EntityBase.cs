@@ -4,6 +4,11 @@
 
 	public class EntityBase : IEntity
 	{
-		public string Id { get; set; }
+		public EntityBase(string id)
+		{
+			this.Id = id;
+		}
+
+		public string Id { get; protected set; }
 	}
 }

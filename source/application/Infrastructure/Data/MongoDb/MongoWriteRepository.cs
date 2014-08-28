@@ -1,4 +1,4 @@
-﻿namespace Archer.Infrastructure.Data
+﻿namespace Archer.Infrastructure.Data.MongoDb
 {
 	using System;
 	using Archer.Core.Configuration;
@@ -21,11 +21,6 @@
 
 		public bool Insert(TEntity entity)
 		{
-			if (string.IsNullOrWhiteSpace(entity.Id))
-			{
-				entity.Id = Guid.NewGuid().ToString("N");
-			}
-
 			return this.Collection.Insert(entity).Ok;
 		}
 

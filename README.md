@@ -1,17 +1,40 @@
-This started as a standard way of setting up most projects I work on. The folder 
-structure provides a quick template to get an empty solution working. When I am
-less busy and lazy I will create a Visual Studio template for this. Then I can 
-get a new project up with this structure just by creating a new solution.
+[ ![Codeship Status for charleslbryant/Featurz](https://codeship.io/projects/0d5ab0c0-10d8-0132-f710-3a327caa04b7/status)](https://codeship.io/projects/32911)
 
-I also started on some core interfaces and infrastructure that is common across
-projects. The goal is that I can include these projects and get the base core
-architecture without having to rewrite it. There is still a lot to do. I am a
-big fan of the [Onion Architecture](http://jeffreypalermo.com/blog/the-onion-architecture-part-1/) and 
-the goal of this little project is to eventually grown into an implementation of
-Onion.
+Featurz - toggle me
+=======
 
-I guess I should explain the name. My wife's nick name is Dutchess. She likes to
-watch this crazy cartoon named Archer and the main character, Archer, his code
-name is Dutchess. So, my wife says that her code name is Archer. Well Archer kind
-of reminds me of architecture so it was only natural to name it Archer and the
-code name of the first release is Dutchess...make sense right?
+Featurz is a feature toggle manager for .Net applications. The central feature 
+of this tool is to determine if a feature is active or not. Active can be 
+determined by multiple strategies.
+
+Featurz was developed on top of the Archer Application Architecture and uses a 
+CQRS'ish architecture.
+
+Why use Featurz
+---------------
+
+Feature toggles allow you to develop in trunk or your main line without having to worry
+about complex branching strategies. Martin Fowler says it better, http://martinfowler.com/bliki/FeatureToggle.html.
+You can use feature toggles without a manager like Featurz, but Featurz makes it
+so much easier to get started with toggles and toggle management without the
+development cost.
+
+Use Featurz
+-----------
+
+You can poke around the project, but nothing is really ready yet. The code in the
+repo is a very early stage proof of concept, may not work, has a lot undone, and 
+will have UI and APIs changed drastically.
+
+Contribute
+----------
+
+Contributions are welcome, but all contributions must be licensed under [GPL v3](http://www.gnu.org/copyleft/gpl.html).
+
+License
+-------
+
+Copyright 2014 Charles Bryant. Licenced under [GPL v3](http://www.gnu.org/copyleft/gpl.html).
+
+Thanks
+Adam Tibi - Code Project article on CQRS, http://www.codeproject.com/Articles/610154/ImplementingplusaplusCQRS-basedplusArchitectureplu.
