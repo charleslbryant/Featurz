@@ -1,3 +1,5 @@
+[ ![Codeship Status for charleslbryant/Featurz](https://codeship.io/projects/0d5ab0c0-10d8-0132-f710-3a327caa04b7/status)](https://codeship.io/projects/32911)
+
 Featurz
 =======
 
