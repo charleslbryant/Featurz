@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/charleslbryant/Featurz.png?label=ready&title=Ready)](https://waffle.io/charleslbryant/Featurz)
 [ ![Codeship Status for charleslbryant/Featurz](https://codeship.io/projects/0d5ab0c0-10d8-0132-f710-3a327caa04b7/status)](https://codeship.io/projects/32911)
 
 Featurz
