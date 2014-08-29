@@ -6,6 +6,7 @@
 	using Archer.Core.Command;
 	using Archer.Core.Query;
 	using Featurz.Application.Command;
+	using Featurz.Application.Entity;
 	using Featurz.Application.Query;
 	using Featurz.Application.QueryResult;
 
@@ -25,26 +26,26 @@
 			return new string[] { "value1", "value2" };
 		}
 
-		public FeatureDetailsVm GetFeature(string id)
+		public Feature GetFeature(string id)
 		{
 			GetFeatureByIdQuery query = new GetFeatureByIdQuery(id);
 
 			GetFeatureByIdQueryResult queryResult = this.queryDispatcher.Dispatch<GetFeatureByIdQuery, GetFeatureByIdQueryResult>(query);
 
-			FeatureDetailsVm result = new FeatureDetailsVm(queryResult.Id, queryResult.Name, queryResult.UserId, queryResult.Ticket, queryResult.IsActive, queryResult.IsEnabled, queryResult.StrategyId);
+			Feature result = new Feature(queryResult.Id, queryResult.Name, queryResult.UserId, queryResult.Ticket, queryResult.IsActive, queryResult.IsEnabled, queryResult.StrategyId);
 
 			return result;
 		}
 
-		public void PostFeature(AddFeatureVm vm)
+		public void PostFeature(Feature feature)
 		{
 			string id = Guid.NewGuid().ToString();
-			string name = vm.Name;
-			bool isActive = vm.IsActive;
-			bool isEnabled = vm.IsEnabled;
-			int strategyId = vm.StrategyId;
-			string ticket = vm.Ticket;
-			string userId = vm.UserId;
+			string name = feature.Name;
+			bool isActive = feature.IsActive;
+			bool isEnabled = feature.IsEnabled;
+			int strategyId = feature.StrategyId;
+			string ticket = feature.Ticket;
+			string userId = feature.UserId;
 
 			AddFeatureCommand command = new AddFeatureCommand(id, name, userId, ticket, isActive, isEnabled, strategyId);
 
