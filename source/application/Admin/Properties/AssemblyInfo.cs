@@ -1,18 +1,26 @@
-ï»¿using System.Reflection;
-using System.Runtime.CompilerServices;
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AssemblyInfo.cs" company="Microsoft">
+//   Copyright © 2014 Microsoft
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+using System;
+using System.Reflection;
+using System.Resources;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Admin")]
+[assembly: AssemblyTitle("Featurz.Admin")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Charles Bryant")]
-[assembly: AssemblyProduct("Featurz")]
-[assembly: AssemblyCopyright("Copyright Â© Charles Bryant 2014")]
+[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyProduct("Featurz.Admin")]
+[assembly: AssemblyCopyright("Copyright © 2014 Microsoft")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: NeutralResourcesLanguage("en-US")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
@@ -20,7 +28,9 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("34484e48-f855-415c-bdd5-cc7e096e3945")]
+[assembly: Guid("2751d588-9004-489a-b987-47587f0610b2")]
+
+[assembly: CLSCompliant(true)]
 
 // Version information for an assembly consists of the following four values:
 //
