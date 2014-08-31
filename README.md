@@ -14,10 +14,15 @@ Why use Featurz
 ---------------
 
 Feature toggles allow you to develop in trunk or your main line without having to worry
-about complex branching strategies. Martin Fowler explains it better, http://martinfowler.com/bliki/FeatureToggle.html.
-You can use feature toggles are just simple logic (if/else) that can be implemented without 
-a manager like Featurz, but Featurz makes it so much easier to get started with 
-toggles and toggle management without the development cost.
+about complex branching strategies. If you are working on a new change and it 
+isn't ready for production, you can hide it behind a feature toggle and it 
+won't be exposed in production. Martin Fowler explains it better, 
+http://martinfowler.com/bliki/FeatureToggle.html.
+Feature toggles are just simple logic (if/else) that can be implemented without 
+a manager like Featurz. Featurz just makes it so much easier to get started with 
+toggles and toggle management without the development cost. Additionally, with
+Featurz, you have the source code so if something isn't to your liking, you can
+change it.
 
 Use Featurz
 -----------
@@ -38,7 +43,8 @@ Copyright 2014 Charles Bryant. Licenced under [GPL v3](http://www.gnu.org/copyle
 
 Thanks
 ------
-[ArcherAppTemplate](https://github.com/charleslbryant/ArcherAppTemplate)
+[ArcherAppTemplate](https://github.com/charleslbryant/ArcherAppTemplate) - provides
+base template for the Featurz architecture.
 
-Adam Tibi - CQRS used in Archer is based on his Code Project article on CQRS, 
+Adam Tibi - the CQRS used in Archer is based on his Code Project article on CQRS, 
 http://www.codeproject.com/Articles/610154/ImplementingplusaplusCQRS-basedplusArchitectureplu.
