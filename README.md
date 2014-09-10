@@ -31,6 +31,15 @@ You can poke around the project, but nothing is really ready yet. The code in th
 repo is a very early stage proof of concept, may not work, has a lot undone, and 
 will have UIs and APIs changed drastically.
 
+Wishlist
+-----------
+
+- Follow recommendations in the book [Developing Large Web Applications](http://www.amazon.com/Developing-Large-Web-Applications-Producing/dp/0596803028) and 
+[Angular App Structure](https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/pub)
+- Activate features by a dynamic strategy - features can be activated by multiple
+strategies that allow the extension of what an active feature means (e.g. active
+for 25% of users, active between a date range...).
+
 Contribute
 ----------
 
@@ -41,10 +50,9 @@ License
 
 Copyright 2014 Charles Bryant. Licenced under [GPL v3](http://www.gnu.org/copyleft/gpl.html).
 
-Thanks
+References and Inspiration
 ------
-[ArcherAppTemplate](https://github.com/charleslbryant/ArcherAppTemplate) - provides
+- [Togglz - Feature Flags for the Java platform](http://www.togglz.org/)
+- [ArcherAppTemplate](https://github.com/charleslbryant/ArcherAppTemplate) - provides
 base template for the Featurz architecture.
-
-Adam Tibi - the CQRS used in Archer is based on his Code Project article on CQRS, 
-http://www.codeproject.com/Articles/610154/ImplementingplusaplusCQRS-basedplusArchitectureplu.
+- Adam Tibi - the CQRS used is based on his [Code Project article on CQRS](http://www.codeproject.com/Articles/610154/ImplementingplusaplusCQRS-basedplusArchitectureplu). 

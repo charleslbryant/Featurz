@@ -131,6 +131,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\app.css" />
+    <Content Include="app\app.js" />
+    <Content Include="app\app-controllers.js" />
+    <Content Include="app\components\version\version-service-test.js" />
+    <Content Include="app\components\version\version-filter-test.js" />
+    <Content Include="app\components\version\version-directive-test.js" />
+    <Content Include="app\components\version\version-service.js" />
+    <Content Include="app\components\version\services.spec.js">
+      <DependentUpon>version-service.js</DependentUpon>
+    </Content>
+    <Content Include="app\components\version\version-directive.js" />
+    <Content Include="app\components\version\directives.spec.js">
+      <DependentUpon>version-directive.js</DependentUpon>
+    </Content>
+    <Content Include="app\components\version\version-filters.js" />
+    <Content Include="app\components\version\filters.spec.js">
+      <DependentUpon>version-filters.js</DependentUpon>
+    </Content>
+    <Content Include="app\controllers.spec.js">
+      <DependentUpon>app-controllers.js</DependentUpon>
+    </Content>
+    <Content Include="app\feature\feature-controller-test.js" />
+    <Content Include="app\feature\feature-controller.js" />
+    <Content Include="app\feature\feature.css" />
+    <Content Include="app\feature\feature.js" />
     <Content Include="Content\AdminLTE.css" />
     <Content Include="Content\bootstrap-slider\slider.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -346,10 +371,15 @@
     <Content Include="img\user-bg.png" />
     <Content Include="img\user.jpg" />
     <Content Include="img\user2.jpg" />
+    <Content Include="app\feature\feature.cshtml" />
+    <None Include="app\readme.md" />
     <Content Include="Scripts\AdminLTE\app.js" />
     <Content Include="Scripts\AdminLTE\dashboard.js" />
     <Content Include="Scripts\AdminLTE\demo.js" />
     <Content Include="Scripts\app\featureController.js" />
+    <Content Include="app\_Layout.cshtml" />
+    <Content Include="app\Index.cshtml" />
+    <Content Include="app\404.cshtml" />
     <None Include="Scripts\vendor\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\vendor\jquery-2.1.1.js" />
     <Content Include="Scripts\vendor\jquery-2.1.1.min.js" />

@@ -38,14 +38,22 @@
 			<div class="box">
 				<div class="box-body no-padding">
 					<div class="box-body">
-						<form role="form">
+						<form role="form" ng-submit="featureAdd()">
+							<div id="messages" ng-show="message">{{ message }}</div>
 							<div class="form-group has-success">
-								<label class="control-label" for="featureName"><i class="fa fa-check"></i>Name</label>
-								<input type="text" class="form-control" id="featureName" placeholder="Name of feature ..." />
+								<label class="control-label" for="featureName"><i class="fa fa-check"></i>Name<span class="help-block" ng-show="errorName">{{ errorName }}</span></label>
+								<input type="text" class="form-control" id="featureName" placeholder="Name of feature ..." ng-model="feature.name" />
 							</div>
 							<div class="form-group">
 								<label class="control-label" for="featureTicket"><i class="fa fa-warning"></i>Ticket</label>
-								<input type="text" class="form-control" id="featureTicket" placeholder="Ticket Number/Id" />
+								<input type="text" class="form-control" id="featureTicket" placeholder="Ticket Number/Id" ng-model="feature.ticket" />
+							</div>
+							<div class="form-group">
+								<label class="control-label" for="featureOwner"><i class="fa fa-warning"></i>Owner</label>
+								<select class="form-control">
+									<option>charles.bryant</option>
+									<option>darshit.dave</option>
+								</select>
 							</div>
 							<div class="form-group">
 								<label class="control-label" for="featureTicket">
