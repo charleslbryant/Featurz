@@ -19,6 +19,32 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Featurz.Api", "source\appli
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Featurz.Admin", "source\application\Admin\Featurz.Admin.csproj", "{007BF002-14A2-4170-B162-DE15553B82AD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{2D802E1B-4C90-4823-93DF-AC8B8EFCD6EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Featurz.Web", "source\application\Web\Featurz.Web.csproj", "{A8DB6BE2-A927-4429-A08D-9A6DC3B96897}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AdminLTE-master", "http://localhost:52503", "{054F5711-1B97-4DAC-B7E3-A5C090320498}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.1"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_52503"
+		Debug.AspNetCompiler.PhysicalPath = "..\Users\charles.bryant\Desktop\Projects\AdminLTE-master\AdminLTE-master\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52503\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_52503"
+		Release.AspNetCompiler.PhysicalPath = "..\Users\charles.bryant\Desktop\Projects\AdminLTE-master\AdminLTE-master\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52503\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\Users\charles.bryant\Desktop\Projects\AdminLTE-master\AdminLTE-master\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +79,14 @@ Global
 		{007BF002-14A2-4170-B162-DE15553B82AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{007BF002-14A2-4170-B162-DE15553B82AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{007BF002-14A2-4170-B162-DE15553B82AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8DB6BE2-A927-4429-A08D-9A6DC3B96897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8DB6BE2-A927-4429-A08D-9A6DC3B96897}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8DB6BE2-A927-4429-A08D-9A6DC3B96897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8DB6BE2-A927-4429-A08D-9A6DC3B96897}.Release|Any CPU.Build.0 = Release|Any CPU
+		{054F5711-1B97-4DAC-B7E3-A5C090320498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{054F5711-1B97-4DAC-B7E3-A5C090320498}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{054F5711-1B97-4DAC-B7E3-A5C090320498}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{054F5711-1B97-4DAC-B7E3-A5C090320498}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

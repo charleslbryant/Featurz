@@ -7,16 +7,32 @@
 	using Archer.Core.Configuration;
 	using Archer.Core.Entity;
 	using Archer.Core.Repository;
-	using Archer.Infrastructure.Data.MongoDb;
 	using MongoDB.Driver.Linq;
 
 	public class MongoReadRepository<TEntity> : MongoBase<TEntity>,
 		IReadRepository<TEntity> where TEntity : EntityBase
 	{
-		public MongoReadRepository(IConfiguration config)
-			: base(config)
+		private IConfiguration config;
+
+		public MongoReadRepository()
+			: base()
 		{
 		}
+
+		public IConfiguration Config { get; set; }
+
+		public void Initialize(IConfiguration config)
+		{
+			if (config == null)
+			{
+				throw new Exception("Config cannot be a null value.");
+			}
+
+			this.Config = config;
+
+			base.Initialize(this.Config);
+		}
+
 
 		public IList<TEntity> All()
 		{

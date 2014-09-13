@@ -10,28 +10,15 @@
 	using Featurz.Application.Query;
 	using Featurz.Application.QueryResult;
 
-	public class IsFeatureActiveQueryHandler : IQueryHandler<IsFeatureActiveQuery, IsFeatureActiveQueryResult>
+	public class IsFeatureActiveQueryHandler : IQueryHandler<IsFeatureActiveQuery, IsFeatureActiveQueryResult, Feature>
 	{
-		private readonly IReadRepository<Feature> featureRepo;
-		private readonly IReadRepository<FeatureUser> userRepo;
-		private IConfiguration config;
-
-		public IsFeatureActiveQueryHandler(IReadRepository<Feature> featureRepo, IReadRepository<FeatureUser> userRepo)
-		{
-			this.featureRepo = featureRepo;
-			this.userRepo = userRepo;
-		}
-
 		public IsFeatureActiveQueryHandler()
 		{
-			this.config = new AppConfig();
-			this.userRepo = new MongoReadRepository<FeatureUser>(config);
-			this.featureRepo = new MongoReadRepository<Feature>(config);
 		}
 
 		public IsFeatureActiveQueryResult Retrieve(IsFeatureActiveQuery query)
 		{
-			Feature feature = this.featureRepo.GetById(query.FeatureId);
+			Feature feature = this.ReadRepository.GetById(query.FeatureId);
 			IsFeatureActiveQueryResult result = new IsFeatureActiveQueryResult(feature.IsActive);
 			return result;
 		}
@@ -50,7 +37,7 @@
 				return true;
 			}
 
-			FeatureUser user = userRepo.GetById("");
+			//FeatureUser user = GetUserByIdQueryHandler().retrieve("");
 
 			//ICollection<IFeatureActivationStrategy> strategies = featureProvider.GetFeatureActivationStrategies(feature.Id);
 			//Somehow we have to get the activation strategy implementation
@@ -64,5 +51,11 @@
 
 			return true;
 		}
+
+		public IConfiguration Config { get; set; }
+
+		public IReadRepository<Feature> ReadRepository { get; set; }
+
+		public IWriteRepository<Feature> WriteRepository { get; set; }
 	}
 }

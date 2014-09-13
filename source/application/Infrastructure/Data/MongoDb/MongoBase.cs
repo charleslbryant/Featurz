@@ -7,11 +7,8 @@
 
 	public abstract class MongoBase<TEntity> where TEntity : EntityBase
 	{
-		protected MongoBase(IConfiguration config)
+		protected MongoBase()
 		{
-			this.GetDatabase();
-			this.GetCollection();
-			this.Config = config;
 		}
 
 		protected MongoCollection<TEntity> Collection { get; set; }
@@ -27,7 +24,7 @@
 
 		protected string GetConnectionString()
 		{
-			return this.Config.Get<string>("MongoDbConnectionString").Replace("{DB_NAME}", this.GetDatabaseName());
+			return this.Config.Get<string>("archer.db.connectionstring.mongo").Replace("{DB_NAME}", this.GetDatabaseName());
 		}
 
 		protected void GetDatabase()
@@ -40,7 +37,14 @@
 
 		protected string GetDatabaseName()
 		{
-			return this.Config.Get<string>("MongoDbDatabaseName");
+			return this.Config.Get<string>("archer.db.name");
+		}
+
+		protected void Initialize(IConfiguration config)
+		{
+			this.Config = config;
+			this.GetDatabase();
+			this.GetCollection();
 		}
 	}
 }

@@ -2,42 +2,33 @@
 {
 	using System;
 	using Archer.Core.Command;
+	using Archer.Core.Configuration;
 	using Archer.Core.Repository;
 	using Archer.Infrastructure.Configuration;
 	using Archer.Infrastructure.Data.MongoDb;
 	using Featurz.Application.Command;
 	using Featurz.Application.Entity;
 
-	public class AddFeatureCommandHandler : ICommandHandler<AddFeatureCommand>
+	public class AddFeatureCommandHandler : ICommandHandler<AddFeatureCommand, Feature>
 	{
-		private readonly IWriteRepository<Feature> featureRepo;
-		private Archer.Core.Configuration.IConfiguration config;
-
-		public AddFeatureCommandHandler(IWriteRepository<Feature> featureRepo)
-		{
-			if (featureRepo == null)
-			{
-				throw new ArgumentNullException("featureRepo");
-			}
-
-			this.featureRepo = featureRepo;
-		}
-
 		public AddFeatureCommandHandler()
 		{
-			this.config = new AppConfig();
-			this.featureRepo = new MongoWriteRepository<Feature>(config);
 		}
 
 		public void Execute(AddFeatureCommand command)
 		{
 			this.Validate(command);
 			Feature feature = new Feature(command.Id, command.Name, command.UserId, command.Ticket, command.IsActive, command.IsEnabled, command.StrategyId);
-			this.featureRepo.Insert(feature);
+			this.WriteRepository.Insert(feature);
 		}
 
 		private void Validate(AddFeatureCommand command)
 		{
+			if (this.WriteRepository == null)
+			{
+				throw new Exception("WriteRespository can not be a null value;");
+			}
+			
 			if (command == null)
 			{
 				throw new ArgumentNullException("command");
@@ -48,5 +39,10 @@
 				throw new ArgumentException("command.Id cannot be null or white space.");
 			}
 		}
+		public IConfiguration Config { get; set; }
+
+		public IReadRepository<Feature> ReadRepository { get; set; }
+
+		public IWriteRepository<Feature> WriteRepository { get; set; }
 	}
 }

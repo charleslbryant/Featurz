@@ -61,6 +61,7 @@
     <Compile Include="Configuration\ConfigurationManager.cs" />
     <Compile Include="Cache\ICache.cs" />
     <Compile Include="Entity\NamedEntity.cs" />
+    <Compile Include="Entity\SortDirection.cs" />
     <Compile Include="Logger\LogManager.cs" />
     <Compile Include="Message\EmailManager.cs" />
     <Compile Include="Message\IEmail.cs" />

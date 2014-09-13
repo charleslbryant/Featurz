@@ -24,7 +24,7 @@ Scenarios
 
 ###Feature
 1. Add Feature
-  1. [ ] Add new feature.
+  1. [x] Add new feature.
   1. [ ] Add invalid feature returns error.
   1. [ ] Add activation strategy.
 1. List Features

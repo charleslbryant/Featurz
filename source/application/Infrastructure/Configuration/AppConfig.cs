@@ -1,7 +1,6 @@
 ﻿namespace Archer.Infrastructure.Configuration
 {
 	using System;
-	using System.Configuration;
 	using Archer.Core.Configuration;
 
 	public class AppConfig : IConfiguration
@@ -14,6 +13,10 @@
 
 				if (value == null)
 				{
+					if (defaultValue == null)
+					{
+						throw new Exception(string.Format("AppConfig key, {0}, was not found and had no default value.", key));
+					}
 					return defaultValue;
 				}
 

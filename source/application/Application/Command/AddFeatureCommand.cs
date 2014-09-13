@@ -14,6 +14,7 @@
 			this.StrategyId = strategyId;
 			this.Ticket = ticket;
 			this.UserId = userId;
+			this.Valid = true;
 		}
 
 		public string Id { get; private set; }
@@ -29,5 +30,11 @@
 		public string Ticket { get; private set; }
 
 		public string UserId { get; private set; }
+
+		public bool Valid { get; set; }
+
+		public string InvalidName { get; set; }
+
+		public string InvalidTicket { get; set; }
 	}
 }

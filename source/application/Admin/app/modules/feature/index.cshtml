@@ -1,0 +1,85 @@
+﻿@{
+	PageData["title"] = "Features";
+}
+
+@section pageStyles{
+	<style>
+		.box .box-header a {
+			color: #fff;
+		}
+
+		.table .label a {
+			color: #fff;
+		}
+	</style>
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+	<h1>
+		Features
+	</h1>
+</section>
+<!-- Main content -->
+<section class="content">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="box">
+				<div class="box-header">
+					<label class="box-title"><a href="./featureadd" class=" btn btn-primary">Add Feature</a></label>
+					<div class="box-tools">
+						<div class="input-group">
+							<input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search" />
+							<div class="input-group-btn">
+								<button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+							</div>
+						</div>
+					</div>
+				</div><!-- /.box-header -->
+				<div class="box-body table-responsive no-padding">
+					<table class="table table-striped">
+						<tr>
+							<th>Name</th>
+							<th>Ticket</th>
+							<th>Active</th>
+							<th>Owner</th>
+						</tr>
+						<tr>
+							<td>Add Feature</td>
+							<td><a href="https://github.com/charleslbryant/Featurz/issues/2" target="_blank">F2</a></td>
+							<td><span class="label label-success"><a href="#">Active</a></span></td>
+							<td>charles.bryant</td>
+						</tr>
+						<tr>
+							<td>List Features</td>
+							<td><a href="https://github.com/charleslbryant/Featurz/issues/3" target="_blank">F3</a></td>
+							<td><span class="label label-danger"><a href="#">Inactive</a></span></td>
+							<td>charles.bryant</td>
+						</tr>
+						<tr>
+							<td>View Feature</td>
+							<td><a href="https://github.com/charleslbryant/Featurz/issues/4" target="_blank">F4</a></td>
+							<td><span class="label label-danger"><a href="#">Inactive</a></span></td>
+							<td>charles.bryant</td>
+						</tr>
+						<tr>
+							<td>Edit Feature</td>
+							<td><a href="https://github.com/charleslbryant/Featurz/issues/5" target="_blank">F5</a></td>
+							<td><span class="label label-danger"><a href="#">Inactive</a></span></td>
+							<td>charles.bryant</td>
+						</tr>
+					</table>
+					<div class="box-footer clearfix">
+						<ul class="pagination pagination-sm no-margin pull-right">
+							<li><a href="#">«</a></li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">»</a></li>
+						</ul>
+					</div>
+				</div><!-- /.box-body -->
+			</div><!-- /.box -->
+		</div>
+	</div>
+</section><!-- /.content -->

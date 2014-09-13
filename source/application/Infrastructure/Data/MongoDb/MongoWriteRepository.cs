@@ -4,14 +4,27 @@
 	using Archer.Core.Configuration;
 	using Archer.Core.Entity;
 	using Archer.Core.Repository;
-	using Archer.Infrastructure.Data.MongoDb;
 
 	public class MongoWriteRepository<TEntity> : MongoBase<TEntity>,
 		IWriteRepository<TEntity> where TEntity : EntityBase
 	{
-		public MongoWriteRepository(IConfiguration config)
-			: base(config)
+		public MongoWriteRepository()
+			: base()
 		{
+		}
+
+		public IConfiguration Config { get; set; }
+
+		public void Initialize(IConfiguration config)
+		{
+			if (config == null)
+			{
+				throw new Exception("Config cannot be a null value.");
+			}
+
+			this.Config = config;
+
+			base.Initialize(this.Config);
 		}
 
 		public bool Delete(TEntity entity)

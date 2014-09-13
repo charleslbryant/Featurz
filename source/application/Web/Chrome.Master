@@ -1,0 +1,87 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Chrome.master.cs" Inherits="Featurz.Web.Chrome" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<title><%: Page.Title %> : Featurz .Net Feature Toggle Manager</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<%: Styles.Render("~/css/core") %>
+	<%: Styles.Render("~/css/app") %>
+	<asp:ContentPlaceHolder ID="PageStyles" runat="server"></asp:ContentPlaceHolder>
+	<%: Scripts.Render("~/js/core") %>
+</head>
+<body class="skin-black">
+	<form id="form2" runat="server">
+		<!--[if lt IE 9]>
+			<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+		<header class="header">
+			<a href="/" class="logo">
+				<!-- Add the class icon to your logo image or logo icon to add the margining -->
+				FEATURz
+			</a>
+			<!-- Header Navbar: style can be found in header.less -->
+			<nav class="navbar navbar-static-top" role="navigation">
+				<!-- Sidebar toggle button-->
+				<a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+			</nav>
+		</header>
+
+		<div class="wrapper row-offcanvas row-offcanvas-left">
+			<!-- Left side column. contains the logo and sidebar -->
+			<aside class="left-side sidebar-offcanvas">
+				<!-- sidebar: style can be found in sidebar.less -->
+				<section class="sidebar">
+					<!-- search form -->
+					<div class="sidebar-form">
+						<div class="input-group">
+							<input type="text" name="q" class="form-control" placeholder="Search..." />
+							<span class="input-group-btn">
+								<button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
+							</span>
+						</div>
+					</div>
+					<!-- /.search form -->
+					<!-- sidebar menu: : style can be found in sidebar.less -->
+					<nav role="navigation">
+						<ul class="sidebar-menu">
+							<li>
+								<a href="/">
+									<i class="fa fa-dashboard"></i><span>Dashboard</span>
+								</a>
+							</li>
+							<li class="treeview">
+								<a href="#">
+									<i class="fa fa-th"></i>
+									<span>Features</span>
+									<i class="fa fa-angle-left pull-right"></i>
+								</a>
+								<ul class="treeview-menu">
+									<li><a href="/features"><i class="fa fa-angle-double-right"></i>View Features</a></li>
+									<li><a href="/features/add"><i class="fa fa-angle-double-right"></i>Add Feature</a></li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+				</section>
+				<!-- /.sidebar -->
+			</aside>
+			<!-- Right side column. Contains the navbar and content of the page -->
+			<aside class="right-side">
+				<asp:ContentPlaceHolder ID="MainContent" runat="server"></asp:ContentPlaceHolder>
+			</aside>
+			<!-- /.right-side -->
+		</div>
+		<!-- ./wrapper -->
+		<%: Scripts.Render("~/js/app") %>
+		<asp:ContentPlaceHolder ID="PageScripts" runat="server"></asp:ContentPlaceHolder>
+	</form>
+</body>
+</html>

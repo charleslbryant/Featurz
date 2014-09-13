@@ -2,13 +2,14 @@
 {
 	using System;
 	using Archer.Core.Query;
+	using Featurz.Application.Entity;
 	using Featurz.Application.Query;
 	using Featurz.Application.QueryHandler;
 	using Featurz.Application.QueryResult;
 
 	public static class Flag
 	{
-		public static bool IsActive(string featureId, IQueryHandler<IsFeatureActiveQuery, IsFeatureActiveQueryResult> handler = null)
+		public static bool IsActive(string featureId, IQueryHandler<IsFeatureActiveQuery, IsFeatureActiveQueryResult, Feature> handler = null)
 		{
 			if (string.IsNullOrWhiteSpace(featureId))
 			{

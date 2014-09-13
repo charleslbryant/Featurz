@@ -9,6 +9,7 @@
 		{
 			this.Name = name;
 		}
+
 		public string Name { get; protected set; }
 	}
 }

@@ -29,7 +29,7 @@
 		{
 			GetFeatureByIdQuery query = new GetFeatureByIdQuery(id);
 
-			GetFeatureByIdQueryResult queryResult = this.queryDispatcher.Dispatch<GetFeatureByIdQuery, GetFeatureByIdQueryResult>(query);
+			GetFeatureByIdQueryResult queryResult = this.queryDispatcher.Dispatch<GetFeatureByIdQuery, GetFeatureByIdQueryResult, Feature>(query);
 
 			Feature result = new Feature(queryResult.Id, queryResult.Name, queryResult.UserId, queryResult.Ticket, queryResult.IsActive, queryResult.IsEnabled, queryResult.StrategyId);
 
@@ -40,7 +40,7 @@
 		{
 			AddFeatureCommand command = new AddFeatureCommand(feature.Id, feature.Name, feature.UserId, feature.Ticket, feature.IsActive, feature.IsEnabled, feature.StrategyId);
 
-			this.commandDispatcher.Dispatch<AddFeatureCommand>(command);
+			this.commandDispatcher.Dispatch<AddFeatureCommand, Feature>(command);
 		}
 
 		public void Put(int id, [FromBody]string value)

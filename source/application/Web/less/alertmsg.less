@@ -1,0 +1,54 @@
+﻿.alertMsg(@img; @borderColor; @fontColor; @lightColor; @darkColor;) {
+	background-image: @img;
+	background-repeat: no-repeat;
+	border-color: @borderColor;
+	border-style: solid;
+	border-radius: 6px;
+	border-width: 1px;
+	color: @fontColor;
+	margin-bottom: 8px;
+	padding: 8px;
+	padding-left: 32px;
+	
+	/* IE10 Consumer Preview */ 
+	background-color: -ms-linear-gradient(top, @lightColor 0%, @darkColor 100%);
+
+	/* Mozilla Firefox */ 
+	background-color: -moz-linear-gradient(top, @lightColor 0%, @darkColor 100%);
+
+	/* Opera */ 
+	background-color: -o-linear-gradient(top, @lightColor 0%, @darkColor 100%);
+
+	/* Webkit (Safari/Chrome 10) */ 
+	background-color: -webkit-gradient(linear, left top, left bottom, color-stop(0, @lightColor), color-stop(1, @darkColor));
+
+	/* Webkit (Chrome 11+) */ 
+	background-color: -webkit-linear-gradient(top, @lightColor 0%, @darkColor 100%);
+
+	/* W3C Markup, IE10 Release Preview */ 
+	background-color: linear-gradient(to bottom, @lightColor 0%, @darkColor 100%);
+}
+
+.alertMsg.hidden {
+	display: none;
+}
+
+.successful.alertMsg {
+	.alertMsg("url(../images/bubble-ok.png)"; #48A90E; #005D00; #FFFFFF; #D5EAC8);
+}
+
+.error.alertMsg {
+	.alertMsg("url(../images/bubble-error.png)"; #CC0000; #990000; #FFFFFF; #FFCFCF);
+}
+
+.warning.alertMsg {
+	.alertMsg("url(../images/bubble-warning.png)";  #CC7F11; #974b00; #FFDE7A; #FFCC35);
+}
+
+.info.alertMsg {
+	.alertMsg("url(../images/bubble-info.png)";  #999999; #4D4D4D; #FFFFFF; #F2F2F2);
+}
+
+.successful.alertMsg, .error.alertMsg, .warning.alertMsg, .info.alertMsg {
+	background-position: 8px center;
+}

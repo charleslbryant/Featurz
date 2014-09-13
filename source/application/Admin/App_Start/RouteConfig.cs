@@ -7,7 +7,6 @@
 namespace App.Featurz.Admin
 {
 	using System.Web.Routing;
-
 	using App.Featurz.Admin.Routing;
 
 	public class RouteConfig
