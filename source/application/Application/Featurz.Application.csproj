@@ -46,12 +46,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommandHandler\AddFeatureCommandHandler.cs" />
+    <Compile Include="CommandHandler\BaseCommandHandler.cs" />
     <Compile Include="Command\AddFeatureCommand.cs" />
     <Compile Include="Entity\Feature.cs" />
     <Compile Include="Entity\FeatureContext.cs" />
-    <Compile Include="Entity\FeatureUser.cs" />
+    <Compile Include="Entity\User.cs" />
     <Compile Include="Feature\IFeatureActivationStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryHandler\BaseQueryHandler.cs" />
+    <Compile Include="QueryHandler\GetFeatureOwnerQueryHandler.cs" />
     <Compile Include="QueryHandler\IsFeatureActiveQueryHandler.cs" />
     <Compile Include="QueryHandler\GetFeaturesQueryHandler.cs" />
     <Compile Include="QueryResult\GetFeatureOwnersQueryResult.cs" />

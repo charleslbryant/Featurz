@@ -7,19 +7,18 @@
 	using Featurz.Application.Query;
 	using Featurz.Application.QueryResult;
 
-	public class GetFeaturesQueryHandler : BaseQueryHandler<Feature>, IQueryHandler<GetFeaturesQuery, GetFeaturesQueryResult, Feature>
+	public class GetFeatureOwnerQueryHandler : BaseQueryHandler<User>, IQueryHandler<GetFeatureOwnersQuery, GetFeatureOwnersQueryResult, User>
 	{
-		public GetFeaturesQueryHandler()
-			: base()
+		public GetFeatureOwnerQueryHandler()
 		{
 		}
 
-		public GetFeaturesQueryResult Retrieve(GetFeaturesQuery query)
+		public GetFeatureOwnersQueryResult Retrieve(GetFeatureOwnersQuery query)
 		{
 			//TODO: Change to pageable query
-			ICollection<Feature> features = this.ReadRepository.All();
+			ICollection<User> users = this.ReadRepository.All();
 			//ICollection<Feature> features = this.GetFeaturesMock(query);
-			GetFeaturesQueryResult result = new GetFeaturesQueryResult(features);
+			GetFeatureOwnersQueryResult result = new GetFeatureOwnersQueryResult(users);
 			return result;
 		}
 

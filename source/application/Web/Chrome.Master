@@ -79,6 +79,9 @@
 			</aside>
 			<!-- /.right-side -->
 		</div>
+		<footer>
+			<p><a href="https://github.com/charleslbryant/Featurz/" target="_blank">Featurz - toggle me</a> &nbsp; &nbsp; &nbsp; &copy; <%: DateTime.Now.Year %> - Charles Bryant</p>
+		</footer>
 		<!-- ./wrapper -->
 		<%: Scripts.Render("~/js/app") %>
 		<asp:ContentPlaceHolder ID="PageScripts" runat="server"></asp:ContentPlaceHolder>

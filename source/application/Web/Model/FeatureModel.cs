@@ -40,7 +40,7 @@
 		public ICollection<FeatureOwnerVm> GetFeatureOwners(GetFeatureOwnersQuery query)
 		{
 			ICollection<FeatureOwnerVm> owners = new List<FeatureOwnerVm>();
-			//GetFeatureOwnersQueryResult results = this.queryDispatcher.Dispatch<GetFeatureOwnersQuery, GetFeatureOwnersQueryResult, Feature>(query);
+			GetFeatureOwnersQueryResult results = this.queryDispatcher.Dispatch<GetFeatureOwnersQuery, GetFeatureOwnersQueryResult, User>(query);
 			//owners = results.Owners;
 			FeatureOwnerVm owner = new FeatureOwnerVm();
 			owner.Id = "charles.bryant";
@@ -90,7 +90,7 @@
 			return vm;
 		}
 
-		public AddFeatureCommand ValidateAddFeatureCommand(AddFeatureCommand command)
+		private AddFeatureCommand ValidateAddFeatureCommand(AddFeatureCommand command)
 		{
 			if (string.IsNullOrWhiteSpace(command.Name))
 			{

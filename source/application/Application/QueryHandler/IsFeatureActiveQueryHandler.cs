@@ -1,16 +1,12 @@
 ﻿namespace Featurz.Application.QueryHandler
 {
 	using System;
-	using Archer.Core.Configuration;
 	using Archer.Core.Query;
-	using Archer.Core.Repository;
-	using Archer.Infrastructure.Configuration;
-	using Archer.Infrastructure.Data.MongoDb;
 	using Featurz.Application.Entity;
 	using Featurz.Application.Query;
 	using Featurz.Application.QueryResult;
 
-	public class IsFeatureActiveQueryHandler : IQueryHandler<IsFeatureActiveQuery, IsFeatureActiveQueryResult, Feature>
+	public class IsFeatureActiveQueryHandler : BaseQueryHandler<Feature>, IQueryHandler<IsFeatureActiveQuery, IsFeatureActiveQueryResult, Feature>
 	{
 		public IsFeatureActiveQueryHandler()
 		{
@@ -51,11 +47,5 @@
 
 			return true;
 		}
-
-		public IConfiguration Config { get; set; }
-
-		public IReadRepository<Feature> ReadRepository { get; set; }
-
-		public IWriteRepository<Feature> WriteRepository { get; set; }
 	}
 }

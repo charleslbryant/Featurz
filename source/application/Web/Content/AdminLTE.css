@@ -4169,3 +4169,9 @@ Component: timeline
 .info.alertMsg {
 	background-position: 8px center;
 }
+
+footer {
+	background-color: #ddd;
+	padding: 8px;
+	text-align: center;
+}

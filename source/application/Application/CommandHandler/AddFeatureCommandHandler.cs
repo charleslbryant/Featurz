@@ -9,7 +9,7 @@
 	using Featurz.Application.Command;
 	using Featurz.Application.Entity;
 
-	public class AddFeatureCommandHandler : ICommandHandler<AddFeatureCommand, Feature>
+	public class AddFeatureCommandHandler : BaseCommandHandler<Feature>, ICommandHandler<AddFeatureCommand, Feature>
 	{
 		public AddFeatureCommandHandler()
 		{
@@ -39,10 +39,5 @@
 				throw new ArgumentException("command.Id cannot be null or white space.");
 			}
 		}
-		public IConfiguration Config { get; set; }
-
-		public IReadRepository<Feature> ReadRepository { get; set; }
-
-		public IWriteRepository<Feature> WriteRepository { get; set; }
 	}
 }

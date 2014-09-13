@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>c6c192ad-3ce4-4fcc-9e2c-0b9f6e193121</ProjectGuid>
+    <ProjectGuid>{A95D5B40-67CE-44EE-826F-A91874E72416}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Featurz.Web.Tests.Unit</RootNamespace>
@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NSubstitute">
+      <HintPath>..\..\..\packages\NSubstitute.1.7.2.0\lib\NET45\NSubstitute.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <Choose>
@@ -50,8 +53,26 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="FeatureModelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\application\Application\Featurz.Application.csproj">
+      <Project>{b78a32ff-9f66-495c-9002-6c0f3c72c939}</Project>
+      <Name>Featurz.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\application\Core\Archer.Core.csproj">
+      <Project>{5a94f2fe-8fa8-461f-967f-9ed3517283a0}</Project>
+      <Name>Archer.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\application\Web\Featurz.Web.csproj">
+      <Project>{a8db6be2-a927-4429-a08d-9a6dc3b96897}</Project>
+      <Name>Featurz.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
