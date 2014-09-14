@@ -53,7 +53,9 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="FeatureModelTest.cs" />
+    <Compile Include="Model\FeatureModelTest.cs" />
+    <Compile Include="Model\ModelTestBase.cs" />
+    <Compile Include="Model\FeatureModelHelperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

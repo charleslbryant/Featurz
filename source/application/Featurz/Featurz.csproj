@@ -62,6 +62,10 @@
       <Project>{5a94f2fe-8fa8-461f-967f-9ed3517283a0}</Project>
       <Name>Archer.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Infrastructure\Archer.Infrastructure.csproj">
+      <Project>{14a75980-e29f-4ff7-ab13-36d8522d04ba}</Project>
+      <Name>Archer.Infrastructure</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

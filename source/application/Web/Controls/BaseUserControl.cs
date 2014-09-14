@@ -21,5 +21,10 @@
 		public IConfiguration Config { get; set; }
 
 		public IQueryDispatcher QueryDispatcher { get; set; }
+
+		public void Navigate(string screen)
+		{
+			Response.Redirect(screen);
+		}
 	}
 }

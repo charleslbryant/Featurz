@@ -2,6 +2,7 @@
 {
 	using System;
 	using System.Collections.Generic;
+	using Archer.Core.Entity;
 	using Featurz.Application.Command;
 	using Featurz.Application.Query;
 	using Featurz.Web.Model;
@@ -21,12 +22,15 @@
 
 		protected void CancelForm(object sendder, EventArgs e)
 		{
-			Response.Redirect(PagesModel.Features);
+			this.Navigate(PagesModel.Features);
 		}
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			this.Bind();
+			if (!Page.IsPostBack)
+			{
+				this.Bind();
+			}
 		}
 
 		protected void SubmitForm(object sender, EventArgs e)
@@ -37,7 +41,7 @@
 
 			if (command.Valid)
 			{
-				Response.Redirect(PagesModel.Features);
+				this.Navigate(PagesModel.Features);
 			}
 
 			this.Vm = this.model.SetFeatureAddVm(command, this.Vm);
@@ -45,7 +49,7 @@
 
 		private void Bind()
 		{
-			GetFeatureOwnersQuery query = new GetFeatureOwnersQuery();
+			GetFeatureOwnersQuery query = new GetFeatureOwnersQuery(0, 1, "Id", SortDirection.Ascending);
 
 			ICollection<FeatureOwnerVm> owners = this.model.GetFeatureOwners(query);
 			this.FeatureOwner.DataTextField = "Name";
@@ -62,7 +66,7 @@
 			string id = Guid.NewGuid().ToString();
 			string name = this.FeatureName.Text;
 			string ticket = this.FeatureTicket.Text;
-			string owner = Request.Form["ctl00$MainContent$FeatureAdd$FeatureOwner"];
+			string owner = this.FeatureOwner.SelectedValue;
 			bool active = this.FeatureActive.Checked;
 			bool enabled = this.FeatureEnabled.Checked;
 

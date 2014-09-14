@@ -22,18 +22,25 @@ determine if the feature is active.
 Scenarios
 ---------
 
+###Featurz
+
+1. Is Feature Active
+  1. [ ] Active feature.
+  1. [ ] Active but disabled feature is inactive.
+  1. [ ] Feature active by strategy.
+  1. [ ] Feature active by multiple strategies.
+
 ###Feature
+
 1. Add Feature
   1. [x] Add new feature. v0.0.1
   1. [x] Add invalid feature returns error. v0.0.1
   1. [ ] Add activation strategy.
 1. List Features
-  1. [ ] List all features.
-  1. [ ] List active features.
-  1. [ ] List inactive features.
+  1. [x] List all features. v0.0.1
+  1. [ ] List features by active.
   1. [ ] List features by date range.
-  1. [ ] List enabled features.
-  1. [ ] List disabled features.
+  1. [ ] List features by enabled.  
   1. [ ] List features by activation strategy.
 1. View Feature
   1. [ ] View feature by Id.
@@ -48,11 +55,23 @@ Scenarios
   1. [ ] Update activation strategy.
   1. [ ] Remove activation strategy.
 
+### User
+
+1. Add User
+  1. [ ] Add new user.
+  1. [ ] Add invalid user returns error.
+1. List Users
+  1. [ ] List all users.
+  1. [ ] List disabled users.
+1. Modify User Roles
+  1. [ ] Add new user role.
+  1. [ ] Remove user role.
+
 ###Feature Activation Strategy
-1. User: specific user, user group, user role, user group role.
-1. Gradual Rollout: activate for a specific number or percentage of users.
-1. Release Date: feature is activated or deactivated on or after a specific date.
-1. Client IP: feature is active if user connects from a specific IP or IP range.
-1. Server IP: feature is active if served from a specific server IP or IP range.
-1. HTTP Request: feature is active based on matching request (e.g. query string, form, cookie)
-1. Script Engine: custom strategy with logic implemented by client script.
+1. [ ] **User:** activate ffor a specific user, user group, user role, user group role.
+1. [ ] **Gradual Rollout:** activate for a specific number or percentage of users.
+1. [ ] **Release Date:** feature is activated or deactivated on or after a specific date.
+1. [ ] **Client IP:** feature is active if user connects from a specific IP or IP range.
+1. [ ] **Server IP:** feature is active if served from a specific server IP or IP range.
+1. [ ] **HTTP Request:** feature is active based on matching request (e.g. query string, form, cookie).
+1. [ ] **Script Engine:** custom strategy with logic implemented by client script.

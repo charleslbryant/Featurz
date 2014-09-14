@@ -1,6 +1,7 @@
 ﻿namespace Featurz.Application.QueryHandler
 {
 	using System;
+	using System.Linq;
 	using Archer.Core.Query;
 	using Featurz.Application.Entity;
 	using Featurz.Application.Query;
@@ -14,8 +15,17 @@
 
 		public IsFeatureActiveQueryResult Retrieve(IsFeatureActiveQuery query)
 		{
-			Feature feature = this.ReadRepository.GetById(query.FeatureId);
-			IsFeatureActiveQueryResult result = new IsFeatureActiveQueryResult(feature.IsActive);
+			bool active = false;
+
+			Feature feature = this.ReadRepository.Where(x => x.Name == query.Name).FirstOrDefault();
+			
+			if (feature != null)
+			{
+				active = feature.IsActive;
+			}
+
+			IsFeatureActiveQueryResult result = new IsFeatureActiveQueryResult(active);
+
 			return result;
 		}
 

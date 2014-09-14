@@ -25,13 +25,16 @@
 
 		protected void GoAddFeature(object sendder, EventArgs e)
 		{
-			Response.Redirect(PagesModel.FeaturesAdd);
+			this.Navigate(PagesModel.FeaturesAdd);
 		}
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			this.query = new GetFeaturesQuery(this.FeatureGrid.PageSize, 1, FeatureList.DefaultSort, FeatureList.DefaultSortDirection);
-			this.Bind();
+			if (!Page.IsPostBack)
+			{
+				this.query = new GetFeaturesQuery(this.FeatureGrid.PageSize, 1, FeatureList.DefaultSort, FeatureList.DefaultSortDirection);
+				this.Bind();
+			}
 		}
 
 		protected void SearchFeatures(object sendder, EventArgs e)

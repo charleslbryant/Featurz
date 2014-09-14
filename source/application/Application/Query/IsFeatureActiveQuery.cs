@@ -5,11 +5,11 @@
 
 	public class IsFeatureActiveQuery : IQuery
 	{
-		public IsFeatureActiveQuery(string featureId)
+		public IsFeatureActiveQuery(string name)
 		{
-			this.FeatureId = featureId;
+			this.Name = name;
 		}
 
-		public string FeatureId { get; private set; }
+		public string Name { get; private set; }
 	}
 }

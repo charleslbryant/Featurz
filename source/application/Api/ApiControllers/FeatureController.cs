@@ -29,7 +29,7 @@
 		{
 			GetFeatureByIdQuery query = new GetFeatureByIdQuery(id);
 
-			GetFeatureByIdQueryResult queryResult = this.queryDispatcher.Dispatch<GetFeatureByIdQuery, GetFeatureByIdQueryResult, Feature>(query);
+			GetFeatureQueryResult queryResult = this.queryDispatcher.Dispatch<GetFeatureByIdQuery, GetFeatureQueryResult, Feature>(query);
 
 			Feature result = new Feature(queryResult.Id, queryResult.Name, queryResult.UserId, queryResult.Ticket, queryResult.IsActive, queryResult.IsEnabled, queryResult.StrategyId);
 

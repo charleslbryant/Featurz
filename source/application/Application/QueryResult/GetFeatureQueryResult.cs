@@ -3,9 +3,9 @@
 	using System;
 	using Archer.Core.Query;
 
-	public class GetFeatureByIdQueryResult : IQueryResult
+	public class GetFeatureQueryResult : IQueryResult
 	{
-		public GetFeatureByIdQueryResult(string id, string name, string userId, string ticket = "", bool isActive = false, bool isEnabled = false, int strategyId = 0)
+		public GetFeatureQueryResult(string id, string name, string userId, string ticket = "", bool isActive = false, bool isEnabled = false, int strategyId = 0)
 		{
 			this.Id = id;
 			this.Name = name;

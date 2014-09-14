@@ -1,6 +1,7 @@
 ﻿namespace Featurz.Application.Tests.Unit
 {
 	using System;
+	using System.Collections.Generic;
 	using Archer.Core.Repository;
 	using Featurz.Application.Entity;
 	using Featurz.Application.QueryHandler;
@@ -14,29 +15,51 @@
 		public class IsActiveTest
 		{
 			[TestMethod]
-			public void IsActive_Returns_True()
+			public void Should_Return_True_When_Feature_Is_Active()
 			{
 				var featureRepo = Substitute.For<IReadRepository<Feature>>();
 				var query = new IsFeatureActiveQueryHandler();
 				query.ReadRepository = featureRepo;
-				Feature feature = new Feature("1000", "test", "1", "F1", true);
-
 				string featureId = "1000";
+				string name = "test";
 
-				featureRepo.GetById(featureId).Returns<Feature>(feature);
+				IList<Feature> features = new List<Feature>();
+				Feature feature = new Feature(featureId, name, "1", "F1", true);
+				features.Add(feature);
 
-				bool actual = Flag.IsActive(featureId, query);
+				featureRepo.Where(x => x.Name == Arg.Any<string>()).ReturnsForAnyArgs(features);
+
+				bool actual = Flag.IsActive(name, query);
 
 				Assert.IsTrue(actual);
 			}
 
 			[TestMethod]
 			[ExpectedException(typeof(ArgumentException))]
-			public void IsActive_When_FeatureId_Is_White_Space_Throw_Exception()
+			public void Should_Throw_Exception_When_FeatureId_Is_White_Space()
 			{
-				string featureId = "";
+				string name = "";
 
-				bool actual = Flag.IsActive(featureId);
+				bool actual = Flag.IsActive(name);
+			}
+
+			[TestMethod]
+			public void Should_Return_Inactive_When_Feature_Is_Null()
+			{
+				var featureRepo = Substitute.For<IReadRepository<Feature>>();
+				var query = new IsFeatureActiveQueryHandler();
+				query.ReadRepository = featureRepo;
+				string name = "test";
+
+				IList<Feature> features = new List<Feature>();
+				Feature feature = null;
+				features.Add(feature);
+
+				featureRepo.Where(x => x.Name == Arg.Any<string>()).ReturnsForAnyArgs(features);
+
+				bool actual = Flag.IsActive(name, query);
+
+				Assert.IsFalse(actual);
 			}
 		}
 	}

@@ -47,6 +47,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Featurz.Web.Tests.Unit", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Featurz.Tests.Unit", "source\test\Featurz.Tests.Unit\Featurz.Tests.Unit.csproj", "{E377EC08-B4A8-4F9A-B466-ADF457415E37}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{DDD40043-903C-448B-B50F-6F662FC32CAB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Featurz.Demo", "source\demo\Featurz.Demo\Featurz.Demo\Featurz.Demo.csproj", "{60301C1B-9518-4D2A-AA9F-8958C1B5EF24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,10 @@ Global
 		{E377EC08-B4A8-4F9A-B466-ADF457415E37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E377EC08-B4A8-4F9A-B466-ADF457415E37}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E377EC08-B4A8-4F9A-B466-ADF457415E37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60301C1B-9518-4D2A-AA9F-8958C1B5EF24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60301C1B-9518-4D2A-AA9F-8958C1B5EF24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60301C1B-9518-4D2A-AA9F-8958C1B5EF24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60301C1B-9518-4D2A-AA9F-8958C1B5EF24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,5 +108,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A95D5B40-67CE-44EE-826F-A91874E72416} = {7E01778B-765E-43C3-8E29-1EDC08C24B82}
 		{E377EC08-B4A8-4F9A-B466-ADF457415E37} = {7E01778B-765E-43C3-8E29-1EDC08C24B82}
+		{60301C1B-9518-4D2A-AA9F-8958C1B5EF24} = {DDD40043-903C-448B-B50F-6F662FC32CAB}
 	EndGlobalSection
 EndGlobal

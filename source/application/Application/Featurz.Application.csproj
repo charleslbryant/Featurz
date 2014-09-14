@@ -59,8 +59,9 @@
     <Compile Include="QueryHandler\GetFeaturesQueryHandler.cs" />
     <Compile Include="QueryResult\GetFeatureOwnersQueryResult.cs" />
     <Compile Include="QueryResult\GetFeaturesQueryResult.cs" />
-    <Compile Include="QueryResult\GetFeatureByIdQueryResult.cs" />
+    <Compile Include="QueryResult\GetFeatureQueryResult.cs" />
     <Compile Include="QueryResult\IsFeatureActiveQueryResult.cs" />
+    <Compile Include="Query\GetFeatureByNameQuery.cs" />
     <Compile Include="Query\GetFeatureOwnersQuery.cs" />
     <Compile Include="Query\GetFeaturesQuery.cs" />
     <Compile Include="Query\PageableQuery.cs" />

@@ -26,6 +26,11 @@
 
 		public AddFeatureCommand AddFeature(AddFeatureCommand command)
 		{
+			if (command == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "command"));
+			}
+
 			this.ValidateAddFeatureCommand(command);
 
 			if (!command.Valid)
@@ -37,25 +42,33 @@
 			return command;
 		}
 
+		//TODO: Change to only return users with an owner role.
 		public ICollection<FeatureOwnerVm> GetFeatureOwners(GetFeatureOwnersQuery query)
 		{
+			if (query == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "query"));
+			}
+
 			ICollection<FeatureOwnerVm> owners = new List<FeatureOwnerVm>();
 			GetFeatureOwnersQueryResult results = this.queryDispatcher.Dispatch<GetFeatureOwnersQuery, GetFeatureOwnersQueryResult, User>(query);
-			//owners = results.Owners;
-			FeatureOwnerVm owner = new FeatureOwnerVm();
-			owner.Id = "charles.bryant";
-			owner.Name = "charles.bryant";
-			owners.Add(owner);
 
-			owner = new FeatureOwnerVm();
-			owner.Id = "darshit.dave";
-			owner.Name = "darshit.dave";
-			owners.Add(owner);
+			foreach (var user in results.Owners)
+			{
+				FeatureOwnerVm owner = FeatureModelHelper.ToFeatureOwnerVm(user);
+				owners.Add(owner);
+			}
+
 			return owners;
 		}
 
 		public FeatureListVm GetFeatures(GetFeaturesQuery query)
 		{
+			if (query == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "query"));
+			}
+
 			GetFeaturesQueryResult results = this.queryDispatcher.Dispatch<GetFeaturesQuery, GetFeaturesQueryResult, Feature>(query);
 
 			FeatureListVm vm = FeatureModelHelper.ToFeatureListVm(results, config);
@@ -65,6 +78,16 @@
 
 		public FeatureAddVm SetFeatureAddVm(AddFeatureCommand command, FeatureAddVm vm)
 		{
+			if (command == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "command"));
+			}
+
+			if (vm == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "vm"));
+			}
+
 			if (command.Valid)
 			{
 				return vm;
@@ -83,8 +106,8 @@
 			if (!string.IsNullOrWhiteSpace(command.InvalidTicket))
 			{
 				vm.TicketMessage = MessagesModel.ItemMessage + command.InvalidTicket;
-				vm.NameError = MessagesModel.ItemError;
-				vm.NameGroupError = MessagesModel.ItemGroupError;
+				vm.TicketError = MessagesModel.ItemError;
+				vm.TicketGroupError = MessagesModel.ItemGroupError;
 			}
 
 			return vm;

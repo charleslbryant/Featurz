@@ -20,9 +20,13 @@
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body table-responsive no-padding">
-				<asp:GridView ID="FeatureGrid" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" GridLines="None" PagerSettings-Mode="Numeric" AllowCustomPaging="True" AllowPaging="True" AllowSorting="True" ShowFooter="True">
+				<asp:GridView ID="FeatureGrid" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" GridLines="None" PagerSettings-Mode="Numeric" AllowCustomPaging="True" AllowPaging="True" AllowSorting="True" ShowFooter="True" PageSize="100">
 					<Columns>
-						<asp:BoundField DataField="Name" HeaderText="Name" />
+						<asp:TemplateField HeaderText="Name">
+							<ItemTemplate>
+								<a href="<%# Eval("Id") %>" target="_blank"><%# Eval("Name") %></a>
+							</ItemTemplate>
+						</asp:TemplateField>
 						<asp:TemplateField HeaderText="Ticket">
 							<ItemTemplate>
 								<a href="<%# Eval("TicketLink") %>" target="_blank"><%# Eval("Ticket") %></a>

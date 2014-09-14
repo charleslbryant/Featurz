@@ -31,6 +31,35 @@ You can poke around the project, but nothing is really ready yet. The code in th
 repo is a very early stage proof of concept, may not work, has a lot undone, and 
 will have UIs and APIs changed drastically.
 
+If you don't have MongoDb installed you need to install it.
+
+In the project you want to toggle features for:
+
+- Install the mongocsharpdriver to your project.
+- Add web.config/app.config settings:
+
+****
+    <appSettings>
+        <!-- featurz.ticketsystemurl will be used to compose links for the ticket
+        numbers you add to features. Example: if you url is http://ticketsystem/
+        and you ticket is T1234, your link will be http://ticketsyste/T1234 -->
+        <add key="featurz.ticketsystemurl" value="http://url-for-your-ticket-system/" />
+        <!-- archer.db.connectionstring.mongo is the connection string to your
+        MongoDb -->
+        <add key="archer.db.connectionstring.mongo" value="mongodb://localhost/{DB_NAME}"/>
+        <add key="archer.db.name" value="Featurz"/>
+    </appSettings>
+    <connectionStrings>
+        <!-- MongoServerSettings is not currently used, but is kept for testing
+        purposes -->
+        <add name="MongoServerSettings" connectionString="mongodb://localhost/Featurz" />
+    </connectionStrings>
+
+- Install Featurz NuGet package or add a reference to:
+  - Featurz.dll
+  - Featurz.Application.dll
+  - Archer.Core.dll.
+
 Wishlist
 -----------
 

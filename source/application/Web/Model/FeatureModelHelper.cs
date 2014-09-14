@@ -10,6 +10,16 @@
 	{
 		public static FeatureListItemVm SetActive(FeatureListItemVm feature, Feature result)
 		{
+			if (feature == null)
+			{
+ 				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "feature"));
+			}
+
+			if (result == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "result"));
+			}
+
 			if (result.IsActive)
 			{
 				feature.Active = "Active";
@@ -17,13 +27,23 @@
 				return feature;
 			}
 
-			feature.Active = "Inctive";
+			feature.Active = "Inactive";
 			feature.ActiveClass = "danger";
 			return feature;
 		}
 
 		public static FeatureListVm ToFeatureListVm(GetFeaturesQueryResult results, IConfiguration config)
 		{
+			if (results == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "results"));
+			}
+
+			if (config == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "config"));
+			}
+
 			FeatureListVm vm = new FeatureListVm();
 			vm.ItemsFound = results.Features.Count > 0;
 
@@ -42,7 +62,7 @@
 			return vm;
 		}
 
-		public static FeatureListItemVm ToFeatureLitsItemVm(Feature result, IConfiguration config)
+		private static FeatureListItemVm ToFeatureLitsItemVm(Feature result, IConfiguration config)
 		{
 			FeatureListItemVm feature = new FeatureListItemVm();
 			feature.Id = result.Id;
@@ -54,6 +74,19 @@
 			feature = FeatureModelHelper.SetActive(feature, result);
 			feature.DateAdded = result.DateAdded.ToShortDateString();
 			return feature;
+		}
+
+		public static FeatureOwnerVm ToFeatureOwnerVm(User result)
+		{
+			if (result == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "result"));
+			}
+
+			FeatureOwnerVm vm = new FeatureOwnerVm();
+			vm.Id = result.Id;
+			vm.Name = result.FirstName + " " + result.LastName;
+			return vm;
 		}
 	}
 }

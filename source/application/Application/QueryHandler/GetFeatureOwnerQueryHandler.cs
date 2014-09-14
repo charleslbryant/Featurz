@@ -10,36 +10,37 @@
 	public class GetFeatureOwnerQueryHandler : BaseQueryHandler<User>, IQueryHandler<GetFeatureOwnersQuery, GetFeatureOwnersQueryResult, User>
 	{
 		public GetFeatureOwnerQueryHandler()
+			: base()
 		{
 		}
 
 		public GetFeatureOwnersQueryResult Retrieve(GetFeatureOwnersQuery query)
 		{
 			//TODO: Change to pageable query
-			ICollection<User> users = this.ReadRepository.All();
-			//ICollection<Feature> features = this.GetFeaturesMock(query);
+			//ICollection<User> users = this.ReadRepository.All();
+			ICollection<User> users = this.GetUsersMock(query);
 			GetFeatureOwnersQueryResult result = new GetFeatureOwnersQueryResult(users);
 			return result;
 		}
 
-		private ICollection<Feature> GetFeaturesMock(GetFeaturesQuery query)
+		private ICollection<User> GetUsersMock(GetFeatureOwnersQuery query)
 		{
-			List<Feature> features = new List<Feature>();
+			List<User> users = new List<User>();
 			int count = query.PageSize * 2 + 3;
 
 			if (count < 1)
 			{
-				return features;
+				return users;
 			}
 
 			for (int i = 1; i < count; i++)
 			{
-				Feature feature = new Feature(i.ToString(), "Feature " + i.ToString(), "charles.bryant", i.ToString(), i < 3 || i == 7);
+				User user = new User("Tester" + i.ToString(), "tester" + i.ToString() + "abc.comx", "Tester" + i.ToString(), "Master" + i.ToString(), new List<string>(){"admin", "user"});
 
-				features.Add(feature);
+				users.Add(user);
 			}
 
-			return features;
+			return users;
 		}
 	}
 }
