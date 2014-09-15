@@ -127,7 +127,7 @@ using NSubstitute.Core;
 		public class GetFeatureOwnersTest : FeatureModelTestBase
 		{
 			[TestMethod]
-			public void Should_Can_Get_Feature_Owners()
+			public void Should_Get_Feature_Owners()
 			{
 				GetFeatureOwnersQuery query = SetQueryDispatcher();
 
@@ -179,7 +179,7 @@ using NSubstitute.Core;
 		public class GetFeaturesTest : FeatureModelTestBase
 		{
 			[TestMethod]
-			public void Should_Can_Get_Features()
+			public void Should_Get_Features()
 			{
 				GetFeaturesQuery query = this.SetQueryDispatcher();
 
