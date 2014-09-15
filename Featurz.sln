@@ -21,28 +21,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{2D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Featurz.Web", "source\application\Web\Featurz.Web.csproj", "{A8DB6BE2-A927-4429-A08D-9A6DC3B96897}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "AdminLTE-master", "http://localhost:52503", "{054F5711-1B97-4DAC-B7E3-A5C090320498}"
-	ProjectSection(WebsiteProperties) = preProject
-		UseIISExpress = "true"
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.1"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_52503"
-		Debug.AspNetCompiler.PhysicalPath = "..\Users\charles.bryant\Desktop\Projects\AdminLTE-master\AdminLTE-master\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52503\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_52503"
-		Release.AspNetCompiler.PhysicalPath = "..\Users\charles.bryant\Desktop\Projects\AdminLTE-master\AdminLTE-master\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_52503\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		SlnRelativePath = "..\Users\charles.bryant\Desktop\Projects\AdminLTE-master\AdminLTE-master\"
-		DefaultWebSiteLanguage = "Visual C#"
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Featurz.Web.Tests.Unit", "source\test\Featurz.Web.Tests.Unit\Featurz.Web.Tests.Unit.csproj", "{A95D5B40-67CE-44EE-826F-A91874E72416}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Featurz.Tests.Unit", "source\test\Featurz.Tests.Unit\Featurz.Tests.Unit.csproj", "{E377EC08-B4A8-4F9A-B466-ADF457415E37}"
@@ -87,10 +65,6 @@ Global
 		{A8DB6BE2-A927-4429-A08D-9A6DC3B96897}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8DB6BE2-A927-4429-A08D-9A6DC3B96897}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8DB6BE2-A927-4429-A08D-9A6DC3B96897}.Release|Any CPU.Build.0 = Release|Any CPU
-		{054F5711-1B97-4DAC-B7E3-A5C090320498}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{054F5711-1B97-4DAC-B7E3-A5C090320498}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{054F5711-1B97-4DAC-B7E3-A5C090320498}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{054F5711-1B97-4DAC-B7E3-A5C090320498}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{A95D5B40-67CE-44EE-826F-A91874E72416}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A95D5B40-67CE-44EE-826F-A91874E72416}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A95D5B40-67CE-44EE-826F-A91874E72416}.Release|Any CPU.ActiveCfg = Release|Any CPU
