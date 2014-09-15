@@ -62,6 +62,8 @@
     <Compile Include="Cache\ICache.cs" />
     <Compile Include="Entity\NamedEntity.cs" />
     <Compile Include="Entity\SortDirection.cs" />
+    <Compile Include="Exceptions\DuplicateKeyException.cs" />
+    <Compile Include="Exceptions\ArcherException.cs" />
     <Compile Include="Logger\LogManager.cs" />
     <Compile Include="Message\EmailManager.cs" />
     <Compile Include="Message\IEmail.cs" />

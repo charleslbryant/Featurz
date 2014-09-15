@@ -12,7 +12,7 @@
 		{
 			if (feature == null)
 			{
- 				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "feature"));
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "feature"));
 			}
 
 			if (result == null)
@@ -30,6 +30,24 @@
 			feature.Active = "Inactive";
 			feature.ActiveClass = "danger";
 			return feature;
+		}
+
+		public static FeatureEditVm ToFeatureEditVm(GetFeatureQueryResult result)
+		{
+			if (result == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "result"));
+			}
+
+			FeatureEditVm vm = new FeatureEditVm();
+			vm.Id = result.Id;
+			vm.IsActive = result.IsActive;
+			vm.IsEnabled = result.IsEnabled;
+			vm.Name = result.Name;
+			vm.StrategyId = result.StrategyId;
+			vm.Ticket = result.Ticket;
+
+			return vm;
 		}
 
 		public static FeatureListVm ToFeatureListVm(GetFeaturesQueryResult results, IConfiguration config)
@@ -62,6 +80,19 @@
 			return vm;
 		}
 
+		public static FeatureOwnerVm ToFeatureOwnerVm(User result)
+		{
+			if (result == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "result"));
+			}
+
+			FeatureOwnerVm vm = new FeatureOwnerVm();
+			vm.Id = result.Id;
+			vm.Name = result.FirstName + " " + result.LastName;
+			return vm;
+		}
+
 		private static FeatureListItemVm ToFeatureLitsItemVm(Feature result, IConfiguration config)
 		{
 			FeatureListItemVm feature = new FeatureListItemVm();
@@ -74,19 +105,6 @@
 			feature = FeatureModelHelper.SetActive(feature, result);
 			feature.DateAdded = result.DateAdded.ToShortDateString();
 			return feature;
-		}
-
-		public static FeatureOwnerVm ToFeatureOwnerVm(User result)
-		{
-			if (result == null)
-			{
-				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "result"));
-			}
-
-			FeatureOwnerVm vm = new FeatureOwnerVm();
-			vm.Id = result.Id;
-			vm.Name = result.FirstName + " " + result.LastName;
-			return vm;
 		}
 	}
 }

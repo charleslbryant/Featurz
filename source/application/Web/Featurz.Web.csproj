@@ -312,8 +312,10 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\timepicker\bootstrap-timepicker.css" />
     <Content Include="Content\timepicker\bootstrap-timepicker.min.css" />
+    <Content Include="Controls\FeatureEdit.ascx" />
     <Content Include="Controls\FeatureAdd.ascx" />
     <Content Include="Controls\FeatureList.ascx" />
+    <Content Include="Features\Edit.aspx" />
     <Content Include="Features\Add.aspx" />
     <Content Include="Features\Default.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -866,12 +868,26 @@
     <Compile Include="Controls\BaseUserControl.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Controls\FeatureEdit.ascx.cs">
+      <DependentUpon>FeatureEdit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\FeatureEdit.ascx.designer.cs">
+      <DependentUpon>FeatureEdit.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\FeatureAdd.ascx.cs">
       <DependentUpon>FeatureAdd.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controls\FeatureAdd.ascx.designer.cs">
       <DependentUpon>FeatureAdd.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Features\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Features\Edit.aspx.designer.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Features\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -883,6 +899,7 @@
     <Compile Include="Model\FeatureModelHelper.cs" />
     <Compile Include="Model\PagesModel.cs" />
     <Compile Include="ViewModel\BaseVm.cs" />
+    <Compile Include="ViewModel\FeatureEditVm.cs" />
     <Compile Include="ViewModel\FeatureAddVm.cs" />
     <Compile Include="Controls\FeatureList.ascx.cs">
       <DependentUpon>FeatureList.ascx</DependentUpon>

@@ -54,6 +54,7 @@ Scenarios
   1. [ ] Enable feature.
   1. [ ] Update activation strategy.
   1. [ ] Remove activation strategy.
+  1. [ ] Last update date.
 
 ### User
 

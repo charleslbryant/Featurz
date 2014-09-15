@@ -24,7 +24,7 @@
 					<Columns>
 						<asp:TemplateField HeaderText="Name">
 							<ItemTemplate>
-								<a href="<%# Eval("Id") %>" target="_blank"><%# Eval("Name") %></a>
+								<a href="<%# "/features/edit/?id=" + Eval("Id") %>"><%# Eval("Name") %></a>
 							</ItemTemplate>
 						</asp:TemplateField>
 						<asp:TemplateField HeaderText="Ticket">

@@ -12,7 +12,7 @@
 			this.IsActive = isActive;
 			this.IsEnabled = isEnabled;
 			this.StrategyId = strategyId;
-			this.Ticket = Ticket;
+			this.Ticket = ticket;
 			this.UserId = userId;
 		}
 

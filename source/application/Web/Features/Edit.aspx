@@ -1,6 +1,6 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Chrome.Master" AutoEventWireup="true" CodeBehind="Add.aspx.cs" Inherits="Featurz.Web.Features.Add" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Chrome.Master" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="Featurz.Web.Features.Edit" %>
 
-<%@ Register Src="~/Controls/FeatureAdd.ascx" TagName="FeatureAdd" TagPrefix="uc1" %>
+<%@ Register Src="~/Controls/FeatureEdit.ascx" TagName="FeatureEdit" TagPrefix="uc1" %>
 
 <asp:Content ID="PageStyles" ContentPlaceHolderID="PageStyles" runat="server">
 </asp:Content>
@@ -8,12 +8,12 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
-		<h1>Add Feature
+		<h1>Edit Feature
 		</h1>
 	</section>
 	<!-- Main content -->
 	<section class="content">
-		<uc1:FeatureAdd ID="FeatureAdd" runat="server" />
+		<uc1:FeatureEdit ID="FeatureEdit" runat="server" />
 	</section>
 	<!-- /.content -->
 </asp:Content>

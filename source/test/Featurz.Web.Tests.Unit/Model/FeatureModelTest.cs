@@ -1,18 +1,21 @@
 ﻿namespace Featurz.Web.Tests.Unit.Model
 {
 	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using Archer.Core.Entity;
-	using Featurz.Application.Command;
-	using Featurz.Application.Entity;
-	using Featurz.Application.Query;
-	using Featurz.Application.QueryResult;
-	using Featurz.Web.Model;
-	using Featurz.Web.ViewModel;
-	using Microsoft.VisualStudio.TestTools.UnitTesting;
-	using NSubstitute;
-	using NSubstitute.Core;
+using System.Collections.Generic;
+using System.Linq;
+using Archer.Core.Command;
+using Archer.Core.Entity;
+using Archer.Core.Repository;
+using Featurz.Application.Command;
+using Featurz.Application.Entity;
+using Featurz.Application.Exceptions;
+using Featurz.Application.Query;
+using Featurz.Application.QueryResult;
+using Featurz.Web.Model;
+using Featurz.Web.ViewModel;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NSubstitute;
+using NSubstitute.Core;
 
 	[TestClass]
 	public class FeatureModelTest

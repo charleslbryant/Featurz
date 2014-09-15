@@ -2,7 +2,7 @@
 {
 	using System;
 
-	public partial class Add : System.Web.UI.Page
+	public partial class Edit : System.Web.UI.Page
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
