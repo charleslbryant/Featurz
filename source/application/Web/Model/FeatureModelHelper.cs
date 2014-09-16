@@ -46,6 +46,7 @@
 			vm.Name = result.Name;
 			vm.StrategyId = result.StrategyId;
 			vm.Ticket = result.Ticket;
+			vm.UserId = result.UserId;
 
 			return vm;
 		}

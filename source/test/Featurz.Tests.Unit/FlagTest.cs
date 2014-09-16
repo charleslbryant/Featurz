@@ -15,7 +15,7 @@
 		public class IsActiveTest
 		{
 			[TestMethod]
-			public void Should_Return_True_When_Feature_Is_Active()
+			public void IsActive_Should_Return_True_When_Feature_Is_Active()
 			{
 				var featureRepo = Substitute.For<IReadRepository<Feature>>();
 				var query = new IsFeatureActiveQueryHandler();
@@ -36,7 +36,7 @@
 
 			[TestMethod]
 			[ExpectedException(typeof(ArgumentException))]
-			public void Should_Throw_Exception_When_FeatureId_Is_White_Space()
+			public void IsActive_Should_Throw_Exception_When_FeatureId_Is_White_Space()
 			{
 				string name = "";
 
@@ -44,7 +44,7 @@
 			}
 
 			[TestMethod]
-			public void Should_Return_Inactive_When_Feature_Is_Null()
+			public void IsActive_Should_Return_Inactive_When_Feature_Is_Null()
 			{
 				var featureRepo = Substitute.For<IReadRepository<Feature>>();
 				var query = new IsFeatureActiveQueryHandler();

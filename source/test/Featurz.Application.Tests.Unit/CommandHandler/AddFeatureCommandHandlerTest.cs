@@ -20,7 +20,7 @@
 			//TODO: Test duplicate key exception.
 			[TestMethod]
 			[ExpectedException(typeof(DuplicateFeatureException))]
-			public void Should_Throws_Exception_When_Adding_Feature_With_Duplicate_Name()
+			public void AddFeatureCommandHandler_Should_Throws_Exception_When_Adding_Feature_With_Duplicate_Name()
 			{
 				AddFeatureCommandHandler sut = new AddFeatureCommandHandler();
 				IReadRepository<Feature> read = Substitute.For<IReadRepository<Feature>>();

@@ -21,10 +21,10 @@ using NSubstitute.Core;
 	public class FeatureModelTest
 	{
 		[TestClass]
-		public class AddFeatureTets : FeatureModelTestBase
+		public class AddFeatureTest : FeatureModelTestBase
 		{
 			[TestMethod]
-			public void Should_Add_Feature()
+			public void AddFeature_Should_Add_Feature()
 			{
 				string id = "id1";
 				string name = "Feature 1";
@@ -42,7 +42,7 @@ using NSubstitute.Core;
 			}
 
 			[TestMethod]
-			public void Should_Not_Add_Feature_When_Command_Is_Invalid()
+			public void AddFeature_Should_Not_Add_Feature_When_Command_Is_Invalid()
 			{
 				string id = "id1";
 				string name = "Feature 1";
@@ -59,7 +59,7 @@ using NSubstitute.Core;
 			}
 
 			[TestMethod]
-			public void Should_Not_Add_Feature_When_Name_Has_Invalid_Length()
+			public void AddFeature_Should_Not_Add_Feature_When_Name_Has_Invalid_Length()
 			{
 				string id = "id1";
 				string name = "a".PadLeft(101, 'a');
@@ -75,7 +75,7 @@ using NSubstitute.Core;
 			}
 
 			[TestMethod]
-			public void Should_Not_Add_Feature_When_No_Name()
+			public void AddFeature_Should_Not_Add_Feature_When_No_Name()
 			{
 				string id = "id1";
 				string name = "";
@@ -91,7 +91,7 @@ using NSubstitute.Core;
 			}
 
 			[TestMethod]
-			public void Should_Not_Add_Feature_When_Ticket_Has_Invalid_Length()
+			public void AddFeature_Should_Not_Add_Feature_When_Ticket_Has_Invalid_Length()
 			{
 				string id = "id1";
 				string name = "Feature 1";
@@ -115,7 +115,7 @@ using NSubstitute.Core;
 
 			[TestMethod]
 			[ExpectedException(typeof(ArgumentNullException))]
-			public void Should_Throws_Exception_When_Command_Null()
+			public void AddFeature_Should_Throws_Exception_When_Command_Null()
 			{
 				AddFeatureCommand command = null;
 
@@ -127,7 +127,7 @@ using NSubstitute.Core;
 		public class GetFeatureOwnersTest : FeatureModelTestBase
 		{
 			[TestMethod]
-			public void Should_Get_Feature_Owners()
+			public void GetFeatureOwners_Should_Get_Feature_Owners()
 			{
 				GetFeatureOwnersQuery query = SetQueryDispatcher();
 
@@ -144,7 +144,7 @@ using NSubstitute.Core;
 
 			[TestMethod]
 			[ExpectedException(typeof(ArgumentNullException))]
-			public void Should_Throws_Exception_When_Query_Null()
+			public void GetFeatureOwners_Should_Throws_Exception_When_Query_Null()
 			{
 				GetFeatureOwnersQuery query = null;
 
@@ -179,7 +179,7 @@ using NSubstitute.Core;
 		public class GetFeaturesTest : FeatureModelTestBase
 		{
 			[TestMethod]
-			public void Should_Get_Features()
+			public void GetFeatures_Should_Get_Features()
 			{
 				GetFeaturesQuery query = this.SetQueryDispatcher();
 
@@ -196,7 +196,7 @@ using NSubstitute.Core;
 
 			[TestMethod]
 			[ExpectedException(typeof(ArgumentNullException))]
-			public void Should_Throws_Exception_When_Query_Null()
+			public void GetFeatures_Should_Throws_Exception_When_Query_Null()
 			{
 				GetFeaturesQuery query = null;
 
@@ -235,7 +235,7 @@ using NSubstitute.Core;
 		public class SetFeatureAddVmTest : FeatureModelTestBase
 		{
 			[TestMethod]
-			public void Should_Set_Vm()
+			public void SetFeatureAddVm_Should_Set_Vm()
 			{
 				AddFeatureCommand command = new AddFeatureCommand("1", "Feature1", "testuser");
 				FeatureAddVm vm = new FeatureAddVm();
@@ -247,7 +247,7 @@ using NSubstitute.Core;
 			}
 
 			[TestMethod]
-			public void Should_Set_Vm_When_Name_Invalid()
+			public void SetFeatureAddVm_Should_Set_Vm_When_Name_Invalid()
 			{
 				AddFeatureCommand command = new AddFeatureCommand("1", "Feature1", "testuser");
 				FeatureAddVm vm = new FeatureAddVm();
@@ -263,7 +263,7 @@ using NSubstitute.Core;
 			}
 
 			[TestMethod]
-			public void Should_Set_Vm_When_Ticket_Invalid()
+			public void SetFeatureAddVm_Should_Set_Vm_When_Ticket_Invalid()
 			{
 				AddFeatureCommand command = new AddFeatureCommand("1", "Feature1", "testuser");
 				FeatureAddVm vm = new FeatureAddVm();
@@ -280,7 +280,7 @@ using NSubstitute.Core;
 
 			[TestMethod]
 			[ExpectedException(typeof(ArgumentNullException))]
-			public void Should_Throw_Exception_When_Command_Is_Null()
+			public void SetFeatureAddVm_Should_Throw_Exception_When_Command_Is_Null()
 			{
 				AddFeatureCommand command = null;
 				FeatureAddVm vm = new FeatureAddVm();
@@ -289,7 +289,7 @@ using NSubstitute.Core;
 
 			[TestMethod]
 			[ExpectedException(typeof(ArgumentNullException))]
-			public void Should_Throw_Exception_When_Vm_Is_Null()
+			public void SetFeatureAddVm_Should_Throw_Exception_When_Vm_Is_Null()
 			{
 				AddFeatureCommand command = new AddFeatureCommand("1", "Feature1", "testuser");
 				FeatureAddVm vm = null;
