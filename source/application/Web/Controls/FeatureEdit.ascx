@@ -10,8 +10,8 @@
 				<div class="box-body">
 					<div id="Messages" runat="server"></div>
 					<div class="form-group <%: Vm.NameGroupError %>">
-						<label class="control-label" for="FeatureName"><i class="fa <%: Vm.NameError %>"></i>Name<span><%: Vm.NameMessage %></span></label>
-						<asp:Label CssClass="form-control" ID="FeatureName" runat="server"></asp:Label>
+						<label class="control-label" for="FeatureName"><i class="fa <%: Vm.NameError %>"></i>Name: <span><%: Vm.NameMessage %></span></label>
+						<asp:Label ID="FeatureName" runat="server"></asp:Label>
 					</div>
 					<div class="form-group <%: Vm.TicketGroupError %>">
 						<label class="control-label" for="FeatureTicket"><i class="fa <%: Vm.TicketError %>"></i>Ticket<span><%: Vm.TicketMessage %></span></label>
@@ -19,7 +19,7 @@
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="FeatureOwner"><i class="fa"></i>Owner</label>
-						<asp:DropDownList CssClass="form-control" ID="FeatureOwner" runat="server" ClientIDMode="Static"></asp:DropDownList>
+						<asp:DropDownList CssClass="form-control" ID="FeatureOwner" runat="server"></asp:DropDownList>
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="FeatureActive"><i class="fa"></i>Is Active</label>
