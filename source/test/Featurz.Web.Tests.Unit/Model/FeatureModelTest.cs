@@ -20,6 +20,7 @@ using NSubstitute.Core;
 	[TestClass]
 	public class FeatureModelTest
 	{
+		//TODO test catching of dispatcher exceptions
 		[TestClass]
 		public class AddFeatureTest : FeatureModelTestBase
 		{
@@ -300,6 +301,110 @@ using NSubstitute.Core;
 			public void SetupTest()
 			{
 				this.Initialize();
+			}
+		}
+		
+		//TODO test catching of dispatcher exceptions
+		[TestClass]
+		public class EditFeatureTest : FeatureModelTestBase
+		{
+			[TestMethod]
+			public void EditFeature_Should_Edit_Feature()
+			{
+				string id = "id1";
+				string name = "Feature 1";
+				string userId = "tester";
+
+				EditFeatureCommand command = new EditFeatureCommand(id, name, userId);
+
+				this.Sut.EditFeature(command);
+
+				var calls = this.CommandDispatch.ReceivedCalls();
+				ICall call = calls.First();
+				string called = call.GetMethodInfo().Name;
+				Assert.AreEqual(1, calls.Count());
+				Assert.AreEqual("Dispatch", called);
+			}
+
+			[TestMethod]
+			public void EditFeature_Should_Not_Edit_Feature_When_Command_Is_Invalid()
+			{
+				string id = "id1";
+				string name = "Feature 1";
+				string userId = "tester";
+
+				EditFeatureCommand command = new EditFeatureCommand(id, name, userId);
+				command.Valid = false;
+
+				this.Sut.EditFeature(command);
+
+				var calls = this.CommandDispatch.ReceivedCalls();
+
+				Assert.AreEqual(0, calls.Count());
+			}
+
+			[TestMethod]
+			public void EditFeature_Should_Not_Edit_Feature_When_Name_Has_Invalid_Length()
+			{
+				string id = "id1";
+				string name = "a".PadLeft(101, 'a');
+				string userId = "tester";
+
+				EditFeatureCommand command = new EditFeatureCommand(id, name, userId);
+
+				this.Sut.EditFeature(command);
+
+				var calls = this.CommandDispatch.ReceivedCalls();
+
+				Assert.AreEqual(0, calls.Count());
+			}
+
+			[TestMethod]
+			public void EditFeature_Should_Not_Edit_Feature_When_No_Name()
+			{
+				string id = "id1";
+				string name = "";
+				string userId = "tester";
+
+				EditFeatureCommand command = new EditFeatureCommand(id, name, userId);
+
+				this.Sut.EditFeature(command);
+
+				var calls = this.CommandDispatch.ReceivedCalls();
+
+				Assert.AreEqual(0, calls.Count());
+			}
+
+			[TestMethod]
+			public void EditFeature_Should_Not_Edit_Feature_When_Ticket_Has_Invalid_Length()
+			{
+				string id = "id1";
+				string name = "Feature 1";
+				string userId = "tester";
+				string ticket = "a".PadLeft(101, 'a');
+
+				EditFeatureCommand command = new EditFeatureCommand(id, name, userId, ticket);
+
+				this.Sut.EditFeature(command);
+
+				var calls = this.CommandDispatch.ReceivedCalls();
+
+				Assert.AreEqual(0, calls.Count());
+			}
+
+			[TestInitialize]
+			public void SetupTest()
+			{
+				this.Initialize();
+			}
+
+			[TestMethod]
+			[ExpectedException(typeof(ArgumentNullException))]
+			public void EditFeature_Should_Throws_Exception_When_Command_Null()
+			{
+				EditFeatureCommand command = null;
+
+				var actual = this.Sut.EditFeature(command);
 			}
 		}
 	}
