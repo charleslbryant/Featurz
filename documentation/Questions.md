@@ -29,5 +29,8 @@ base class that must be implemented in the client where this state can be passed
         }
     }
 
+- Should we store the client context for each IsActive request? May provide good
+metrics.
 - How to do paging MongoDB?
 - How to deal with concurrency in MongoDB?
+- How to return an exception from a dispatcher in model unit test?

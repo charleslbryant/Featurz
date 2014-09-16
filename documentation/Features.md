@@ -22,21 +22,23 @@ Scenarios
   1. [x] Add invalid feature returns error. v0.1.0
 1. List Features
   1. [x] List all features. v0.1.0
+  1. [x] Link to edit feature. v0.1.0
+  1. [x] Link to ticket system page for feature's ticket. v0.1.0
+  1. [ ] Toggle feature active.
+  1. [ ] Toggle feature enabled.
   1. [ ] List features by active.
   1. [ ] List features by enabled.  
   1. [ ] List features by date range.
   1. [ ] List features by owner.
   1. [ ] List features by activation strategy.
 1. Edit Feature
-  1. [ ] Edit feature. v0.1.0
-  1. [ ] Edit invalid feature returns error. v0.1.0
-  1. [ ] Activate feature.
-  1. [ ] Inactivate feature.
-  1. [ ] Disable feature.
-  1. [ ] Enable feature.
+  1. [x] Edit feature. v0.1.0
+  1. [x] Edit invalid feature returns error. v0.1.0
 1. Feature Metrics
-  1. [ ] Count active features.
-  1. [ ] Count calls to Flag.IsActive predicate.
+  1. [ ] Count enabled active features by date range.
+  1. [ ] Count enabled inactive features by date range.
+  1. [ ] Count enabled features by date range.
+  1. [ ] Count calls to Flag.IsActive predicate to enabled feature by date range.
 
 ###3. User
 
@@ -45,7 +47,7 @@ Scenarios
   1. [ ] Add invalid user returns error. v0.1.0
 1. List Users
   1. [ ] List all users. v0.1.0
-  1. [ ] List disabled users.
+  1. [ ] List users by enabled.
 
 ###4. User Role
 
