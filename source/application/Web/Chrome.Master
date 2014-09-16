@@ -59,13 +59,26 @@
 							</li>
 							<li class="treeview">
 								<a href="#">
-									<i class="fa fa-th"></i>
+									<i class="fa fa-flag"></i>
 									<span>Features</span>
 									<i class="fa fa-angle-left pull-right"></i>
 								</a>
 								<ul class="treeview-menu">
-									<li><a href="/features"><i class="fa fa-angle-double-right"></i>View Features</a></li>
+									<li><a href="/features"><i class="fa fa-angle-double-right"></i>Feature List</a></li>
 									<li><a href="/features/add"><i class="fa fa-angle-double-right"></i>Add Feature</a></li>
+								</ul>
+							</li>
+							<li class="treeview">
+								<a href="#">
+									<i class="fa fa-gear"></i>
+									<span>Admin</span>
+									<i class="fa fa-angle-left pull-right"></i>
+								</a>
+								<ul class="treeview-menu">
+									<li><a href="/users"><i class="fa fa-angle-double-right"></i>User List</a></li>
+									<li><a href="/users/add"><i class="fa fa-angle-double-right"></i>Add User</a></li>
+									<li><a href="/groups"><i class="fa fa-angle-double-right"></i>User Groups List</a></li>
+									<li><a href="/groups/add"><i class="fa fa-angle-double-right"></i>Add User Group</a></li>
 								</ul>
 							</li>
 						</ul>
