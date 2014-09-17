@@ -6,9 +6,9 @@
 	using Archer.Infrastructure.Configuration;
 	using Archer.Infrastructure.Data.MongoDb;
 	using Featurz.Application.Entity;
-	using Featurz.Application.Query;
+	using Featurz.Application.Query.Feature;
 	using Featurz.Application.QueryHandler;
-	using Featurz.Application.QueryResult;
+	using Featurz.Application.QueryResult.Feature;
 
 	public static class Flag
 	{
@@ -27,7 +27,7 @@
 				handler.Config = new AppConfig();
 				IReadRepository<Feature> read = new MongoReadRepository<Feature>();
 				read.Initialize(handler.Config);
-				IWriteRepository<Feature> write = new MongoWriteRepository<Feature>(); ;
+				IWriteRepository<Feature> write = new MongoWriteRepository<Feature>();
 				write.Initialize(handler.Config);
 				handler.ReadRepository = read;
 				handler.WriteRepository = write;

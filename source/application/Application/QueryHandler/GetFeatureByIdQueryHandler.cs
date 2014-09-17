@@ -3,8 +3,8 @@
 	using System;
 	using Archer.Core.Query;
 	using Featurz.Application.Entity;
-	using Featurz.Application.Query;
-	using Featurz.Application.QueryResult;
+	using Featurz.Application.Query.Feature;
+	using Featurz.Application.QueryResult.Feature;
 
 	public class GetFeatureByIdQueryHandler : BaseQueryHandler<Feature>, IQueryHandler<GetFeatureByIdQuery, GetFeatureQueryResult, Feature>
 	{

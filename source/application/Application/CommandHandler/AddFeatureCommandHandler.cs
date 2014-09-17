@@ -35,7 +35,7 @@
 			{
 				this.WriteRepository.Delete(feature);
 
-				throw new DuplicateFeatureException(string.Format("A feature already exists with the name {0}", feature.Name));
+				throw new DuplicateItemException(string.Format("A feature already exists with the name {0}", feature.Name));
 			}
 		}
 
@@ -63,7 +63,7 @@
 		{
 			if (this.GetFeatureByName(name).Count > 0)
 			{
-				throw new DuplicateFeatureException(string.Format("A feature already exists with the name {0}", name));
+				throw new DuplicateItemException(string.Format("A feature already exists with the name {0}", name));
 			}
 
 			return false;

@@ -4,8 +4,8 @@
 	using System.Collections.Generic;
 	using Archer.Core.Query;
 	using Featurz.Application.Entity;
-	using Featurz.Application.Query;
-	using Featurz.Application.QueryResult;
+	using Featurz.Application.Query.Feature;
+	using Featurz.Application.QueryResult.Feature;
 
 	public class GetFeatureOwnerQueryHandler : BaseQueryHandler<User>, IQueryHandler<GetFeatureOwnersQuery, GetFeatureOwnersQueryResult, User>
 	{
@@ -35,7 +35,7 @@
 
 			for (int i = 1; i < count; i++)
 			{
-				User user = new User("Tester" + i.ToString(), "tester" + i.ToString() + "abc.comx", "Tester" + i.ToString(), "Master" + i.ToString(), new List<string>(){"admin", "user"});
+				User user = new User("Tester" + i.ToString(), "tester" + i.ToString() + "abc.comx", "Tester" + i.ToString(), "Master" + i.ToString(), new List<string>() { "admin", "user" }, new List<string>() { }, true);
 
 				users.Add(user);
 			}

@@ -312,9 +312,12 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\timepicker\bootstrap-timepicker.css" />
     <Content Include="Content\timepicker\bootstrap-timepicker.min.css" />
-    <Content Include="Controls\FeatureEdit.ascx" />
-    <Content Include="Controls\FeatureAdd.ascx" />
-    <Content Include="Controls\FeatureList.ascx" />
+    <Content Include="Controls\Features\Edit.ascx" />
+    <Content Include="Controls\Features\Add.ascx" />
+    <Content Include="Controls\Features\List.ascx" />
+    <Content Include="Users\Add.aspx" />
+    <Content Include="Users\Default.aspx" />
+    <Content Include="Users\Edit.aspx" />
     <Content Include="Features\Edit.aspx" />
     <Content Include="Features\Add.aspx" />
     <Content Include="Features\Default.aspx" />
@@ -868,19 +871,40 @@
     <Compile Include="Controls\BaseUserControl.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\FeatureEdit.ascx.cs">
-      <DependentUpon>FeatureEdit.ascx</DependentUpon>
+    <Compile Include="Controls\Features\Edit.ascx.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\FeatureEdit.ascx.designer.cs">
-      <DependentUpon>FeatureEdit.ascx</DependentUpon>
+    <Compile Include="Controls\Features\Edit.ascx.designer.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Controls\FeatureAdd.ascx.cs">
-      <DependentUpon>FeatureAdd.ascx</DependentUpon>
+    <Compile Include="Controls\Features\Add.ascx.cs">
+      <DependentUpon>Add.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\FeatureAdd.ascx.designer.cs">
-      <DependentUpon>FeatureAdd.ascx</DependentUpon>
+    <Compile Include="Controls\Features\Add.ascx.designer.cs">
+      <DependentUpon>Add.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Add.aspx.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Add.aspx.designer.cs">
+      <DependentUpon>Add.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Users\Edit.aspx.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Users\Edit.aspx.designer.cs">
+      <DependentUpon>Edit.aspx</DependentUpon>
     </Compile>
     <Compile Include="Features\Edit.aspx.cs">
       <DependentUpon>Edit.aspx</DependentUpon>
@@ -899,14 +923,14 @@
     <Compile Include="Model\FeatureModelHelper.cs" />
     <Compile Include="Model\PagesModel.cs" />
     <Compile Include="ViewModel\BaseVm.cs" />
-    <Compile Include="ViewModel\FeatureEditVm.cs" />
-    <Compile Include="ViewModel\FeatureAddVm.cs" />
-    <Compile Include="Controls\FeatureList.ascx.cs">
-      <DependentUpon>FeatureList.ascx</DependentUpon>
+    <Compile Include="ViewModel\Feature\FeatureEditVm.cs" />
+    <Compile Include="ViewModel\Feature\FeatureAddVm.cs" />
+    <Compile Include="Controls\Features\List.ascx.cs">
+      <DependentUpon>List.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Controls\FeatureList.ascx.designer.cs">
-      <DependentUpon>FeatureList.ascx</DependentUpon>
+    <Compile Include="Controls\Features\List.ascx.designer.cs">
+      <DependentUpon>List.ascx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -942,9 +966,10 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\FeatureListVm.cs" />
-    <Compile Include="ViewModel\FeatureListItemVm.cs" />
-    <Compile Include="ViewModel\FeatureOwnerVm.cs" />
+    <Compile Include="ViewModel\Feature\FeatureListVm.cs" />
+    <Compile Include="ViewModel\Feature\FeatureListItemVm.cs" />
+    <Compile Include="ViewModel\Feature\FeatureOwnerVm.cs" />
+    <Compile Include="ViewModel\ViewMessageVm.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

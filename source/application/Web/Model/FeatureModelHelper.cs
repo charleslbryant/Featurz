@@ -3,8 +3,8 @@
 	using System;
 	using Archer.Core.Configuration;
 	using Featurz.Application.Entity;
-	using Featurz.Application.QueryResult;
-	using Featurz.Web.ViewModel;
+	using Featurz.Application.QueryResult.Feature;
+	using Featurz.Web.ViewModel.Feature;
 
 	public class FeatureModelHelper
 	{

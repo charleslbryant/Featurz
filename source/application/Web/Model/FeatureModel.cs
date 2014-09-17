@@ -9,9 +9,9 @@
 	using Featurz.Application.Command;
 	using Featurz.Application.Entity;
 	using Featurz.Application.Exceptions;
-	using Featurz.Application.Query;
-	using Featurz.Application.QueryResult;
-	using Featurz.Web.ViewModel;
+	using Featurz.Application.Query.Feature;
+	using Featurz.Application.QueryResult.Feature;
+	using Featurz.Web.ViewModel.Feature;
 
 	public class FeatureModel
 	{
@@ -44,7 +44,7 @@
 			{
 				this.commandDispatcher.Dispatch<AddFeatureCommand, Feature>(command);
 			}
-			catch (DuplicateFeatureException)
+			catch (DuplicateItemException)
 			{
 				command.Valid = false;
 				command.InvalidName = string.Format(MessagesModel.DuplicateFeatureException, "name", command.Name, "name");
@@ -76,7 +76,7 @@
 			{
 				this.commandDispatcher.Dispatch<EditFeatureCommand, Feature>(command);
 			}
-			catch (DuplicateFeatureException)
+			catch (DuplicateItemException)
 			{
 				command.Valid = false;
 				command.InvalidName = string.Format(MessagesModel.DuplicateFeatureException, "name", command.Name, "name");
@@ -132,7 +132,7 @@
 
 			GetFeaturesQueryResult results = this.queryDispatcher.Dispatch<GetFeaturesQuery, GetFeaturesQueryResult, Feature>(query);
 
-			FeatureListVm vm = FeatureModelHelper.ToFeatureListVm(results, config);
+			FeatureListVm vm = FeatureModelHelper.ToFeatureListVm(results, this.config);
 
 			return vm;
 		}

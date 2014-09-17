@@ -19,6 +19,6 @@ namespace Featurz.Web.Features {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Featurz.Web.Controls.FeatureEdit FeatureEdit;
+        protected global::Featurz.Web.Controls.Features.Edit FeatureEdit;
     }
 }

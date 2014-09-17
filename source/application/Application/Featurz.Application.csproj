@@ -52,8 +52,9 @@
     <Compile Include="Command\AddFeatureCommand.cs" />
     <Compile Include="Entity\Feature.cs" />
     <Compile Include="Entity\FeatureContext.cs" />
+    <Compile Include="Entity\Role.cs" />
     <Compile Include="Entity\User.cs" />
-    <Compile Include="Exceptions\DuplicateFeatureException.cs" />
+    <Compile Include="Exceptions\DuplicateItemException.cs" />
     <Compile Include="Exceptions\FeaturzException.cs" />
     <Compile Include="Feature\IFeatureActivationStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,16 +63,16 @@
     <Compile Include="QueryHandler\GetFeatureByIdQueryHandler.cs" />
     <Compile Include="QueryHandler\IsFeatureActiveQueryHandler.cs" />
     <Compile Include="QueryHandler\GetFeaturesQueryHandler.cs" />
-    <Compile Include="QueryResult\GetFeatureOwnersQueryResult.cs" />
-    <Compile Include="QueryResult\GetFeaturesQueryResult.cs" />
-    <Compile Include="QueryResult\GetFeatureQueryResult.cs" />
-    <Compile Include="QueryResult\IsFeatureActiveQueryResult.cs" />
-    <Compile Include="Query\GetFeatureByNameQuery.cs" />
-    <Compile Include="Query\GetFeatureOwnersQuery.cs" />
-    <Compile Include="Query\GetFeaturesQuery.cs" />
+    <Compile Include="QueryResult\Feature\GetFeatureOwnersQueryResult.cs" />
+    <Compile Include="QueryResult\Feature\GetFeaturesQueryResult.cs" />
+    <Compile Include="QueryResult\Feature\GetFeatureQueryResult.cs" />
+    <Compile Include="QueryResult\Feature\IsFeatureActiveQueryResult.cs" />
+    <Compile Include="Query\Feature\GetFeatureByNameQuery.cs" />
+    <Compile Include="Query\Feature\GetFeatureOwnersQuery.cs" />
+    <Compile Include="Query\Feature\GetFeaturesQuery.cs" />
     <Compile Include="Query\PageableQuery.cs" />
-    <Compile Include="Query\IsFeatureActiveQuery.cs" />
-    <Compile Include="Query\GetFeatureByIdQuery.cs" />
+    <Compile Include="Query\Feature\IsFeatureActiveQuery.cs" />
+    <Compile Include="Query\Feature\GetFeatureByIdQuery.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

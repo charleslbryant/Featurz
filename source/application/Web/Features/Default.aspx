@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Chrome.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Featurz.Web.Features._Default" %>
 
-<%@ Register Src="~/Controls/FeatureList.ascx" TagName="FeatureList" TagPrefix="uc1" %>
+<%@ Register Src="~/Controls/Features/List.ascx" TagName="FeatureList" TagPrefix="uc1" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 	<!-- Content Header (Page header) -->

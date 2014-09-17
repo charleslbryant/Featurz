@@ -34,3 +34,7 @@ metrics.
 - How to do paging MongoDB?
 - How to deal with concurrency in MongoDB?
 - How to return an exception from a dispatcher in model unit test?
+- How to access query parameters in ASP.Net Web Forms routing?
+- How to map routes to a user control loader where the loader would load user
+controls based on route. /user/list route would load userlist user control in
+the default.aspx user control loader.

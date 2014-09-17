@@ -15,6 +15,25 @@
 		public class IsActiveTest
 		{
 			[TestMethod]
+			public void IsActive_Should_Return_Inactive_When_Feature_Is_Null()
+			{
+				var featureRepo = Substitute.For<IReadRepository<Feature>>();
+				var query = new IsFeatureActiveQueryHandler();
+				query.ReadRepository = featureRepo;
+				string name = "test";
+
+				IList<Feature> features = new List<Feature>();
+				Feature feature = null;
+				features.Add(feature);
+
+				featureRepo.Where(x => x.Name == Arg.Any<string>()).ReturnsForAnyArgs(features);
+
+				bool actual = Flag.IsActive(name, query);
+
+				Assert.IsFalse(actual);
+			}
+
+			[TestMethod]
 			public void IsActive_Should_Return_True_When_Feature_Is_Active()
 			{
 				var featureRepo = Substitute.For<IReadRepository<Feature>>();
@@ -38,28 +57,9 @@
 			[ExpectedException(typeof(ArgumentException))]
 			public void IsActive_Should_Throw_Exception_When_FeatureId_Is_White_Space()
 			{
-				string name = "";
+				string name = string.Empty;
 
 				bool actual = Flag.IsActive(name);
-			}
-
-			[TestMethod]
-			public void IsActive_Should_Return_Inactive_When_Feature_Is_Null()
-			{
-				var featureRepo = Substitute.For<IReadRepository<Feature>>();
-				var query = new IsFeatureActiveQueryHandler();
-				query.ReadRepository = featureRepo;
-				string name = "test";
-
-				IList<Feature> features = new List<Feature>();
-				Feature feature = null;
-				features.Add(feature);
-
-				featureRepo.Where(x => x.Name == Arg.Any<string>()).ReturnsForAnyArgs(features);
-
-				bool actual = Flag.IsActive(name, query);
-
-				Assert.IsFalse(actual);
 			}
 		}
 	}

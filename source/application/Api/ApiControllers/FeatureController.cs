@@ -6,8 +6,8 @@
 	using Archer.Core.Query;
 	using Featurz.Application.Command;
 	using Featurz.Application.Entity;
-	using Featurz.Application.Query;
-	using Featurz.Application.QueryResult;
+	using Featurz.Application.Query.Feature;
+	using Featurz.Application.QueryResult.Feature;
 
 	public class FeatureController : ApiController
 	{

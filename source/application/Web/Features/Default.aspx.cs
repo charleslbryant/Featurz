@@ -7,7 +7,7 @@
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			Page.Title = "Features";
+			Page.Title = "Feature List";
 		}
 	}
 }

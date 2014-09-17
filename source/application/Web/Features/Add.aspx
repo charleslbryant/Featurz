@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Chrome.Master" AutoEventWireup="true" CodeBehind="Add.aspx.cs" Inherits="Featurz.Web.Features.Add" %>
 
-<%@ Register Src="~/Controls/FeatureAdd.ascx" TagName="FeatureAdd" TagPrefix="uc1" %>
+<%@ Register Src="~/Controls/Features/Add.ascx" TagName="FeatureAdd" TagPrefix="uc1" %>
 
 <asp:Content ID="PageStyles" ContentPlaceHolderID="PageStyles" runat="server">
 </asp:Content>

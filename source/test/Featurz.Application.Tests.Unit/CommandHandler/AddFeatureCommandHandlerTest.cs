@@ -1,15 +1,14 @@
 ﻿namespace Featurz.Application.Tests.Unit.CommandHandler
 {
 	using System;
+	using System.Collections.Generic;
 	using Archer.Core.Repository;
-	using Featurz.Application.Entity;
 	using Featurz.Application.Command;
 	using Featurz.Application.CommandHandler;
+	using Featurz.Application.Entity;
+	using Featurz.Application.Exceptions;
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
 	using NSubstitute;
-	using System.Collections.Generic;
-	using Featurz.Application.Exceptions;
-	using Archer.Core.Exceptions;
 
 	[TestClass]
 	public class AddFeatureCommandHandlerTest
@@ -19,7 +18,7 @@
 		{
 			//TODO: Test duplicate key exception.
 			[TestMethod]
-			[ExpectedException(typeof(DuplicateFeatureException))]
+			[ExpectedException(typeof(DuplicateItemException))]
 			public void AddFeatureCommandHandler_Should_Throws_Exception_When_Adding_Feature_With_Duplicate_Name()
 			{
 				AddFeatureCommandHandler sut = new AddFeatureCommandHandler();
@@ -35,7 +34,7 @@
 				features.Add(feature);
 
 				read.Where(x => x.Name == Arg.Any<string>()).ReturnsForAnyArgs(features);
-				
+
 				AddFeatureCommand command = new AddFeatureCommand(id, name, user);
 
 				sut.Execute(command);

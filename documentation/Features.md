@@ -26,11 +26,12 @@ Scenarios
   1. [x] Link to ticket system page for feature's ticket. v0.1.0
   1. [ ] Toggle feature active.
   1. [ ] Toggle feature enabled.
-  1. [ ] List features by active.
-  1. [ ] List features by enabled.  
-  1. [ ] List features by date range.
-  1. [ ] List features by owner.
-  1. [ ] List features by activation strategy.
+  1. [ ] Common grid list.
+      1. [ ] List features by active.
+      1. [ ] List features by enabled.  
+      1. [ ] List features by date range.
+      1. [ ] List features by owner.
+      1. [ ] List features by activation strategy.
 1. Edit Feature
   1. [x] Edit feature. v0.1.0
   1. [x] Edit invalid feature returns error. v0.1.0
@@ -48,6 +49,7 @@ Scenarios
 1. List Users
   1. [ ] List all users. v0.1.0
   1. [ ] List users by enabled.
+  1. [ ] Common grid list.
 
 ###4. User Role
 
@@ -57,6 +59,7 @@ Scenarios
 1. List User Roles
   1. [ ] List all user roles. v0.1.0
   1. [ ] List user roles by enabled. 
+  1. [ ] Common grid list.
 1. Edit User Role
   1. [ ] Disable user role.
   1. [ ] Enable user role.
@@ -82,3 +85,10 @@ Each feature activation strategy should support these scenarios along with any a
 1. Disable feature activation strategy.
 1. Enable feature activation strategy.
 1. Remove activation strategy.
+
+###5. Common
+
+1. Grid List
+  1. [ ] Page list.
+  1. [ ] Sort list.
+  1. [ ] Filter list.

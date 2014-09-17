@@ -4,9 +4,9 @@
 	using System.Collections.Generic;
 	using Archer.Core.Configuration;
 	using Featurz.Application.Entity;
-	using Featurz.Application.QueryResult;
+	using Featurz.Application.QueryResult.Feature;
 	using Featurz.Web.Model;
-	using Featurz.Web.ViewModel;
+	using Featurz.Web.ViewModel.Feature;
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
 	using NSubstitute;
 
@@ -62,96 +62,6 @@
 		}
 
 		[TestClass]
-		public class ToFeatureListVmTest
-		{
-			[TestMethod]
-			public void ToFeatureListVm_Should_Return_FeatureListVm_When_Items_Found()
-			{
-				ICollection<Feature> features = new List<Feature>();
-				Feature feature = new Feature("1", "Feature1", "testuser");
-				features.Add(feature);
-				feature = new Feature("2", "Feature2", "testuser");
-				features.Add(feature);
-				feature = new Feature("3", "Feature3", "testuser");
-				features.Add(feature);
-				GetFeaturesQueryResult results = new GetFeaturesQueryResult(features);
-
-				IConfiguration config = GetConfig();
-				
-				FeatureListVm actual = FeatureModelHelper.ToFeatureListVm(results, config);
-
-				Assert.AreEqual(3, actual.Features.Count);
-			}
-
-			private static IConfiguration GetConfig()
-			{
-				IConfiguration config = Substitute.For<IConfiguration>();
-				config.Get<string>("featurz.ticketsystemurl").Returns("someUrl.com");
-				return config;
-			}
-
-			[TestMethod]
-			public void ToFeatureListVm_Should_Return_FeatureListVm_When_No_Items_Found()
-			{
-				ICollection<Feature> features = new List<Feature>();
-				GetFeaturesQueryResult results = new GetFeaturesQueryResult(features);
-
-				IConfiguration config = GetConfig();
-
-				FeatureListVm actual = FeatureModelHelper.ToFeatureListVm(results, config);
-
-				Assert.AreEqual(MessagesModel.NoItemsFound, actual.Message);
-				Assert.AreEqual(MessagesModel.MessageStyles.Info, actual.MessageStyle);
-			}
-
-			[TestMethod]
-			[ExpectedException(typeof(ArgumentNullException))]
-			public void ToFeatureListVm_Should_Throw_Exception_When_Results_Is_Null()
-			{
-				GetFeaturesQueryResult results = null;
-
-				IConfiguration config = GetConfig();
-
-				FeatureListVm actual = FeatureModelHelper.ToFeatureListVm(results, config);
-			}
-
-			[TestMethod]
-			[ExpectedException(typeof(ArgumentNullException))]
-			public void ToFeatureListVm_Should_Throw_Exception_When_Config_Is_Null()
-			{
-				ICollection<Feature> features = new List<Feature>();
-				GetFeaturesQueryResult results = new GetFeaturesQueryResult(features);
-
-				IConfiguration config = null;
-
-				FeatureListVm actual = FeatureModelHelper.ToFeatureListVm(results, config);
-			}
-		}
-
-		[TestClass]
-		public class ToFeatureOwnerVmTest
-		{
-			[TestMethod]
-			public void ToFeatureOwnerVm_Should_Return_FeatureOwnerVm()
-			{
-				User result = new User("1", "email@test.comx", "MyFirstName", "MyLastName", null);
-
-				FeatureOwnerVm actual = FeatureModelHelper.ToFeatureOwnerVm(result);
-
-				Assert.AreEqual("MyFirstName MyLastName", actual.Name);
-			}
-
-			[TestMethod]
-			[ExpectedException(typeof(ArgumentNullException))]
-			public void ToFeatureOwnerVm_Should_Throw_Exception_When_Result_Is_Null()
-			{
-				User result = null;
-
-				FeatureOwnerVm actual = FeatureModelHelper.ToFeatureOwnerVm(result);
-			}
-		}
-
-		[TestClass]
 		public class ToFeatureEditVmTest
 		{
 			[TestMethod]
@@ -185,6 +95,96 @@
 				GetFeatureQueryResult result = null;
 
 				FeatureEditVm actual = FeatureModelHelper.ToFeatureEditVm(result);
+			}
+		}
+
+		[TestClass]
+		public class ToFeatureListVmTest
+		{
+			[TestMethod]
+			public void ToFeatureListVm_Should_Return_FeatureListVm_When_Items_Found()
+			{
+				ICollection<Feature> features = new List<Feature>();
+				Feature feature = new Feature("1", "Feature1", "testuser");
+				features.Add(feature);
+				feature = new Feature("2", "Feature2", "testuser");
+				features.Add(feature);
+				feature = new Feature("3", "Feature3", "testuser");
+				features.Add(feature);
+				GetFeaturesQueryResult results = new GetFeaturesQueryResult(features);
+
+				IConfiguration config = GetConfig();
+
+				FeatureListVm actual = FeatureModelHelper.ToFeatureListVm(results, config);
+
+				Assert.AreEqual(3, actual.Features.Count);
+			}
+
+			[TestMethod]
+			public void ToFeatureListVm_Should_Return_FeatureListVm_When_No_Items_Found()
+			{
+				ICollection<Feature> features = new List<Feature>();
+				GetFeaturesQueryResult results = new GetFeaturesQueryResult(features);
+
+				IConfiguration config = GetConfig();
+
+				FeatureListVm actual = FeatureModelHelper.ToFeatureListVm(results, config);
+
+				Assert.AreEqual(MessagesModel.NoItemsFound, actual.Message);
+				Assert.AreEqual(MessagesModel.MessageStyles.Info, actual.MessageStyle);
+			}
+
+			[TestMethod]
+			[ExpectedException(typeof(ArgumentNullException))]
+			public void ToFeatureListVm_Should_Throw_Exception_When_Config_Is_Null()
+			{
+				ICollection<Feature> features = new List<Feature>();
+				GetFeaturesQueryResult results = new GetFeaturesQueryResult(features);
+
+				IConfiguration config = null;
+
+				FeatureListVm actual = FeatureModelHelper.ToFeatureListVm(results, config);
+			}
+
+			[TestMethod]
+			[ExpectedException(typeof(ArgumentNullException))]
+			public void ToFeatureListVm_Should_Throw_Exception_When_Results_Is_Null()
+			{
+				GetFeaturesQueryResult results = null;
+
+				IConfiguration config = GetConfig();
+
+				FeatureListVm actual = FeatureModelHelper.ToFeatureListVm(results, config);
+			}
+
+			private static IConfiguration GetConfig()
+			{
+				IConfiguration config = Substitute.For<IConfiguration>();
+				config.Get<string>("featurz.ticketsystemurl").Returns("someUrl.com");
+				return config;
+			}
+		}
+
+		[TestClass]
+		public class ToFeatureOwnerVmTest
+		{
+			[TestMethod]
+			public void ToFeatureOwnerVm_Should_Return_FeatureOwnerVm()
+			{
+				User result = new User("1", "email@test.comx", "MyFirstName", "MyLastName", null, null, true);
+
+				FeatureOwnerVm actual = FeatureModelHelper.ToFeatureOwnerVm(result);
+
+				Assert.AreEqual("MyFirstName MyLastName", actual.Name);
+			}
+
+			[TestMethod]
+			[ExpectedException(typeof(ArgumentNullException))]
+			public void ToFeatureOwnerVm_Should_Throw_Exception_When_Result_Is_Null()
+			{
+				User result = null;
+
+				FeatureOwnerVm actual = FeatureModelHelper.ToFeatureOwnerVm(result);
 			}
 		}
 	}

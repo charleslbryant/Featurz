@@ -4,8 +4,8 @@
 	using System.Linq;
 	using Archer.Core.Query;
 	using Featurz.Application.Entity;
-	using Featurz.Application.Query;
-	using Featurz.Application.QueryResult;
+	using Featurz.Application.Query.Feature;
+	using Featurz.Application.QueryResult.Feature;
 
 	public class IsFeatureActiveQueryHandler : BaseQueryHandler<Feature>, IQueryHandler<IsFeatureActiveQuery, IsFeatureActiveQueryResult, Feature>
 	{
@@ -18,7 +18,7 @@
 			bool active = false;
 
 			Feature feature = this.ReadRepository.Where(x => x.Name == query.Name).FirstOrDefault();
-			
+
 			if (feature != null)
 			{
 				active = feature.IsActive;
