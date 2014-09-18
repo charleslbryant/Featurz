@@ -3,8 +3,8 @@
 	using System;
 	using System.Collections.Generic;
 	using Archer.Core.Repository;
-	using Featurz.Application.Command;
-	using Featurz.Application.CommandHandler;
+	using Featurz.Application.Command.Feature;
+	using Featurz.Application.CommandHandler.Feature;
 	using Featurz.Application.Entity;
 	using Featurz.Application.Exceptions;
 	using Microsoft.VisualStudio.TestTools.UnitTesting;

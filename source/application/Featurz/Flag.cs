@@ -7,7 +7,7 @@
 	using Archer.Infrastructure.Data.MongoDb;
 	using Featurz.Application.Entity;
 	using Featurz.Application.Query.Feature;
-	using Featurz.Application.QueryHandler;
+	using Featurz.Application.QueryHandler.Feature;
 	using Featurz.Application.QueryResult.Feature;
 
 	public static class Flag

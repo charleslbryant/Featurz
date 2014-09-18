@@ -6,7 +6,7 @@
 	using Archer.Core.Configuration;
 	using Archer.Core.Exceptions;
 	using Archer.Core.Query;
-	using Featurz.Application.Command;
+	using Featurz.Application.Command.Feature;
 	using Featurz.Application.Entity;
 	using Featurz.Application.Exceptions;
 	using Featurz.Application.Query.Feature;

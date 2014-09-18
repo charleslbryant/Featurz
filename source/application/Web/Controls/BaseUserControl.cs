@@ -20,13 +20,13 @@
 
 		public IConfiguration Config { get; set; }
 
+		public string PageTitle { get; set; }
+
 		public IQueryDispatcher QueryDispatcher { get; set; }
 
 		public void Navigate(string screen)
 		{
 			Response.Redirect(screen);
 		}
-
-		public string PageTitle { get; set; }
 	}
 }

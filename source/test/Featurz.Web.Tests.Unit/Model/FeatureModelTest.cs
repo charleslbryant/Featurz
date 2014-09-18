@@ -4,7 +4,7 @@
 	using System.Collections.Generic;
 	using System.Linq;
 	using Archer.Core.Entity;
-	using Featurz.Application.Command;
+	using Featurz.Application.Command.Feature;
 	using Featurz.Application.Entity;
 	using Featurz.Application.Query.Feature;
 	using Featurz.Application.QueryResult.Feature;

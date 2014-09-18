@@ -1,8 +1,8 @@
-﻿namespace Featurz.Application.CommandHandler
+﻿namespace Featurz.Application.CommandHandler.Feature
 {
 	using System;
 	using Archer.Core.Command;
-	using Featurz.Application.Command;
+	using Featurz.Application.Command.Feature;
 	using Featurz.Application.Entity;
 
 	public class EditFeatureCommandHandler : BaseCommandHandler<Feature>, ICommandHandler<EditFeatureCommand, Feature>

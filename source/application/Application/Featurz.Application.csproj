@@ -45,14 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandHandler\EditFeatureCommandHandler.cs" />
-    <Compile Include="CommandHandler\AddFeatureCommandHandler.cs" />
+    <Compile Include="CommandHandler\Feature\EditFeatureCommandHandler.cs" />
+    <Compile Include="CommandHandler\Feature\AddFeatureCommandHandler.cs" />
     <Compile Include="CommandHandler\BaseCommandHandler.cs" />
     <Compile Include="Command\AddUserCommand.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Command\EditFeatureCommand.cs" />
-    <Compile Include="Command\AddFeatureCommand.cs" />
+    <Compile Include="Command\Feature\EditFeatureCommand.cs" />
+    <Compile Include="Command\Feature\AddFeatureCommand.cs" />
     <Compile Include="Entity\Feature.cs" />
     <Compile Include="Entity\FeatureContext.cs" />
     <Compile Include="Entity\Group.cs" />
@@ -63,10 +63,12 @@
     <Compile Include="Feature\IFeatureActivationStrategy.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryHandler\BaseQueryHandler.cs" />
-    <Compile Include="QueryHandler\GetFeatureOwnerQueryHandler.cs" />
-    <Compile Include="QueryHandler\GetFeatureByIdQueryHandler.cs" />
-    <Compile Include="QueryHandler\IsFeatureActiveQueryHandler.cs" />
-    <Compile Include="QueryHandler\GetFeaturesQueryHandler.cs" />
+    <Compile Include="QueryHandler\Feature\GetFeatureOwnerQueryHandler.cs" />
+    <Compile Include="QueryHandler\Feature\GetFeatureByIdQueryHandler.cs" />
+    <Compile Include="QueryHandler\Feature\IsFeatureActiveQueryHandler.cs" />
+    <Compile Include="QueryHandler\Feature\GetFeaturesQueryHandler.cs" />
+    <Compile Include="QueryHandler\User\GetUserRolesQueryHandler.cs" />
+    <Compile Include="QueryHandler\User\GetUserGroupsQueryHandler.cs" />
     <Compile Include="QueryResult\Feature\GetFeatureOwnersQueryResult.cs" />
     <Compile Include="QueryResult\Feature\GetFeaturesQueryResult.cs" />
     <Compile Include="QueryResult\Feature\GetFeatureQueryResult.cs" />

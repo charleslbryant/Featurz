@@ -4,7 +4,7 @@
 	using System.Web.Http;
 	using Archer.Core.Command;
 	using Archer.Core.Query;
-	using Featurz.Application.Command;
+	using Featurz.Application.Command.Feature;
 	using Featurz.Application.Entity;
 	using Featurz.Application.Query.Feature;
 	using Featurz.Application.QueryResult.Feature;

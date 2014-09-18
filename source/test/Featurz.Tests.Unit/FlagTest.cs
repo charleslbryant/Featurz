@@ -4,7 +4,7 @@
 	using System.Collections.Generic;
 	using Archer.Core.Repository;
 	using Featurz.Application.Entity;
-	using Featurz.Application.QueryHandler;
+	using Featurz.Application.QueryHandler.Feature;
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
 	using NSubstitute;
 

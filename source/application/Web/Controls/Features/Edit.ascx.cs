@@ -3,7 +3,7 @@
 	using System;
 	using System.Collections.Generic;
 	using Archer.Core.Entity;
-	using Featurz.Application.Command;
+	using Featurz.Application.Command.Feature;
 	using Featurz.Application.Query.Feature;
 	using Featurz.Web.Model;
 	using Featurz.Web.ViewModel.Feature;

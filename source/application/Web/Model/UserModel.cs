@@ -11,7 +11,6 @@
 	using Featurz.Application.Exceptions;
 	using Featurz.Application.Query.User;
 	using Featurz.Application.QueryResult.User;
-	using Featurz.Web.ViewModel;
 	using Featurz.Web.ViewModel.User;
 
 	public class UserModel
@@ -101,28 +100,6 @@
 
 		//	UserEditVm vm = UserModelHelper.ToUserEditVm(result);
 
-		//	return vm;
-		//}
-
-		public ICollection<UserRoleVm> GetUserRoles(GetUserRolesQuery query)
-		{
-			if (query == null)
-			{
-				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "query"));
-			}
-
-			ICollection<UserRoleVm> roles = new List<UserRoleVm>();
-			GetUserRolesQueryResult results = this.queryDispatcher.Dispatch<GetUserRolesQuery, GetUserRolesQueryResult, User>(query);
-
-			foreach (var role in results.UserRoles)
-			{
-				UserRoleVm userRole = UserModelHelper.ToUserRoleVm(role);
-				roles.Add(userRole);
-			}
-
-			return roles;
-		}
-
 		public ICollection<UserGroupVm> GetUserGroups(GetUserGroupsQuery query)
 		{
 			if (query == null)
@@ -142,6 +119,27 @@
 			return groups;
 		}
 
+		//	return vm;
+		//}
+		public ICollection<UserRoleVm> GetUserRoles(GetUserRolesQuery query)
+		{
+			if (query == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "query"));
+			}
+
+			ICollection<UserRoleVm> roles = new List<UserRoleVm>();
+			GetUserRolesQueryResult results = this.queryDispatcher.Dispatch<GetUserRolesQuery, GetUserRolesQueryResult, User>(query);
+
+			foreach (var role in results.UserRoles)
+			{
+				UserRoleVm userRole = UserModelHelper.ToUserRoleVm(role);
+				roles.Add(userRole);
+			}
+
+			return roles;
+		}
+
 		//public UserListVm GetUsers(GetUsersQuery query)
 		//{
 		//	if (query == null)
@@ -155,7 +153,6 @@
 
 		//	return vm;
 		//}
-
 		public UserAddVm SetUserAddVm(AddUserCommand command, UserAddVm vm)
 		{
 			if (command == null)
@@ -248,7 +245,6 @@
 
 		//	return vm;
 		//}
-
 		private AddUserCommand ValidateAddUserCommand(AddUserCommand command)
 		{
 			if (string.IsNullOrWhiteSpace(command.FirstName))

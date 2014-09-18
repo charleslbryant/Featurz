@@ -1,4 +1,4 @@
-﻿namespace Featurz.Application.Command
+﻿namespace Featurz.Application.Command.Feature
 {
 	using System;
 	using Archer.Core.Command;

@@ -1,4 +1,4 @@
-﻿namespace Featurz.Application.Command
+﻿namespace Featurz.Application.Command.Feature
 {
 	using System;
 	using Archer.Core.Command;
@@ -19,9 +19,15 @@
 
 		public string Id { get; private set; }
 
+		public string InvalidName { get; set; }
+
+		public string InvalidTicket { get; set; }
+
 		public bool IsActive { get; private set; }
 
 		public bool IsEnabled { get; private set; }
+
+		public string Message { get; set; }
 
 		public string Name { get; private set; }
 
@@ -32,11 +38,5 @@
 		public string UserId { get; private set; }
 
 		public bool Valid { get; set; }
-
-		public string InvalidName { get; set; }
-
-		public string InvalidTicket { get; set; }
-
-		public string Message { get; set; }
 	}
 }

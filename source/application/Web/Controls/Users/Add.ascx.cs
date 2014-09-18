@@ -49,22 +49,8 @@
 
 		private void Bind()
 		{
-			BindUserRoles();
-			BindUserGroups();
-		}
-
-		private void BindUserRoles()
-		{
-			GetUserRolesQuery query = new GetUserRolesQuery(0, 1, "Id", SortDirection.Ascending);
-
-			ICollection<UserRoleVm> owners = this.model.GetUserRoles(query);
-			this.UserRoles.DataTextField = "Name";
-			this.UserRoles.DataValueField = "Id";
-			this.UserRoles.DataSource = owners;
-			this.UserRoles.DataBind();
-
-			this.UserRoles.Items.Insert(0, "Select Owner");
-			this.UserRoles.SelectedIndex = 0;
+			this.BindUserRoles();
+			this.BindUserGroups();
 		}
 
 		private void BindUserGroups()
@@ -79,6 +65,20 @@
 
 			this.UserGroups.Items.Insert(0, "Select Owner");
 			this.UserGroups.SelectedIndex = 0;
+		}
+
+		private void BindUserRoles()
+		{
+			GetUserRolesQuery query = new GetUserRolesQuery(0, 1, "Id", SortDirection.Ascending);
+
+			ICollection<UserRoleVm> owners = this.model.GetUserRoles(query);
+			this.UserRoles.DataTextField = "Name";
+			this.UserRoles.DataValueField = "Id";
+			this.UserRoles.DataSource = owners;
+			this.UserRoles.DataBind();
+
+			this.UserRoles.Items.Insert(0, "Select Owner");
+			this.UserRoles.SelectedIndex = 0;
 		}
 
 		private AddUserCommand GetAddUserCommand()

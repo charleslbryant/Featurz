@@ -1,4 +1,4 @@
-﻿namespace Featurz.Application.QueryHandler
+﻿namespace Featurz.Application.QueryHandler.Feature
 {
 	using System;
 	using System.Linq;
