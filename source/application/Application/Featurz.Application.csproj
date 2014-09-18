@@ -48,10 +48,14 @@
     <Compile Include="CommandHandler\EditFeatureCommandHandler.cs" />
     <Compile Include="CommandHandler\AddFeatureCommandHandler.cs" />
     <Compile Include="CommandHandler\BaseCommandHandler.cs" />
+    <Compile Include="Command\AddUserCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Command\EditFeatureCommand.cs" />
     <Compile Include="Command\AddFeatureCommand.cs" />
     <Compile Include="Entity\Feature.cs" />
     <Compile Include="Entity\FeatureContext.cs" />
+    <Compile Include="Entity\Group.cs" />
     <Compile Include="Entity\Role.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Exceptions\DuplicateItemException.cs" />
@@ -67,12 +71,24 @@
     <Compile Include="QueryResult\Feature\GetFeaturesQueryResult.cs" />
     <Compile Include="QueryResult\Feature\GetFeatureQueryResult.cs" />
     <Compile Include="QueryResult\Feature\IsFeatureActiveQueryResult.cs" />
+    <Compile Include="QueryResult\User\GetUserGroupsQueryResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="QueryResult\User\GetUserRolesQueryResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Query\Feature\GetFeatureByNameQuery.cs" />
     <Compile Include="Query\Feature\GetFeatureOwnersQuery.cs" />
     <Compile Include="Query\Feature\GetFeaturesQuery.cs" />
     <Compile Include="Query\PageableQuery.cs" />
     <Compile Include="Query\Feature\IsFeatureActiveQuery.cs" />
     <Compile Include="Query\Feature\GetFeatureByIdQuery.cs" />
+    <Compile Include="Query\User\GetUserRolesQuery.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Query\User\GetUserGroupsQuery.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

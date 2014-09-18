@@ -16,6 +16,7 @@
 		{
 			this.Vm = new FeatureAddVm();
 			this.model = new FeatureModel(this.Config, this.QueryDispatcher, this.CommandDispatcher);
+			this.PageTitle = "Add Feature";
 		}
 
 		public FeatureAddVm Vm { get; private set; }

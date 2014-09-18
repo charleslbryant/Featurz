@@ -12,6 +12,6 @@
 			this.UserRoles = users;
 		}
 
-		public IEnumerable<Role> UserRoles { get; set; }
+		public ICollection<Role> UserRoles { get; set; }
 	}
 }

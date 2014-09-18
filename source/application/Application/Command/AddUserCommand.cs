@@ -28,7 +28,7 @@
 
 		public string InvalidEmail { get; set; }
 
-		public string InvalidLastName { get; set; }
+		public string InvalidFirstName { get; set; }
 
 		public string InvalidLastName { get; set; }
 

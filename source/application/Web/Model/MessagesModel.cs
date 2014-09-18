@@ -15,6 +15,7 @@
 		public static readonly string NoItemsFound = "No items found.";
 		public static readonly string NullValueError = "{0} cannot be a null value.";
 		public static readonly string Required = "Required";
+		public static readonly string InvalidEmail = "Invalid email address.";
 
 		public enum MessageStyles
 		{

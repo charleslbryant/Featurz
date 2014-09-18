@@ -16,6 +16,7 @@
 		{
 			this.Vm = new FeatureEditVm();
 			this.model = new FeatureModel(this.Config, this.QueryDispatcher, this.CommandDispatcher);
+			this.PageTitle = "Edit Feature";
 		}
 
 		public FeatureEditVm Vm { get; private set; }

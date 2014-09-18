@@ -3,109 +3,120 @@
 	using System;
 	using Archer.Core.Configuration;
 	using Featurz.Application.Entity;
-	using Featurz.Application.QueryResult;
-	using Featurz.Web.ViewModel;
+	using Featurz.Application.QueryResult.User;
+	using Featurz.Web.ViewModel.User;
 
 	public class UserModelHelper
 	{
-		public static UserListItemVm SetActive(UserListItemVm feature, User result)
-		{
-			if (feature == null)
-			{
-				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "feature"));
-			}
+		//public static UserListItemVm SetActive(UserListItemVm feature, User result)
+		//{
+		//	if (feature == null)
+		//	{
+		//		throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "feature"));
+		//	}
 
+		//	if (result == null)
+		//	{
+		//		throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "result"));
+		//	}
+
+		//	if (result.IsActive)
+		//	{
+		//		User.Active = "Active";
+		//		User.ActiveClass = "success";
+		//		return User;
+		//	}
+
+		//	User.Active = "Inactive";
+		//	User.ActiveClass = "danger";
+		//	return User;
+		//}
+
+		//public static UserEditVm ToUserEditVm(GetUserQueryResult result)
+		//{
+		//	if (result == null)
+		//	{
+		//		throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "result"));
+		//	}
+
+		//	UserEditVm vm = new UserEditVm();
+		//	vm.Id = result.Id;
+		//	vm.IsActive = result.IsActive;
+		//	vm.IsEnabled = result.IsEnabled;
+		//	vm.Name = result.Name;
+		//	vm.StrategyId = result.StrategyId;
+		//	vm.Ticket = result.Ticket;
+		//	vm.UserId = result.UserId;
+
+		//	return vm;
+		//}
+
+		//public static UserListVm ToUserListVm(GetUsersQueryResult results, IConfiguration config)
+		//{
+		//	if (results == null)
+		//	{
+		//		throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "results"));
+		//	}
+
+		//	if (config == null)
+		//	{
+		//		throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "config"));
+		//	}
+
+		//	UserListVm vm = new UserListVm();
+		//	vm.ItemsFound = results.Users.Count > 0;
+
+		//	if (!vm.ItemsFound)
+		//	{
+		//		vm.Message = MessagesModel.NoItemsFound;
+		//		vm.MessageStyle = MessagesModel.MessageStyles.Info;
+		//	}
+
+		//	foreach (var result in results.Users)
+		//	{
+		//		UserListItemVm User = ToUserLitsItemVm(result, config);
+		//		vm.Users.Add(User);
+		//	}
+
+		//	return vm;
+		//}
+
+		public static UserRoleVm ToUserRoleVm(Role result)
+		{
 			if (result == null)
 			{
 				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "result"));
 			}
 
-			if (result.IsActive)
-			{
-				User.Active = "Active";
-				User.ActiveClass = "success";
-				return User;
-			}
-
-			User.Active = "Inactive";
-			User.ActiveClass = "danger";
-			return User;
-		}
-
-		public static UserEditVm ToUserEditVm(GetUserQueryResult result)
-		{
-			if (result == null)
-			{
-				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "result"));
-			}
-
-			UserEditVm vm = new UserEditVm();
+			UserRoleVm vm = new UserRoleVm();
 			vm.Id = result.Id;
-			vm.IsActive = result.IsActive;
-			vm.IsEnabled = result.IsEnabled;
 			vm.Name = result.Name;
-			vm.StrategyId = result.StrategyId;
-			vm.Ticket = result.Ticket;
-			vm.UserId = result.UserId;
-
 			return vm;
 		}
 
-		public static UserListVm ToUserListVm(GetUsersQueryResult results, IConfiguration config)
-		{
-			if (results == null)
-			{
-				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "results"));
-			}
-
-			if (config == null)
-			{
-				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "config"));
-			}
-
-			UserListVm vm = new UserListVm();
-			vm.ItemsFound = results.Users.Count > 0;
-
-			if (!vm.ItemsFound)
-			{
-				vm.Message = MessagesModel.NoItemsFound;
-				vm.MessageStyle = MessagesModel.MessageStyles.Info;
-			}
-
-			foreach (var result in results.Users)
-			{
-				UserListItemVm User = ToUserLitsItemVm(result, config);
-				vm.Users.Add(User);
-			}
-
-			return vm;
-		}
-
-		public static UserOwnerVm ToUserOwnerVm(User result)
+		public static UserGroupVm ToUserGroupVm(Group result)
 		{
 			if (result == null)
 			{
 				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "result"));
 			}
 
-			UserOwnerVm vm = new UserOwnerVm();
+			UserGroupVm vm = new UserGroupVm();
 			vm.Id = result.Id;
-			vm.Name = result.FirstName + " " + result.LastName;
+			vm.Name = result.Name;
 			return vm;
 		}
 
 		private static UserListItemVm ToUserLitsItemVm(User result, IConfiguration config)
 		{
-			UserListItemVm User = new UserListItemVm();
-			User.Id = result.Id;
-			feature.Name = result.Name;
-			feature.Ticket = result.Ticket;
-			string ticketSystemBaseUrl = config.Get<string>("featurz.ticketsystemurl");
-			feature.TicketLink = string.Format("{0}{1}", ticketSystemBaseUrl, result.Ticket);
-			feature.Owner = result.UserId;
-			feature = UserModelHelper.SetActive(feature, result);
-			feature.DateAdded = result.DateAdded.ToShortDateString();
-			return feature;
+			UserListItemVm user = new UserListItemVm();
+			user.Id = result.Id;
+			user.FirstName = result.FirstName;
+			user.LastName = result.LastName;
+			user.Email = result.Email;
+			user.Roles = result.Roles;
+			user.Groups = result.Groups;
+			return user;
 		}
 	}
 }

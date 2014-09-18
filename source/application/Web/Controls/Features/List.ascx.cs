@@ -19,6 +19,7 @@
 		{
 			this.Vm = new FeatureListVm();
 			this.model = new FeatureModel(this.Config, this.QueryDispatcher, this.CommandDispatcher);
+			this.PageTitle = "Feature List";
 		}
 
 		public FeatureListVm Vm { get; private set; }

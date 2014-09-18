@@ -4,9 +4,9 @@
 	using System.Collections.Generic;
 	using Archer.Core.Entity;
 	using Featurz.Application.Command;
-	using Featurz.Application.Query;
+	using Featurz.Application.Query.User;
 	using Featurz.Web.Model;
-	using Featurz.Web.ViewModel;
+	using Featurz.Web.ViewModel.User;
 
 	public partial class Add : BaseUserControl
 	{
@@ -49,28 +49,49 @@
 
 		private void Bind()
 		{
-			GetUserOwnersQuery query = new GetUserOwnersQuery(0, 1, "Id", SortDirection.Ascending);
+			BindUserRoles();
+			BindUserGroups();
+		}
 
-			ICollection<UserOwnerVm> owners = this.model.GetUserOwners(query);
-			this.UserOwner.DataTextField = "Name";
-			this.UserOwner.DataValueField = "Id";
-			this.UserOwner.DataSource = owners;
-			this.UserOwner.DataBind();
+		private void BindUserRoles()
+		{
+			GetUserRolesQuery query = new GetUserRolesQuery(0, 1, "Id", SortDirection.Ascending);
 
-			this.UserOwner.Items.Insert(0, "Select Owner");
-			this.UserOwner.SelectedIndex = 0;
+			ICollection<UserRoleVm> owners = this.model.GetUserRoles(query);
+			this.UserRoles.DataTextField = "Name";
+			this.UserRoles.DataValueField = "Id";
+			this.UserRoles.DataSource = owners;
+			this.UserRoles.DataBind();
+
+			this.UserRoles.Items.Insert(0, "Select Owner");
+			this.UserRoles.SelectedIndex = 0;
+		}
+
+		private void BindUserGroups()
+		{
+			GetUserGroupsQuery query = new GetUserGroupsQuery(0, 1, "Id", SortDirection.Ascending);
+
+			ICollection<UserGroupVm> owners = this.model.GetUserGroups(query);
+			this.UserGroups.DataTextField = "Name";
+			this.UserGroups.DataValueField = "Id";
+			this.UserGroups.DataSource = owners;
+			this.UserGroups.DataBind();
+
+			this.UserGroups.Items.Insert(0, "Select Owner");
+			this.UserGroups.SelectedIndex = 0;
 		}
 
 		private AddUserCommand GetAddUserCommand()
 		{
 			string id = Guid.NewGuid().ToString();
-			string name = this.UserName.Text;
-			string ticket = this.UserTicket.Text;
-			string owner = this.UserOwner.SelectedValue;
-			bool active = this.UserActive.Checked;
-			bool enabled = this.UserEnabled.Checked;
+			string firstName = this.FirstName.Text;
+			string lastName = this.LastName.Text;
+			string email = this.Email.Text;
+			ICollection<string> roles = new List<string>();
+			ICollection<string> groups = new List<string>();
+			bool isEnabled = this.IsEnabled.Checked;
 
-			return new AddUserCommand(id, name, owner, ticket, active, enabled, 0);
+			return new AddUserCommand(id, firstName, lastName, email, roles, groups, isEnabled);
 		}
 	}
 }

@@ -13,12 +13,12 @@ namespace Featurz.Web {
     public partial class _Default {
         
         /// <summary>
-        /// FeatureList1 control.
+        /// PageControllers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Featurz.Web.Controls.Features.List FeatureList1;
+        protected global::System.Web.UI.WebControls.Panel PageControllers;
     }
 }

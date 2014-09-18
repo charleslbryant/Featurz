@@ -9,25 +9,29 @@
 			<div class="box-body no-padding">
 				<div class="box-body">
 					<div id="Messages" runat="server"></div>
-					<div class="form-group <%: Vm.NameGroupError %>">
-						<label class="control-label" for="UserName"><i class="fa <%: Vm.NameError %>"></i>Name<span><%: Vm.NameMessage %></span></label>
-						<asp:TextBox CssClass="form-control" ID="UserName" runat="server" MaxLength="100"></asp:TextBox>
+					<div class="form-group <%: Vm.FirstNameMessage.GroupError %>">
+						<label class="control-label" for="FirstName"><i class="fa <%: Vm.FirstNameMessage.Error %>"></i>Name<span><%: Vm.FirstNameMessage.Message %></span></label>
+						<asp:TextBox CssClass="form-control" ID="FirstName" runat="server" MaxLength="100"></asp:TextBox>
 					</div>
-					<div class="form-group <%: Vm.TicketGroupError %>">
-						<label class="control-label" for="UserTicket"><i class="fa <%: Vm.TicketError %>"></i>Ticket<span><%: Vm.TicketMessage %></span></label>
-						<asp:TextBox CssClass="form-control" ID="UserTicket" runat="server" MaxLength="50"></asp:TextBox>
+					<div class="form-group <%: Vm.LastNameMessage.GroupError %>">
+						<label class="control-label" for="LastName"><i class="fa <%: Vm.LastNameMessage.Error %>"></i>Name<span><%: Vm.LastNameMessage.Message %></span></label>
+						<asp:TextBox CssClass="form-control" ID="LastName" runat="server" MaxLength="100"></asp:TextBox>
 					</div>
-					<div class="form-group">
-						<label class="control-label" for="UserOwner"><i class="fa"></i>Owner</label>
-						<asp:DropDownList CssClass="form-control" ID="UserOwner" runat="server" ClientIDMode="Static"></asp:DropDownList>
-					</div>
-					<div class="form-group">
-						<label class="control-label" for="UserActive"><i class="fa"></i>Is Active</label>
-						<asp:CheckBox CssClass="" ID="UserActive" runat="server" Checked="true" />
+					<div class="form-group <%: Vm.EmailMessage.GroupError %>">
+						<label class="control-label" for="Email"><i class="fa <%: Vm.EmailMessage.Error %>"></i>Name<span><%: Vm.EmailMessage.Message %></span></label>
+						<asp:TextBox CssClass="form-control" ID="Email" runat="server" MaxLength="100"></asp:TextBox>
 					</div>
 					<div class="form-group">
-						<label class="control-label" for="UserEnabled"><i class="fa"></i>Enabled</label>
-						<asp:CheckBox CssClass="" ID="UserEnabled" runat="server" Checked="true" />
+						<label class="control-label" for="UserRoles"><i class="fa"></i>User Roles</label>
+						<asp:CheckboxList CssClass="form-control" ID="UserRoles" runat="server" ClientIDMode="Static"></asp:CheckboxList>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="UserGroups"><i class="fa"></i>User Groups</label>
+						<asp:CheckboxList CssClass="form-control" ID="UserGroups" runat="server" ClientIDMode="Static"></asp:CheckboxList>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="IsEnabled"><i class="fa"></i>Enabled</label>
+						<asp:CheckBox CssClass="" ID="IsEnabled" runat="server" Checked="true" />
 					</div>
 					<div class="form-group">
 						<asp:Button CssClass="btn btn-default" ID="Submit" runat="server" OnClick="SubmitForm" Text="Submit" />

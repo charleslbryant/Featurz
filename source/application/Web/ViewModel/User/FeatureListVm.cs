@@ -1,4 +1,4 @@
-﻿namespace Featurz.Web.ViewModel
+﻿namespace Featurz.Web.ViewModel.User
 {
 	using System;
 	using System.Collections.Generic;

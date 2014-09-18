@@ -26,5 +26,7 @@
 		{
 			Response.Redirect(screen);
 		}
+
+		public string PageTitle { get; set; }
 	}
 }
