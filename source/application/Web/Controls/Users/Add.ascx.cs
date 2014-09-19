@@ -62,9 +62,6 @@
 			this.UserGroups.DataValueField = "Id";
 			this.UserGroups.DataSource = owners;
 			this.UserGroups.DataBind();
-
-			this.UserGroups.Items.Insert(0, "Select Owner");
-			this.UserGroups.SelectedIndex = 0;
 		}
 
 		private void BindUserRoles()
@@ -76,9 +73,6 @@
 			this.UserRoles.DataValueField = "Id";
 			this.UserRoles.DataSource = owners;
 			this.UserRoles.DataBind();
-
-			this.UserRoles.Items.Insert(0, "Select Owner");
-			this.UserRoles.SelectedIndex = 0;
 		}
 
 		private AddUserCommand GetAddUserCommand()

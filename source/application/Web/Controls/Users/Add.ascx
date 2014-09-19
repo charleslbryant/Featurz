@@ -10,24 +10,24 @@
 				<div class="box-body">
 					<div id="Messages" runat="server"></div>
 					<div class="form-group <%: Vm.FirstNameMessage.GroupError %>">
-						<label class="control-label" for="FirstName"><i class="fa <%: Vm.FirstNameMessage.Error %>"></i>Name<span><%: Vm.FirstNameMessage.Message %></span></label>
+						<label class="control-label" for="FirstName"><i class="fa <%: Vm.FirstNameMessage.Error %>"></i>First Name<span><%: Vm.FirstNameMessage.Message %></span></label>
 						<asp:TextBox CssClass="form-control" ID="FirstName" runat="server" MaxLength="100"></asp:TextBox>
 					</div>
 					<div class="form-group <%: Vm.LastNameMessage.GroupError %>">
-						<label class="control-label" for="LastName"><i class="fa <%: Vm.LastNameMessage.Error %>"></i>Name<span><%: Vm.LastNameMessage.Message %></span></label>
+						<label class="control-label" for="LastName"><i class="fa <%: Vm.LastNameMessage.Error %>"></i>Last Name<span><%: Vm.LastNameMessage.Message %></span></label>
 						<asp:TextBox CssClass="form-control" ID="LastName" runat="server" MaxLength="100"></asp:TextBox>
 					</div>
 					<div class="form-group <%: Vm.EmailMessage.GroupError %>">
-						<label class="control-label" for="Email"><i class="fa <%: Vm.EmailMessage.Error %>"></i>Name<span><%: Vm.EmailMessage.Message %></span></label>
+						<label class="control-label" for="Email"><i class="fa <%: Vm.EmailMessage.Error %>"></i>Email<span><%: Vm.EmailMessage.Message %></span></label>
 						<asp:TextBox CssClass="form-control" ID="Email" runat="server" MaxLength="100"></asp:TextBox>
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="UserRoles"><i class="fa"></i>User Roles</label>
-						<asp:CheckboxList CssClass="form-control" ID="UserRoles" runat="server" ClientIDMode="Static"></asp:CheckboxList>
+						<asp:CheckBoxList ID="UserRoles" runat="server" ClientIDMode="Static"></asp:CheckBoxList>
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="UserGroups"><i class="fa"></i>User Groups</label>
-						<asp:CheckboxList CssClass="form-control" ID="UserGroups" runat="server" ClientIDMode="Static"></asp:CheckboxList>
+						<asp:CheckBoxList ID="UserGroups" runat="server" ClientIDMode="Static"></asp:CheckBoxList>
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="IsEnabled"><i class="fa"></i>Enabled</label>
