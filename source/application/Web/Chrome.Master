@@ -64,8 +64,8 @@
 									<i class="fa fa-angle-left pull-right"></i>
 								</a>
 								<ul class="treeview-menu">
-									<li><a href="/features/list"><i class="fa fa-angle-double-right"></i>Feature List</a></li>
-									<li><a href="/features/add"><i class="fa fa-angle-double-right"></i>Add Feature</a></li>
+									<li><a href="/features/list"><i class="fa fa-angle-double-right"></i>List</a></li>
+									<li><a href="/features/add"><i class="fa fa-angle-double-right"></i>Add</a></li>
 								</ul>
 							</li>
 							<li class="treeview">
@@ -82,13 +82,32 @@
 											<i class="fa fa-angle-left pull-right"></i>
 										</a>
 										<ul class="treeview-menu">
-											<li><a href="/users/list"><i class="fa fa-angle-double-right"></i>User List</a></li>
-											<li><a href="/users/add"><i class="fa fa-angle-double-right"></i>Add User</a></li>
-											<li><a href="/roles/list"><i class="fa fa-angle-double-right"></i>User Groups List</a></li>
-											<li><a href="/roles/add"><i class="fa fa-angle-double-right"></i>Add User Group</a></li>
-											<li><a href="/groups/list"><i class="fa fa-angle-double-right"></i>User Groups List</a></li>
-											<li><a href="/groups/add"><i class="fa fa-angle-double-right"></i>Add User Group</a></li>
+											<li><a href="/users/list"><i class="fa fa-angle-double-right"></i>List</a></li>
+											<li><a href="/users/add"><i class="fa fa-angle-double-right"></i>User</a></li>
 										</ul>
+									</li>
+									<li class="treeview">
+										<a href="#">
+											<i class="fa fa-user"></i>
+											<span>Roles</span>
+											<i class="fa fa-angle-left pull-right"></i>
+										</a>
+										<ul class="treeview-menu">
+											<li><a href="/roles/list"><i class="fa fa-angle-double-right"></i>List</a></li>
+											<li><a href="/roles/add"><i class="fa fa-angle-double-right"></i>Add</a></li>
+										</ul>
+									</li>
+									<li class="treeview">
+										<a href="#">
+											<i class="fa fa-user"></i>
+											<span>Groups</span>
+											<i class="fa fa-angle-left pull-right"></i>
+										</a>
+										<ul class="treeview-menu">
+											<li><a href="/groups/list"><i class="fa fa-angle-double-right"></i>List</a></li>
+											<li><a href="/groups/add"><i class="fa fa-angle-double-right"></i>Add</a></li>
+										</ul>
+									</li>
 								</ul>
 							</li>
 						</ul>
