@@ -9,6 +9,10 @@
 			<div class="box-body no-padding">
 				<div class="box-body">
 					<div id="Messages" runat="server"></div>
+					<div class="form-group <%: Vm.EmailMessage.GroupError %>">
+						<label class="control-label" for="Email"><i class="fa <%: Vm.EmailMessage.Error %>"></i>Email<span><%: Vm.EmailMessage.Message %></span></label>
+						<asp:TextBox CssClass="form-control" ID="Email" runat="server" MaxLength="100"></asp:TextBox>
+					</div>
 					<div class="form-group <%: Vm.FirstNameMessage.GroupError %>">
 						<label class="control-label" for="FirstName"><i class="fa <%: Vm.FirstNameMessage.Error %>"></i>First Name<span><%: Vm.FirstNameMessage.Message %></span></label>
 						<asp:TextBox CssClass="form-control" ID="FirstName" runat="server" MaxLength="100"></asp:TextBox>
@@ -16,10 +20,6 @@
 					<div class="form-group <%: Vm.LastNameMessage.GroupError %>">
 						<label class="control-label" for="LastName"><i class="fa <%: Vm.LastNameMessage.Error %>"></i>Last Name<span><%: Vm.LastNameMessage.Message %></span></label>
 						<asp:TextBox CssClass="form-control" ID="LastName" runat="server" MaxLength="100"></asp:TextBox>
-					</div>
-					<div class="form-group <%: Vm.EmailMessage.GroupError %>">
-						<label class="control-label" for="Email"><i class="fa <%: Vm.EmailMessage.Error %>"></i>Email<span><%: Vm.EmailMessage.Message %></span></label>
-						<asp:TextBox CssClass="form-control" ID="Email" runat="server" MaxLength="100"></asp:TextBox>
 					</div>
 					<div class="form-group">
 						<label class="control-label" for="UserRoles"><i class="fa"></i>User Roles</label>

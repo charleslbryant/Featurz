@@ -83,7 +83,7 @@
 										</a>
 										<ul class="treeview-menu">
 											<li><a href="/users/list"><i class="fa fa-angle-double-right"></i>List</a></li>
-											<li><a href="/users/add"><i class="fa fa-angle-double-right"></i>User</a></li>
+											<li><a href="/users/add"><i class="fa fa-angle-double-right"></i>Add</a></li>
 										</ul>
 									</li>
 									<li class="treeview">
