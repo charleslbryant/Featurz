@@ -99,6 +99,29 @@
 		//}
 
 		[TestClass]
+		public class ToUserGroupVmTest : UserModelHelperTestBase
+		{
+			[TestMethod]
+			public void ToUserGroupVm_Should_Return_UserGroupVm()
+			{
+				Group result = new Group("1", "admin", null);
+
+				UserGroupVm actual = UserModelHelper.ToUserGroupVm(result);
+
+				Assert.AreEqual("admin", actual.Name);
+			}
+
+			[TestMethod]
+			[ExpectedException(typeof(ArgumentNullException))]
+			public void ToUserGroupVm_Should_Throw_Exception_When_Result_Is_Null()
+			{
+				Group result = null;
+
+				UserGroupVm actual = UserModelHelper.ToUserGroupVm(result);
+			}
+		}
+
+		[TestClass]
 		public class ToUserListVmTest : UserModelHelperTestBase
 		{
 			[TestMethod]
@@ -185,29 +208,6 @@
 				Role result = null;
 
 				UserRoleVm actual = UserModelHelper.ToUserRoleVm(result);
-			}
-		}
-
-		[TestClass]
-		public class ToUserGroupVmTest : UserModelHelperTestBase
-		{
-			[TestMethod]
-			public void ToUserGroupVm_Should_Return_UserGroupVm()
-			{
-				Group result = new Group("1", "admin");
-
-				UserGroupVm actual = UserModelHelper.ToUserGroupVm(result);
-
-				Assert.AreEqual("admin", actual.Name);
-			}
-
-			[TestMethod]
-			[ExpectedException(typeof(ArgumentNullException))]
-			public void ToUserGroupVm_Should_Throw_Exception_When_Result_Is_Null()
-			{
-				Group result = null;
-
-				UserGroupVm actual = UserModelHelper.ToUserGroupVm(result);
 			}
 		}
 	}

@@ -3,7 +3,11 @@
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
+	using Archer.Core.Entity;
 	using Featurz.Application.Command.User;
+	using Featurz.Application.Entity;
+	using Featurz.Application.Query.User;
+	using Featurz.Application.QueryResult.User;
 	using Featurz.Web.Model;
 	using Featurz.Web.ViewModel.User;
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -260,61 +264,62 @@
 		//	}
 		//}
 
-		//[TestClass]
-		//public class GetUsersTest : UserModelTestBase
-		//{
-		//	[TestMethod]
-		//	public void GetUsers_Should_Get_Users()
-		//	{
-		//		GetUsersQuery query = this.SetQueryDispatcher();
+		[TestClass]
+		public class GetUsersTest : UserModelTestBase
+		{
+			[TestMethod]
+			public void GetUsers_Should_Get_Users()
+			{
+				GetUsersQuery query = this.SetQueryDispatcher();
 
-		//		var actual = this.Sut.GetUsers(query);
+				var actual = this.Sut.GetUsers(query);
 
-		//		Assert.AreEqual(3, actual.Users.Count);
-		//	}
+				Assert.AreEqual(3, actual.Users.Count);
+			}
 
-		//	[TestMethod]
-		//	[ExpectedException(typeof(ArgumentNullException))]
-		//	public void GetUsers_Should_Throws_Exception_When_Query_Null()
-		//	{
-		//		GetUsersQuery query = null;
+			[TestMethod]
+			[ExpectedException(typeof(ArgumentNullException))]
+			public void GetUsers_Should_Throws_Exception_When_Query_Null()
+			{
+				GetUsersQuery query = null;
 
-		//		this.Sut.GetUsers(query);
-		//	}
+				this.Sut.GetUsers(query);
+			}
 
-		//	[TestInitialize]
-		//	public void SetupTest()
-		//	{
-		//		this.Initialize();
-		//	}
+			[TestInitialize]
+			public void SetupTest()
+			{
+				this.Initialize();
+			}
 
-		//	private ICollection<User> GetUsers()
-		//	{
-		//		ICollection<User> users = new List<User>();
+			private ICollection<User> GetUsers()
+			{
+				ICollection<User> users = new List<User>();
+				DateTime date = DateTime.Now;
+				User user = new User("1", date, "test@abc.comx", "User1", "user1", null, null, true);
+				users.Add(user);
 
-		//		User user = new User("1", "User1", "user1");
-		//		users.Add(user);
+				user = new User("2", date, "test@abc.comx", "User1", "user1", null, null, true);
+				users.Add(user);
 
-		//		user = new User("2", "User2", "user2");
-		//		users.Add(user);
+				user = new User("3", date, "test@abc.comx", "User1", "user1", null, null, true);
+				users.Add(user);
 
-		//		user = new User("3", "User3", "user3");
-		//		users.Add(user);
+				return users;
+			}
 
-		//		return users;
-		//	}
+			private GetUsersQuery SetQueryDispatcher()
+			{
+				GetUsersQuery query = new GetUsersQuery(0, 1, "Name", SortDirection.Ascending);
 
-		//	private GetUsersQuery SetQueryDispatcher()
-		//	{
-		//		GetUsersQuery query = new GetUsersQuery(0, 1, "Name", SortDirection.Ascending);
+				ICollection<User> users = GetUsers();
+				GetUsersQueryResult results = new GetUsersQueryResult(users);
 
-		//		ICollection<User> users = GetUsers();
-		//		GetUsersQueryResult results = new GetUsersQueryResult(users);
+				this.QueryDispatch.Dispatch<GetUsersQuery, GetUsersQueryResult, User>(query).ReturnsForAnyArgs(results);
+				return query;
+			}
+		}
 
-		//		this.QueryDispatch.Dispatch<GetUsersQuery, GetUsersQueryResult, User>(query).ReturnsForAnyArgs(results);
-		//		return query;
-		//	}
-		//}
 		[TestClass]
 		public class SetUserAddVmTest : UserModelTestBase
 		{

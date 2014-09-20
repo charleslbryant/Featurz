@@ -48,9 +48,9 @@
 			this.BindGrid(this.Vm.Users);
 		}
 
-		private void BindGrid(ICollection<UserListItemVm> Users)
+		private void BindGrid(ICollection<UserListItemVm> users)
 		{
-			this.UserGrid.DataSource = Users;
+			this.UserGrid.DataSource = users;
 			this.UserGrid.DataBind();
 		}
 	}

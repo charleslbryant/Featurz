@@ -50,7 +50,6 @@
 
 		//	return vm;
 		//}
-
 		public static UserGroupVm ToUserGroupVm(Group result)
 		{
 			if (result == null)
@@ -87,8 +86,8 @@
 
 			foreach (var result in results.Users)
 			{
-				UserListItemVm User = ToUserLitsItemVm(result, config);
-				vm.Users.Add(User);
+				UserListItemVm user = ToUserLitsItemVm(result, config);
+				vm.Users.Add(user);
 			}
 
 			return vm;

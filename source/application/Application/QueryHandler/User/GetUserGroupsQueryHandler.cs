@@ -35,7 +35,7 @@
 
 			for (int i = 1; i < count; i++)
 			{
-				Group group = new Group(i.ToString(), "Group" + i.ToString());
+				Group group = new Group(i.ToString(), "Group" + i.ToString(), new List<Role>(){new Role("1", "admin")});
 
 				groups.Add(group);
 			}

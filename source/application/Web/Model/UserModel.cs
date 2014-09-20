@@ -149,7 +149,7 @@
 
 			GetUsersQueryResult results = this.queryDispatcher.Dispatch<GetUsersQuery, GetUsersQueryResult, User>(query);
 
-			UserListVm vm = UserModelHelper.ToUserListVm(results, config);
+			UserListVm vm = UserModelHelper.ToUserListVm(results, this.config);
 
 			return vm;
 		}
