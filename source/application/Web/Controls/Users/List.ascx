@@ -29,7 +29,7 @@
 						</asp:TemplateField>
 						<asp:TemplateField HeaderText="Name">
 							<ItemTemplate>
-								<%# Eval("FirstName") + " " + Eval("LastName")%>"
+								<%# Eval("FirstName") + " " + Eval("LastName")%>
 							</ItemTemplate>
 						</asp:TemplateField>
 						<asp:TemplateField HeaderText="Enabled">

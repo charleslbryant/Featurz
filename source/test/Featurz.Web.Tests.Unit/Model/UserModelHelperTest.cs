@@ -165,28 +165,51 @@
 			}
 		}
 
-		//[TestClass]
-		//public class ToUserRolesVmTest : UserModelHelperTestBase
-		//{
-		//	[TestMethod]
-		//	public void ToUserRolesVm_Should_Return_UserOwnerVm()
-		//	{
-		//		User result = new User("1", DateTime.Now, "email@test.comx", "MyFirstName", "MyLastName", null, null, true);
+		[TestClass]
+		public class ToUserRoleVmTest : UserModelHelperTestBase
+		{
+			[TestMethod]
+			public void ToUserRoleVm_Should_Return_UserRoleVm()
+			{
+				Role result = new Role("1", "admin");
 
-		//		UserRoleVm actual = UserModelHelper.ToUserUserRolesVm(result);
+				UserRoleVm actual = UserModelHelper.ToUserRoleVm(result);
 
-		//		Assert.AreEqual("MyFirstName MyLastName", actual.Name);
-		//	}
+				Assert.AreEqual("admin", actual.Name);
+			}
 
-		//	[TestMethod]
-		//	[ExpectedException(typeof(ArgumentNullException))]
-		//	public void ToUserOwnerVm_Should_Throw_Exception_When_Result_Is_Null()
-		//	{
-		//		User result = null;
+			[TestMethod]
+			[ExpectedException(typeof(ArgumentNullException))]
+			public void ToUserRoleVm_Should_Throw_Exception_When_Result_Is_Null()
+			{
+				Role result = null;
 
-		//		UserOwnerVm actual = UserModelHelper.ToUserOwnerVm(result);
-		//	}
-		//}
+				UserRoleVm actual = UserModelHelper.ToUserRoleVm(result);
+			}
+		}
+
+		[TestClass]
+		public class ToUserGroupVmTest : UserModelHelperTestBase
+		{
+			[TestMethod]
+			public void ToUserGroupVm_Should_Return_UserGroupVm()
+			{
+				Group result = new Group("1", "admin");
+
+				UserGroupVm actual = UserModelHelper.ToUserGroupVm(result);
+
+				Assert.AreEqual("admin", actual.Name);
+			}
+
+			[TestMethod]
+			[ExpectedException(typeof(ArgumentNullException))]
+			public void ToUserGroupVm_Should_Throw_Exception_When_Result_Is_Null()
+			{
+				Group result = null;
+
+				UserGroupVm actual = UserModelHelper.ToUserGroupVm(result);
+			}
+		}
 	}
 
 	public class UserModelHelperTestBase
