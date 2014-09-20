@@ -45,10 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommandHandler\Feature\EditFeatureCommandHandler.cs" />
+    <Compile Include="CommandHandler\Feature\EditFeatureCommandHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommandHandler\User\AddUserCommandHandler.cs" />
     <Compile Include="CommandHandler\Feature\AddFeatureCommandHandler.cs" />
     <Compile Include="CommandHandler\BaseCommandHandler.cs" />
-    <Compile Include="Command\AddUserCommand.cs">
+    <Compile Include="Command\User\AddUserCommand.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Command\Feature\EditFeatureCommand.cs" />
@@ -67,12 +70,14 @@
     <Compile Include="QueryHandler\Feature\GetFeatureByIdQueryHandler.cs" />
     <Compile Include="QueryHandler\Feature\IsFeatureActiveQueryHandler.cs" />
     <Compile Include="QueryHandler\Feature\GetFeaturesQueryHandler.cs" />
+    <Compile Include="QueryHandler\User\GetFeaturesQueryHandler.cs" />
     <Compile Include="QueryHandler\User\GetUserRolesQueryHandler.cs" />
     <Compile Include="QueryHandler\User\GetUserGroupsQueryHandler.cs" />
     <Compile Include="QueryResult\Feature\GetFeatureOwnersQueryResult.cs" />
     <Compile Include="QueryResult\Feature\GetFeaturesQueryResult.cs" />
     <Compile Include="QueryResult\Feature\GetFeatureQueryResult.cs" />
     <Compile Include="QueryResult\Feature\IsFeatureActiveQueryResult.cs" />
+    <Compile Include="QueryResult\User\GetUsersQueryResult.cs" />
     <Compile Include="QueryResult\User\GetUserGroupsQueryResult.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -91,6 +96,7 @@
     <Compile Include="Query\User\GetUserGroupsQuery.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Query\User\GetUsersQuery.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

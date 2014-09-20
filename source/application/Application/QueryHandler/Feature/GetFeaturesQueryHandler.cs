@@ -33,9 +33,11 @@
 				return features;
 			}
 
+			DateTime date = DateTime.Now;
+
 			for (int i = 1; i < count; i++)
 			{
-				Feature feature = new Feature(i.ToString(), "Feature " + i.ToString(), "charles.bryant", i.ToString(), i < 3 || i == 7);
+				Feature feature = new Feature(i.ToString(), date, "Feature " + i.ToString(), "charles.bryant", i.ToString(), i < 3 || i == 7);
 
 				features.Add(feature);
 			}

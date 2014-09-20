@@ -1,4 +1,4 @@
-﻿namespace Featurz.Application.Command
+﻿namespace Featurz.Application.Command.User
 {
 	using System;
 	using System.Collections.Generic;
@@ -6,9 +6,10 @@
 
 	public class AddUserCommand : ICommand
 	{
-		public AddUserCommand(string id, string firstName, string lastName, string email, ICollection<string> roles, ICollection<string> groups, bool isEnabled)
+		public AddUserCommand(string id, DateTime dateAdded, string firstName, string lastName, string email, ICollection<string> roles, ICollection<string> groups, bool isEnabled)
 		{
 			this.Id = id;
+			this.DateAdded = dateAdded;
 			this.FirstName = firstName;
 			this.LastName = lastName;
 			this.Email = email;
@@ -17,6 +18,8 @@
 			this.IsEnabled = isEnabled;
 			this.Valid = true;
 		}
+
+		public DateTime DateAdded { get; private set; }
 
 		public string Email { get; private set; }
 

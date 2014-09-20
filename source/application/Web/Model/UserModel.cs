@@ -6,7 +6,7 @@
 	using Archer.Core.Configuration;
 	using Archer.Core.Exceptions;
 	using Archer.Core.Query;
-	using Featurz.Application.Command;
+	using Featurz.Application.Command.User;
 	using Featurz.Application.Entity;
 	using Featurz.Application.Exceptions;
 	using Featurz.Application.Query.User;
@@ -100,6 +100,8 @@
 
 		//	UserEditVm vm = UserModelHelper.ToUserEditVm(result);
 
+		//	return vm;
+		//}
 		public ICollection<UserGroupVm> GetUserGroups(GetUserGroupsQuery query)
 		{
 			if (query == null)
@@ -119,8 +121,6 @@
 			return groups;
 		}
 
-		//	return vm;
-		//}
 		public ICollection<UserRoleVm> GetUserRoles(GetUserRolesQuery query)
 		{
 			if (query == null)
@@ -140,19 +140,20 @@
 			return roles;
 		}
 
-		//public UserListVm GetUsers(GetUsersQuery query)
-		//{
-		//	if (query == null)
-		//	{
-		//		throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "query"));
-		//	}
+		public UserListVm GetUsers(GetUsersQuery query)
+		{
+			if (query == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "query"));
+			}
 
-		//	GetUsersQueryResult results = this.queryDispatcher.Dispatch<GetUsersQuery, GetUsersQueryResult, User>(query);
+			GetUsersQueryResult results = this.queryDispatcher.Dispatch<GetUsersQuery, GetUsersQueryResult, User>(query);
 
-		//	UserListVm vm = UserModelHelper.ToUserListVm(results, config);
+			UserListVm vm = UserModelHelper.ToUserListVm(results, config);
 
-		//	return vm;
-		//}
+			return vm;
+		}
+
 		public UserAddVm SetUserAddVm(AddUserCommand command, UserAddVm vm)
 		{
 			if (command == null)

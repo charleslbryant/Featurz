@@ -8,29 +8,29 @@
 
 	public class UserModelHelper
 	{
-		//public static UserListItemVm SetActive(UserListItemVm feature, User result)
-		//{
-		//	if (feature == null)
-		//	{
-		//		throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "feature"));
-		//	}
+		public static UserListItemVm SetEnabled(UserListItemVm user, User result)
+		{
+			if (user == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "feature"));
+			}
 
-		//	if (result == null)
-		//	{
-		//		throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "result"));
-		//	}
+			if (result == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "result"));
+			}
 
-		//	if (result.IsActive)
-		//	{
-		//		User.Active = "Active";
-		//		User.ActiveClass = "success";
-		//		return User;
-		//	}
+			if (result.IsEnabled)
+			{
+				user.Enabled = "Enabled";
+				user.EnabledClass = "success";
+				return user;
+			}
 
-		//	User.Active = "Inactive";
-		//	User.ActiveClass = "danger";
-		//	return User;
-		//}
+			user.Enabled = "Disabled";
+			user.EnabledClass = "danger";
+			return user;
+		}
 
 		//public static UserEditVm ToUserEditVm(GetUserQueryResult result)
 		//{
@@ -51,35 +51,48 @@
 		//	return vm;
 		//}
 
-		//public static UserListVm ToUserListVm(GetUsersQueryResult results, IConfiguration config)
-		//{
-		//	if (results == null)
-		//	{
-		//		throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "results"));
-		//	}
+		public static UserGroupVm ToUserGroupVm(Group result)
+		{
+			if (result == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "result"));
+			}
 
-		//	if (config == null)
-		//	{
-		//		throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "config"));
-		//	}
+			UserGroupVm vm = new UserGroupVm();
+			vm.Id = result.Id;
+			vm.Name = result.Name;
+			return vm;
+		}
 
-		//	UserListVm vm = new UserListVm();
-		//	vm.ItemsFound = results.Users.Count > 0;
+		public static UserListVm ToUserListVm(GetUsersQueryResult results, IConfiguration config)
+		{
+			if (results == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "results"));
+			}
 
-		//	if (!vm.ItemsFound)
-		//	{
-		//		vm.Message = MessagesModel.NoItemsFound;
-		//		vm.MessageStyle = MessagesModel.MessageStyles.Info;
-		//	}
+			if (config == null)
+			{
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "config"));
+			}
 
-		//	foreach (var result in results.Users)
-		//	{
-		//		UserListItemVm User = ToUserLitsItemVm(result, config);
-		//		vm.Users.Add(User);
-		//	}
+			UserListVm vm = new UserListVm();
+			vm.ItemsFound = results.Users.Count > 0;
 
-		//	return vm;
-		//}
+			if (!vm.ItemsFound)
+			{
+				vm.Message = MessagesModel.NoItemsFound;
+				vm.MessageStyle = MessagesModel.MessageStyles.Info;
+			}
+
+			foreach (var result in results.Users)
+			{
+				UserListItemVm User = ToUserLitsItemVm(result, config);
+				vm.Users.Add(User);
+			}
+
+			return vm;
+		}
 
 		public static UserRoleVm ToUserRoleVm(Role result)
 		{
@@ -94,28 +107,17 @@
 			return vm;
 		}
 
-		public static UserGroupVm ToUserGroupVm(Group result)
-		{
-			if (result == null)
-			{
-				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "result"));
-			}
-
-			UserGroupVm vm = new UserGroupVm();
-			vm.Id = result.Id;
-			vm.Name = result.Name;
-			return vm;
-		}
-
 		private static UserListItemVm ToUserLitsItemVm(User result, IConfiguration config)
 		{
 			UserListItemVm user = new UserListItemVm();
+			user.DateAdded = result.DateAdded.ToShortDateString();
 			user.Id = result.Id;
 			user.FirstName = result.FirstName;
 			user.LastName = result.LastName;
 			user.Email = result.Email;
 			user.Roles = result.Roles;
 			user.Groups = result.Groups;
+			user = UserModelHelper.SetEnabled(user, result);
 			return user;
 		}
 	}

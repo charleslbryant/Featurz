@@ -65,13 +65,14 @@
 		private AddFeatureCommand GetAddFeatureCommand()
 		{
 			string id = Guid.NewGuid().ToString();
+			DateTime date = DateTime.Now;
 			string name = this.FeatureName.Text;
 			string ticket = this.FeatureTicket.Text;
 			string owner = this.FeatureOwner.SelectedValue;
 			bool active = this.FeatureActive.Checked;
 			bool enabled = this.FeatureEnabled.Checked;
 
-			return new AddFeatureCommand(id, name, owner, ticket, active, enabled, 0);
+			return new AddFeatureCommand(id, date, name, owner, ticket, active, enabled, 0);
 		}
 	}
 }

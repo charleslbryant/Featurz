@@ -316,6 +316,7 @@
     <Content Include="Controls\Features\Add.ascx" />
     <Content Include="Controls\Features\List.ascx" />
     <Content Include="Controls\Users\Add.ascx" />
+    <Content Include="Controls\Users\List.ascx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\ionicons.svg" />
@@ -887,6 +888,13 @@
     <Compile Include="Controls\Users\Add.ascx.designer.cs">
       <DependentUpon>Add.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Users\List.ascx.cs">
+      <DependentUpon>List.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Users\List.ascx.designer.cs">
+      <DependentUpon>List.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Model\UserModel.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -943,6 +951,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\User\UserGroupVm.cs" />
+    <Compile Include="ViewModel\User\UserListVm.cs" />
     <Compile Include="ViewModel\User\UserRoleVm.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -59,7 +59,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="CommandHandler\AddFeatureCommandHandlerTest.cs" />
+    <Compile Include="CommandHandler\Feature\AddFeatureCommandHandlerTest.cs" />
+    <Compile Include="CommandHandler\User\AddUserCommandHandlerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

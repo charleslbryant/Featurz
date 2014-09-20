@@ -1,4 +1,4 @@
-﻿namespace Featurz.Application.Command
+﻿namespace Featurz.Application.Command.User
 {
 	using System;
 	using System.Collections.Generic;

@@ -31,14 +31,14 @@
 
 			GetFeatureQueryResult queryResult = this.queryDispatcher.Dispatch<GetFeatureByIdQuery, GetFeatureQueryResult, Feature>(query);
 
-			Feature result = new Feature(queryResult.Id, queryResult.Name, queryResult.UserId, queryResult.Ticket, queryResult.IsActive, queryResult.IsEnabled, queryResult.StrategyId);
+			Feature result = new Feature(queryResult.Id, queryResult.DateAdded, queryResult.Name, queryResult.UserId, queryResult.Ticket, queryResult.IsActive, queryResult.IsEnabled, queryResult.StrategyId);
 
 			return result;
 		}
 
 		public void Post(Feature feature)
 		{
-			AddFeatureCommand command = new AddFeatureCommand(feature.Id, feature.Name, feature.UserId, feature.Ticket, feature.IsActive, feature.IsEnabled, feature.StrategyId);
+			AddFeatureCommand command = new AddFeatureCommand(feature.Id, feature.DateAdded, feature.Name, feature.UserId, feature.Ticket, feature.IsActive, feature.IsEnabled, feature.StrategyId);
 
 			this.commandDispatcher.Dispatch<AddFeatureCommand, Feature>(command);
 		}

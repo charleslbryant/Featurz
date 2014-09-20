@@ -1,7 +1,6 @@
 ﻿namespace Archer.Infrastructure.Data.MongoDb
 {
 	using System;
-	using Archer.Core.Configuration;
 	using Archer.Core.Entity;
 	using Archer.Core.Exceptions;
 	using Archer.Core.Repository;
@@ -12,20 +11,6 @@
 		public MongoWriteRepository()
 			: base()
 		{
-		}
-
-		public IConfiguration Config { get; set; }
-
-		public void Initialize(IConfiguration config)
-		{
-			if (config == null)
-			{
-				throw new Exception("Config cannot be a null value.");
-			}
-
-			this.Config = config;
-
-			base.Initialize(this.Config);
 		}
 
 		public bool Delete(TEntity entity)

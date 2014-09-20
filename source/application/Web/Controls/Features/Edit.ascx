@@ -30,18 +30,20 @@
 						<asp:CheckBox CssClass="" ID="FeatureEnabled" runat="server" Checked="true" />
 					</div>
 					<div class="form-group">
-						Feature Id:
-						<asp:Label ID="FeatureId" runat="server"></asp:Label>
-					</div>
-					<div class="form-group">
-						<asp:Button CssClass="btn btn-default" ID="Submit" runat="server" OnClick="SubmitForm" Text="Submit" />
-						<asp:Button CssClass="btn btn-default" ID="Cancel" runat="server" OnClick="CancelForm" Text="Cancel" />
-					</div>
+						<div>Feature Id:
+							<asp:Label ID="FeatureId" runat="server"></asp:Label></div>
+						<div>Date Added:
+							<asp:Label ID="FeatureDateAdded" runat="server"></asp:Label></div>
 				</div>
-				<!-- /.box-body -->
+				<div class="form-group">
+					<asp:Button CssClass="btn btn-default" ID="Submit" runat="server" OnClick="SubmitForm" Text="Submit" />
+					<asp:Button CssClass="btn btn-default" ID="Cancel" runat="server" OnClick="CancelForm" Text="Cancel" />
+				</div>
 			</div>
 			<!-- /.box-body -->
 		</div>
-		<!-- /.box -->
+		<!-- /.box-body -->
 	</div>
+	<!-- /.box -->
+</div>
 </div>

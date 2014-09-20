@@ -11,11 +11,23 @@
 		{
 		}
 
+		public IConfiguration Config { get; set; }
+
 		protected MongoCollection<TEntity> Collection { get; set; }
 
-		protected IConfiguration Config { get; set; }
-
 		protected MongoDatabase Database { get; set; }
+
+		public void Initialize(IConfiguration config)
+		{
+			if (config == null)
+			{
+				throw new Exception("Config cannot be a null value.");
+			}
+
+			this.Config = config;
+			this.GetDatabase();
+			this.GetCollection();
+		}
 
 		protected void GetCollection()
 		{
@@ -38,13 +50,6 @@
 		protected string GetDatabaseName()
 		{
 			return this.Config.Get<string>("archer.db.name");
-		}
-
-		protected void Initialize(IConfiguration config)
-		{
-			this.Config = config;
-			this.GetDatabase();
-			this.GetCollection();
 		}
 	}
 }

@@ -59,6 +59,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Model\UserModelHelperTest.cs" />
+    <Compile Include="Model\UserModelTest.cs" />
     <Compile Include="Model\FeatureModelTest.cs" />
     <Compile Include="Model\ModelTestBase.cs" />
     <Compile Include="Model\FeatureModelHelperTest.cs" />

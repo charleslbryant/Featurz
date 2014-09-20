@@ -41,9 +41,10 @@
 				query.ReadRepository = featureRepo;
 				string featureId = "1000";
 				string name = "test";
+				DateTime date = DateTime.Now;
 
 				IList<Feature> features = new List<Feature>();
-				Feature feature = new Feature(featureId, name, "1", "F1", true);
+				Feature feature = new Feature(featureId, date, name, "1", "F1", true);
 				features.Add(feature);
 
 				featureRepo.Where(x => x.Name == Arg.Any<string>()).ReturnsForAnyArgs(features);

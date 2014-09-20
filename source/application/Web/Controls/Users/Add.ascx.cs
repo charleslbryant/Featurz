@@ -3,7 +3,7 @@
 	using System;
 	using System.Collections.Generic;
 	using Archer.Core.Entity;
-	using Featurz.Application.Command;
+	using Featurz.Application.Command.User;
 	using Featurz.Application.Query.User;
 	using Featurz.Web.Model;
 	using Featurz.Web.ViewModel.User;
@@ -16,6 +16,7 @@
 		{
 			this.Vm = new UserAddVm();
 			this.model = new UserModel(this.Config, this.QueryDispatcher, this.CommandDispatcher);
+			this.PageTitle = "Add User";
 		}
 
 		public UserAddVm Vm { get; private set; }
@@ -78,6 +79,7 @@
 		private AddUserCommand GetAddUserCommand()
 		{
 			string id = Guid.NewGuid().ToString();
+			DateTime date = DateTime.Now;
 			string firstName = this.FirstName.Text;
 			string lastName = this.LastName.Text;
 			string email = this.Email.Text;
@@ -85,7 +87,7 @@
 			ICollection<string> groups = new List<string>();
 			bool isEnabled = this.IsEnabled.Checked;
 
-			return new AddUserCommand(id, firstName, lastName, email, roles, groups, isEnabled);
+			return new AddUserCommand(id, date, firstName, lastName, email, roles, groups, isEnabled);
 		}
 	}
 }

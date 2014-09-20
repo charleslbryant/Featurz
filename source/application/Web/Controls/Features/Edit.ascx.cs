@@ -80,18 +80,20 @@
 			this.FeatureOwner.SelectedValue = this.Vm.UserId;
 			this.FeatureActive.Checked = this.Vm.IsActive;
 			this.FeatureEnabled.Checked = this.Vm.IsEnabled;
+			this.FeatureDateAdded.Text = this.Vm.DateAdded.ToShortDateString();
 		}
 
 		private EditFeatureCommand GetEditFeatureCommand()
 		{
 			string id = this.FeatureId.Text;
+			DateTime date = DateTime.Parse(this.FeatureDateAdded.Text);
 			string name = this.FeatureName.Text;
 			string ticket = this.FeatureTicket.Text;
 			string owner = this.FeatureOwner.SelectedValue;
 			bool active = this.FeatureActive.Checked;
 			bool enabled = this.FeatureEnabled.Checked;
 
-			return new EditFeatureCommand(id, name, owner, ticket, active, enabled, 0);
+			return new EditFeatureCommand(id, date, name, owner, ticket, active, enabled, 0);
 		}
 	}
 }

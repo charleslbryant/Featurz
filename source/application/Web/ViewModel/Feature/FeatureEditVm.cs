@@ -4,6 +4,8 @@
 
 	public class FeatureEditVm : BaseVm
 	{
+		public DateTime DateAdded { get; set; }
+
 		public string Id { get; set; }
 
 		public bool IsActive { get; set; }
@@ -22,11 +24,11 @@
 
 		public string Ticket { get; set; }
 
-		public object TicketError { get; set; }
+		public string TicketError { get; set; }
 
-		public object TicketGroupError { get; set; }
+		public string TicketGroupError { get; set; }
 
-		public object TicketMessage { get; set; }
+		public string TicketMessage { get; set; }
 
 		public string UserId { get; set; }
 	}

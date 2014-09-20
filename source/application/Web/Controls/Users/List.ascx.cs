@@ -3,9 +3,9 @@
 	using System;
 	using System.Collections.Generic;
 	using Archer.Core.Entity;
-	using Featurz.Application.Query;
+	using Featurz.Application.Query.User;
 	using Featurz.Web.Model;
-	using Featurz.Web.ViewModel;
+	using Featurz.Web.ViewModel.User;
 
 	public partial class List : BaseUserControl
 	{

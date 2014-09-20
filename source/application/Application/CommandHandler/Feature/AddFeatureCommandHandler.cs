@@ -17,21 +17,9 @@
 		{
 			this.Validate(command);
 
-			Feature feature = new Feature(command.Id, command.Name, command.UserId, command.Ticket, command.IsActive, command.IsEnabled, command.StrategyId);
+			Feature feature = new Feature(command.Id, command.DateAdded, command.Name, command.UserId, command.Ticket, command.IsActive, command.IsEnabled, command.StrategyId);
 
 			this.WriteRepository.Insert(feature);
-
-			IList<Feature> features = GetFeatureByName(command.Name);
-
-			// TODO: Research how to handle concurrency in MongoDb.
-			// I am still a MongoDb newbie so there is probably a better way to handle concurrency issues.
-			// For now, if a duplicate feature is found after adding the feature we will delete the feature we added and throw an exception.
-			if (features.Count > 1)
-			{
-				this.WriteRepository.Delete(feature);
-
-				throw new DuplicateItemException(string.Format("A feature already exists with the name {0}", feature.Name));
-			}
 		}
 
 		private IList<Feature> GetFeatureByName(string name)
@@ -40,19 +28,20 @@
 			return features;
 		}
 
-		private bool IsDuplicateFeature(string name)
+		private bool IsDuplicateFeatureName(string name)
 		{
-			if (this.GetFeatureByName(name).Count > 0)
-			{
-				throw new DuplicateItemException(string.Format("A feature already exists with the name {0}", name));
-			}
-
-			return false;
+			return this.GetFeatureByName(name).Count > 0;
 		}
 
 		private void Validate(AddFeatureCommand command)
 		{
-			IsDuplicateFeature(command.Name);
+			// TODO: Research how to handle concurrency in MongoDb.
+			// I am still a MongoDb newbie so there is probably a better way to handle concurrency issues.
+			// For now, if a duplicate feature is found we will throw an exception.
+			if (IsDuplicateFeatureName(command.Name))
+			{
+				throw new DuplicateItemException(string.Format("A feature already exists with the name {0}", command.Name));
+			}
 
 			if (this.WriteRepository == null)
 			{

@@ -14,13 +14,13 @@
 	public class FeatureModelHelperTest
 	{
 		[TestClass]
-		public class SetActiveTest
+		public class SetActiveTest : FeatureModelHelperTestBase
 		{
 			[TestMethod]
 			public void SetActive_Should_Set_Active_When_Feature_Is_Active()
 			{
 				FeatureListItemVm feature = new FeatureListItemVm();
-				Feature result = new Feature("1", "Feature1", "testuser", "1", true);
+				Feature result = this.GetFeature();
 
 				FeatureListItemVm actual = FeatureModelHelper.SetActive(feature, result);
 
@@ -32,7 +32,7 @@
 			public void SetActive_Should_Set_Inactive_When_Feature_Is_Inactive()
 			{
 				FeatureListItemVm feature = new FeatureListItemVm();
-				Feature result = new Feature("1", "Feature1", "testuser", "1", false);
+				Feature result = this.GetFeature(false);
 
 				FeatureListItemVm actual = FeatureModelHelper.SetActive(feature, result);
 
@@ -45,7 +45,7 @@
 			public void SetActive_Should_Throw_Exception_When_Feature_Is_Null()
 			{
 				FeatureListItemVm feature = null;
-				Feature result = new Feature("1", "Feature1", "testuser", "1", false);
+				Feature result = this.GetFeature();
 
 				FeatureListItemVm actual = FeatureModelHelper.SetActive(feature, result);
 			}
@@ -62,7 +62,7 @@
 		}
 
 		[TestClass]
-		public class ToFeatureEditVmTest
+		public class ToFeatureEditVmTest : FeatureModelHelperTestBase
 		{
 			[TestMethod]
 			public void ToFeatureEditVm_Should_Return_FeatureEditVm()
@@ -99,17 +99,18 @@
 		}
 
 		[TestClass]
-		public class ToFeatureListVmTest
+		public class ToFeatureListVmTest : FeatureModelHelperTestBase
 		{
 			[TestMethod]
 			public void ToFeatureListVm_Should_Return_FeatureListVm_When_Items_Found()
 			{
+				DateTime date = DateTime.Now;
 				ICollection<Feature> features = new List<Feature>();
-				Feature feature = new Feature("1", "Feature1", "testuser");
+				Feature feature = new Feature("1", date, "Feature1", "testuser");
 				features.Add(feature);
-				feature = new Feature("2", "Feature2", "testuser");
+				feature = new Feature("2", date, "Feature2", "testuser");
 				features.Add(feature);
-				feature = new Feature("3", "Feature3", "testuser");
+				feature = new Feature("3", date, "Feature3", "testuser");
 				features.Add(feature);
 				GetFeaturesQueryResult results = new GetFeaturesQueryResult(features);
 
@@ -166,12 +167,12 @@
 		}
 
 		[TestClass]
-		public class ToFeatureOwnerVmTest
+		public class ToFeatureOwnerVmTest : FeatureModelHelperTestBase
 		{
 			[TestMethod]
 			public void ToFeatureOwnerVm_Should_Return_FeatureOwnerVm()
 			{
-				User result = new User("1", "email@test.comx", "MyFirstName", "MyLastName", null, null, true);
+				User result = new User("1", DateTime.Now, "email@test.comx", "MyFirstName", "MyLastName", null, null, true);
 
 				FeatureOwnerVm actual = FeatureModelHelper.ToFeatureOwnerVm(result);
 
@@ -186,6 +187,15 @@
 
 				FeatureOwnerVm actual = FeatureModelHelper.ToFeatureOwnerVm(result);
 			}
+		}
+	}
+
+	public class FeatureModelHelperTestBase
+	{
+		protected Feature GetFeature(bool active = true)
+		{
+			Feature feature = new Feature("1", DateTime.Now, "Feature1", "testuser", "1", active);
+			return feature;
 		}
 	}
 }

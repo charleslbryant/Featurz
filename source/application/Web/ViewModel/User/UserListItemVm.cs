@@ -5,15 +5,19 @@
 
 	public class UserListItemVm
 	{
+		public string DateAdded { get; set; }
+
 		public string Email { get; set; }
+
+		public string Enabled { get; set; }
+
+		public string EnabledClass { get; set; }
 
 		public string FirstName { get; set; }
 
 		public ICollection<string> Groups { get; set; }
 
 		public string Id { get; set; }
-
-		public bool IsEnabled { get; set; }
 
 		public string LastName { get; set; }
 

@@ -16,6 +16,8 @@
 			this.UserId = userId;
 		}
 
+		public DateTime DateAdded { get; set; }
+
 		public string Id { get; private set; }
 
 		public bool IsActive { get; private set; }

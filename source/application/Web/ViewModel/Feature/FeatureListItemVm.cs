@@ -8,7 +8,7 @@
 
 		public string ActiveClass { get; set; }
 
-		public string DateAdded { get; set; }
+		public DateTime DateAdded { get; set; }
 
 		public string Id { get; set; }
 

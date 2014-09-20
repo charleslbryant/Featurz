@@ -40,6 +40,7 @@
 			}
 
 			FeatureEditVm vm = new FeatureEditVm();
+			vm.DateAdded = result.DateAdded;
 			vm.Id = result.Id;
 			vm.IsActive = result.IsActive;
 			vm.IsEnabled = result.IsEnabled;
@@ -74,7 +75,7 @@
 
 			foreach (var result in results.Features)
 			{
-				FeatureListItemVm feature = ToFeatureLitsItemVm(result, config);
+				FeatureListItemVm feature = ToFeatureListItemVm(result, config);
 				vm.Features.Add(feature);
 			}
 
@@ -94,7 +95,7 @@
 			return vm;
 		}
 
-		private static FeatureListItemVm ToFeatureLitsItemVm(Feature result, IConfiguration config)
+		private static FeatureListItemVm ToFeatureListItemVm(Feature result, IConfiguration config)
 		{
 			FeatureListItemVm feature = new FeatureListItemVm();
 			feature.Id = result.Id;
@@ -104,7 +105,7 @@
 			feature.TicketLink = string.Format("{0}{1}", ticketSystemBaseUrl, result.Ticket);
 			feature.Owner = result.UserId;
 			feature = FeatureModelHelper.SetActive(feature, result);
-			feature.DateAdded = result.DateAdded.ToShortDateString();
+			feature.DateAdded = result.DateAdded;
 			return feature;
 		}
 	}

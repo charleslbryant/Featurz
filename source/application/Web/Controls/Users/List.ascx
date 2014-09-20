@@ -22,22 +22,21 @@
 			<div class="box-body table-responsive no-padding">
 				<asp:GridView ID="UserGrid" runat="server" CssClass="table table-hover" AutoGenerateColumns="False" GridLines="None" PagerSettings-Mode="Numeric" AllowCustomPaging="True" AllowPaging="True" AllowSorting="True" ShowFooter="True" PageSize="100">
 					<Columns>
+						<asp:TemplateField HeaderText="Email">
+							<ItemTemplate>
+								<a href="<%# "/users/edit/?e=" + Eval("Email") %>"><%# Eval("Email") %></a>
+							</ItemTemplate>
+						</asp:TemplateField>
 						<asp:TemplateField HeaderText="Name">
 							<ItemTemplate>
-								<a href="<%# "/Users/edit/?id=" + Eval("Id") %>"><%# Eval("Name") %></a>
+								<%# Eval("FirstName") + " " + Eval("LastName")%>"
 							</ItemTemplate>
 						</asp:TemplateField>
-						<asp:TemplateField HeaderText="Ticket">
+						<asp:TemplateField HeaderText="Enabled">
 							<ItemTemplate>
-								<a href="<%# Eval("TicketLink") %>" target="_blank"><%# Eval("Ticket") %></a>
+								<span class="label label-<%# Eval("EnabledClass") %>"><%# Eval("Enabled") %></span>
 							</ItemTemplate>
 						</asp:TemplateField>
-						<asp:TemplateField HeaderText="Active">
-							<ItemTemplate>
-								<span class="label label-<%# Eval("ActiveClass") %>"><%# Eval("Active") %></span>
-							</ItemTemplate>
-						</asp:TemplateField>
-						<asp:BoundField DataField="Owner" HeaderText="Owner" />
 						<asp:BoundField DataField="DateAdded" HeaderText="Date Added" ReadOnly="True" SortExpression="DateAdded" />
 					</Columns>
 					<RowStyle BorderStyle="None" />

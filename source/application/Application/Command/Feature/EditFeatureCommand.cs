@@ -5,9 +5,10 @@
 
 	public class EditFeatureCommand : ICommand
 	{
-		public EditFeatureCommand(string id, string name, string userId, string ticket = "", bool isActive = false, bool isEnabled = false, int strategyId = 0)
+		public EditFeatureCommand(string id, DateTime dateAdded, string name, string userId, string ticket = "", bool isActive = false, bool isEnabled = false, int strategyId = 0)
 		{
 			this.Id = id;
+			this.DateAdded = dateAdded;
 			this.Name = name;
 			this.IsActive = isActive;
 			this.IsEnabled = isEnabled;
@@ -16,6 +17,8 @@
 			this.UserId = userId;
 			this.Valid = true;
 		}
+
+		public DateTime DateAdded { get; private set; }
 
 		public string Id { get; private set; }
 

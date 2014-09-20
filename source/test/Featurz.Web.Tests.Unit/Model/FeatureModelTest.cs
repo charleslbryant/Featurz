@@ -24,11 +24,7 @@
 			[TestMethod]
 			public void AddFeature_Should_Add_Feature()
 			{
-				string id = "id1";
-				string name = "Feature 1";
-				string userId = "tester";
-
-				AddFeatureCommand command = new AddFeatureCommand(id, name, userId);
+				AddFeatureCommand command = this.GetAddCommand();
 
 				this.Sut.AddFeature(command);
 
@@ -42,11 +38,7 @@
 			[TestMethod]
 			public void AddFeature_Should_Not_Add_Feature_When_Command_Is_Invalid()
 			{
-				string id = "id1";
-				string name = "Feature 1";
-				string userId = "tester";
-
-				AddFeatureCommand command = new AddFeatureCommand(id, name, userId);
+				AddFeatureCommand command = this.GetAddCommand();
 				command.Valid = false;
 
 				this.Sut.AddFeature(command);
@@ -59,11 +51,9 @@
 			[TestMethod]
 			public void AddFeature_Should_Not_Add_Feature_When_Name_Has_Invalid_Length()
 			{
-				string id = "id1";
 				string name = "a".PadLeft(101, 'a');
-				string userId = "tester";
 
-				AddFeatureCommand command = new AddFeatureCommand(id, name, userId);
+				AddFeatureCommand command = this.GetAddCommand(null, null, name);
 
 				this.Sut.AddFeature(command);
 
@@ -75,11 +65,9 @@
 			[TestMethod]
 			public void AddFeature_Should_Not_Add_Feature_When_No_Name()
 			{
-				string id = "id1";
 				string name = "";
-				string userId = "tester";
 
-				AddFeatureCommand command = new AddFeatureCommand(id, name, userId);
+				AddFeatureCommand command = this.GetAddCommand(null, null, name);
 
 				this.Sut.AddFeature(command);
 
@@ -91,12 +79,9 @@
 			[TestMethod]
 			public void AddFeature_Should_Not_Add_Feature_When_Ticket_Has_Invalid_Length()
 			{
-				string id = "id1";
-				string name = "Feature 1";
-				string userId = "tester";
 				string ticket = "a".PadLeft(101, 'a');
 
-				AddFeatureCommand command = new AddFeatureCommand(id, name, userId, ticket);
+				AddFeatureCommand command = this.GetAddCommand(null, null, null, null, ticket);
 
 				this.Sut.AddFeature(command);
 
@@ -128,11 +113,7 @@
 			[TestMethod]
 			public void EditFeature_Should_Edit_Feature()
 			{
-				string id = "id1";
-				string name = "Feature 1";
-				string userId = "tester";
-
-				EditFeatureCommand command = new EditFeatureCommand(id, name, userId);
+				EditFeatureCommand command = this.GetEditCommand();
 
 				this.Sut.EditFeature(command);
 
@@ -146,11 +127,7 @@
 			[TestMethod]
 			public void EditFeature_Should_Not_Edit_Feature_When_Command_Is_Invalid()
 			{
-				string id = "id1";
-				string name = "Feature 1";
-				string userId = "tester";
-
-				EditFeatureCommand command = new EditFeatureCommand(id, name, userId);
+				EditFeatureCommand command = this.GetEditCommand();
 				command.Valid = false;
 
 				this.Sut.EditFeature(command);
@@ -163,11 +140,9 @@
 			[TestMethod]
 			public void EditFeature_Should_Not_Edit_Feature_When_Name_Has_Invalid_Length()
 			{
-				string id = "id1";
 				string name = "a".PadLeft(101, 'a');
-				string userId = "tester";
 
-				EditFeatureCommand command = new EditFeatureCommand(id, name, userId);
+				EditFeatureCommand command = this.GetEditCommand(null, null, name);
 
 				this.Sut.EditFeature(command);
 
@@ -179,11 +154,9 @@
 			[TestMethod]
 			public void EditFeature_Should_Not_Edit_Feature_When_No_Name()
 			{
-				string id = "id1";
 				string name = "";
-				string userId = "tester";
 
-				EditFeatureCommand command = new EditFeatureCommand(id, name, userId);
+				EditFeatureCommand command = this.GetEditCommand(null, null, name);
 
 				this.Sut.EditFeature(command);
 
@@ -195,12 +168,9 @@
 			[TestMethod]
 			public void EditFeature_Should_Not_Edit_Feature_When_Ticket_Has_Invalid_Length()
 			{
-				string id = "id1";
-				string name = "Feature 1";
-				string userId = "tester";
 				string ticket = "a".PadLeft(101, 'a');
 
-				EditFeatureCommand command = new EditFeatureCommand(id, name, userId, ticket);
+				EditFeatureCommand command = this.GetEditCommand(null, null, null, null, ticket);
 
 				this.Sut.EditFeature(command);
 
@@ -256,11 +226,12 @@
 			private static ICollection<User> GetUsers()
 			{
 				ICollection<User> users = new List<User>();
-				User user = new User("1", "tester1", "Tester", "Master1", new List<string> { "admin", "owner", "user" }, new List<string> { }, true);
+				DateTime date = DateTime.Now;
+				User user = new User("1", date, "tester1", "Tester", "Master1", new List<string> { "admin", "owner", "user" }, new List<string> { }, true);
 				users.Add(user);
-				user = new User("2", "tester2", "Tester2", "Master2", new List<string> { "owner", "user" }, new List<string> { }, true);
+				user = new User("2", date, "tester2", "Tester2", "Master2", new List<string> { "owner", "user" }, new List<string> { }, true);
 				users.Add(user);
-				user = new User("3", "tester3", "Tester3", "Master3", new List<string> { "user" }, new List<string> { }, true);
+				user = new User("3", date, "tester3", "Tester3", "Master3", new List<string> { "user" }, new List<string> { }, true);
 				users.Add(user);
 				return users;
 			}
@@ -308,14 +279,14 @@
 			private ICollection<Feature> GetFeatures()
 			{
 				ICollection<Feature> features = new List<Feature>();
-
-				Feature feature = new Feature("1", "Feature1", "user1");
+				DateTime date = DateTime.Now;
+				Feature feature = new Feature("1", date, "Feature1", "user1");
 				features.Add(feature);
 
-				feature = new Feature("2", "Feature2", "user2");
+				feature = new Feature("2", date, "Feature2", "user2");
 				features.Add(feature);
 
-				feature = new Feature("3", "Feature3", "user3");
+				feature = new Feature("3", date, "Feature3", "user3");
 				features.Add(feature);
 
 				return features;
@@ -339,7 +310,7 @@
 			[TestMethod]
 			public void SetFeatureAddVm_Should_Set_Vm()
 			{
-				AddFeatureCommand command = new AddFeatureCommand("1", "Feature1", "testuser");
+				AddFeatureCommand command = this.GetAddCommand();
 				FeatureAddVm vm = new FeatureAddVm();
 				command.Valid = false;
 
@@ -351,7 +322,7 @@
 			[TestMethod]
 			public void SetFeatureAddVm_Should_Set_Vm_When_Name_Invalid()
 			{
-				AddFeatureCommand command = new AddFeatureCommand("1", "Feature1", "testuser");
+				AddFeatureCommand command = this.GetAddCommand();
 				FeatureAddVm vm = new FeatureAddVm();
 				command.Valid = false;
 				string expectedInvalid = "I'm broken";
@@ -367,7 +338,7 @@
 			[TestMethod]
 			public void SetFeatureAddVm_Should_Set_Vm_When_Ticket_Invalid()
 			{
-				AddFeatureCommand command = new AddFeatureCommand("1", "Feature1", "testuser");
+				AddFeatureCommand command = this.GetAddCommand();
 				FeatureAddVm vm = new FeatureAddVm();
 				command.Valid = false;
 				string expectedInvalid = "I'm broken";
@@ -393,7 +364,7 @@
 			[ExpectedException(typeof(ArgumentNullException))]
 			public void SetFeatureAddVm_Should_Throw_Exception_When_Vm_Is_Null()
 			{
-				AddFeatureCommand command = new AddFeatureCommand("1", "Feature1", "testuser");
+				AddFeatureCommand command = this.GetAddCommand();
 				FeatureAddVm vm = null;
 				this.Sut.SetFeatureAddVm(command, vm);
 			}
@@ -409,6 +380,32 @@
 	public class FeatureModelTestBase : ModelTestBase
 	{
 		protected FeatureModel Sut { get; private set; }
+
+		protected AddFeatureCommand GetAddCommand(string id = null, DateTime? date = null, string name = null, string userId = null, string ticket = null)
+		{
+			string defaultId = id ?? "id1";
+			DateTime defaultDate = date ?? DateTime.Now;
+			string defaultName = name ?? "Feature 1";
+			string defaultUserId = userId ?? "tester";
+			string defaultTicket = ticket ?? "";
+
+			AddFeatureCommand command = new AddFeatureCommand(defaultId, defaultDate, defaultName, defaultUserId, defaultTicket);
+
+			return command;
+		}
+
+		protected EditFeatureCommand GetEditCommand(string id = null, DateTime? date = null, string name = null, string userId = null, string ticket = null)
+		{
+			string defaultId = id ?? "id1";
+			DateTime defaultDate = date ?? DateTime.Now;
+			string defaultName = name ?? "Feature 1";
+			string defaultUserId = userId ?? "tester";
+			string defaultTicket = ticket ?? "";
+
+			EditFeatureCommand command = new EditFeatureCommand(defaultId, defaultDate, defaultName, defaultUserId, defaultTicket);
+
+			return command;
+		}
 
 		protected void Initialize()
 		{

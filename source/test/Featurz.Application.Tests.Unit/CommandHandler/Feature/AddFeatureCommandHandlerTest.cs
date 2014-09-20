@@ -1,4 +1,4 @@
-﻿namespace Featurz.Application.Tests.Unit.CommandHandler
+﻿namespace Featurz.Application.Tests.Unit.CommandHandler.Feature
 {
 	using System;
 	using System.Collections.Generic;
@@ -26,16 +26,17 @@
 				sut.ReadRepository = read;
 
 				string id = "id1";
+				DateTime date = DateTime.Now;
 				string name = "Feature 1";
 				string user = "tester";
 
 				IList<Feature> features = new List<Feature>();
-				Feature feature = new Feature(id, name, user, name, true);
+				Feature feature = new Feature(id, date, name, user, name, true);
 				features.Add(feature);
 
 				read.Where(x => x.Name == Arg.Any<string>()).ReturnsForAnyArgs(features);
 
-				AddFeatureCommand command = new AddFeatureCommand(id, name, user);
+				AddFeatureCommand command = new AddFeatureCommand(id, date, name, user);
 
 				sut.Execute(command);
 			}

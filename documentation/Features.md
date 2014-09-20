@@ -50,8 +50,11 @@ Scenarios
   1. [ ] List all users. v0.1.0
   1. [ ] List users by enabled.
   1. [ ] Common grid list.
+1. Edit User
+  1. [ ] Edit User. v0.1.0
+  1. [ ] Toggle user enabled.
 
-###4. User Role
+####User Role
 
 1. Add User Role
   1. [ ] Add new user role. v0.1.0
@@ -61,8 +64,19 @@ Scenarios
   1. [ ] List user roles by enabled. 
   1. [ ] Common grid list.
 1. Edit User Role
-  1. [ ] Disable user role.
-  1. [ ] Enable user role.
+  1. [ ] Toggle user role enabled.
+
+####User Group
+
+1. Add User Group
+  1. [ ] Add new user group. v0.1.0
+  1. [ ] Add invalid user group returns error. v0.1.0
+1. List User Groups
+  1. [ ] List all user groups. v0.1.0
+  1. [ ] List user groups by enabled. 
+  1. [ ] Common grid list.
+1. Edit User Group
+  1. [ ] Toggle user group enabled.
 
 ###4. Feature Activation Strategy
 

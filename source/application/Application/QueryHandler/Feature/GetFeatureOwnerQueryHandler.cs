@@ -33,9 +33,11 @@
 				return users;
 			}
 
+			DateTime date = DateTime.Now;
+
 			for (int i = 1; i < count; i++)
 			{
-				User user = new User("Tester" + i.ToString(), "tester" + i.ToString() + "abc.comx", "Tester" + i.ToString(), "Master" + i.ToString(), new List<string>() { "admin", "user" }, new List<string>() { }, true);
+				User user = new User("Tester" + i.ToString(), date, "tester" + i.ToString() + "abc.comx", "Tester" + i.ToString(), "Master" + i.ToString(), new List<string>() { "admin", "user" }, new List<string>() { }, true);
 
 				users.Add(user);
 			}

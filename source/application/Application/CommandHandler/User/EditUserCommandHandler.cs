@@ -1,11 +1,11 @@
-﻿namespace Featurz.Application.CommandHandler.Feature
+﻿namespace Featurz.Application.CommandHandler.User
 {
 	using System;
 	using Archer.Core.Command;
 	using Featurz.Application.Command.Feature;
 	using Featurz.Application.Entity;
 
-	public class EditFeatureCommandHandler : BaseCommandHandler<Feature>, ICommandHandler<EditFeatureCommand, Feature>
+	public class EditUserCommandHandler : BaseCommandHandler<Feature>, ICommandHandler<EditFeatureCommand, Feature>
 	{
 		public EditFeatureCommandHandler()
 		{
@@ -15,7 +15,7 @@
 		{
 			this.Validate(command);
 
-			Feature feature = new Feature(command.Id, command.DateAdded, command.Name, command.UserId, command.Ticket, command.IsActive, command.IsEnabled, command.StrategyId);
+			Feature feature = new Feature(command.Id, command.Name, command.UserId, command.Ticket, command.IsActive, command.IsEnabled, command.StrategyId);
 
 			this.WriteRepository.Update(feature);
 		}
