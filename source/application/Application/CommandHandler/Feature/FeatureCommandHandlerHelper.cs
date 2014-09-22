@@ -29,6 +29,8 @@
 
 			FeatureCommandResult result = new FeatureCommandResult();
 
+			result.Valid = true;
+
 			if (string.IsNullOrWhiteSpace(command.Id))
 			{
 				result.Valid = false;

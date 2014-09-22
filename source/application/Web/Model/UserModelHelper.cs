@@ -19,6 +19,8 @@
 
 			UserVm vm = new UserVm();
 
+			vm.Valid = result.Valid;
+
 			vm.Message = MessagesModel.FormError;
 
 			if (!string.IsNullOrWhiteSpace(result.Message))

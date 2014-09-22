@@ -71,17 +71,6 @@
 			this.UserGroups.DataBind();
 		}
 
-		private void BindUserOwner()
-		{
-			GetUserGroupsQuery query = new GetUserGroupsQuery(0, 1, "Id", SortDirection.Ascending);
-
-			ICollection<UserGroupVm> groups = this.model.GetUserGroups(query);
-			this.UserGroups.DataTextField = "Name";
-			this.UserGroups.DataValueField = "Id";
-			this.UserGroups.DataSource = groups;
-			this.UserGroups.DataBind();
-		}
-
 		private void BindUserRoles()
 		{
 			GetUserRolesQuery query = new GetUserRolesQuery(0, 1, "Id", SortDirection.Ascending);

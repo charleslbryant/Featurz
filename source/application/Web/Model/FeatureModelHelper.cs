@@ -19,6 +19,8 @@
 
 			FeatureVm vm = new FeatureVm();
 
+			vm.Valid = result.Valid;
+
 			vm.Message = MessagesModel.FormError;
 
 			if (!string.IsNullOrWhiteSpace(result.Message))
