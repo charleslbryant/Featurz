@@ -1,7 +1,0 @@
-C:\Users\charles.bryant\Desktop\Projects\Featurz\src\app\Core\obj\Debug\Core.csprojResolveAssemblyReference.cache
-C:\Users\charles.bryant\Desktop\Projects\Featurz\src\app\Core\bin\Debug\Featurz.Core.dll
-C:\Users\charles.bryant\Desktop\Projects\Featurz\src\app\Core\bin\Debug\Featurz.Core.pdb
-C:\Users\charles.bryant\Desktop\Projects\Featurz\src\app\Core\bin\Debug\Featurz.DomainModel.dll
-C:\Users\charles.bryant\Desktop\Projects\Featurz\src\app\Core\bin\Debug\Featurz.DomainModel.pdb
-C:\Users\charles.bryant\Desktop\Projects\Featurz\src\app\Core\obj\Debug\Featurz.Core.dll
-C:\Users\charles.bryant\Desktop\Projects\Featurz\src\app\Core\obj\Debug\Featurz.Core.pdb

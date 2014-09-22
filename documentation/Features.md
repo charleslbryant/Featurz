@@ -58,32 +58,34 @@ Scenarios
   1. [ ] Toggle user enabled.
   1. [ ] Common form.
 
-####User Role
+####Role
 
 1. Add User Role
-  1. [ ] Add new user role. v0.1.0
-  1. [ ] Add invalid user role returns error. v0.1.0
+  1. [ ] Add new role. v0.1.0
+  1. [ ] Add invalid role returns error. v0.1.0
   1. [ ] Common form.
-1. List User Roles
-  1. [ ] List all user roles. v0.1.0
-  1. [ ] List user roles by enabled. 
+1. List Roles
+  1. [ ] List all roles. v0.1.0
+  1. [ ] List roles by enabled. 
   1. [ ] Common grid list.
-1. Edit User Role
-  1. [ ] Toggle user role enabled.
+1. Edit Role
+  1. [ ] Edit role. v.0.1.0
+  1. [ ] Toggle role enabled.
   1. [ ] Common form.
 
-####User Group
+####Group
 
-1. Add User Group
-  1. [ ] Add new user group. v0.1.0
-  1. [ ] Add invalid user group returns error. v0.1.0
+1. Add Group
+  1. [ ] Add new group. v0.1.0
+  1. [ ] Add invalid group returns error. v0.1.0
   1. [ ] Common form.
-1. List User Groups
-  1. [ ] List all user groups. v0.1.0
-  1. [ ] List user groups by enabled. 
+1. List Groups
+  1. [ ] List all groups. v0.1.0
+  1. [ ] List groups by enabled. 
   1. [ ] Common grid list.
-1. Edit User Group
-  1. [ ] Toggle user group enabled.
+1. Edit Group
+  1. [ ] Edit group. v.0.1.0
+  1. [ ] Toggle group enabled.
   1. [ ] Common form.
 
 ###4. Feature Activation Strategy

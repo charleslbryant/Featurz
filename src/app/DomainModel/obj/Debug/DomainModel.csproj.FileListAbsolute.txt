@@ -1,4 +1,0 @@
-C:\Users\charles.bryant\Desktop\Projects\Featurz\src\app\DomainModel\bin\Debug\Featurz.DomainModel.dll
-C:\Users\charles.bryant\Desktop\Projects\Featurz\src\app\DomainModel\bin\Debug\Featurz.DomainModel.pdb
-C:\Users\charles.bryant\Desktop\Projects\Featurz\src\app\DomainModel\obj\Debug\Featurz.DomainModel.dll
-C:\Users\charles.bryant\Desktop\Projects\Featurz\src\app\DomainModel\obj\Debug\Featurz.DomainModel.pdb
