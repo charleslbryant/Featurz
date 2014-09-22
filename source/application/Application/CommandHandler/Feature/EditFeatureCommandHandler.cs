@@ -3,39 +3,29 @@
 	using System;
 	using Archer.Core.Command;
 	using Featurz.Application.Command.Feature;
+	using Featurz.Application.CommandResult.Feature;
 	using Featurz.Application.Entity;
 
-	public class EditFeatureCommandHandler : BaseCommandHandler<Feature>, ICommandHandler<EditFeatureCommand, Feature>
+	public class EditFeatureCommandHandler : BaseCommandHandler<Feature>, ICommandHandler<EditFeatureCommand, FeatureCommandResult, Feature>
 	{
 		public EditFeatureCommandHandler()
 		{
 		}
 
-		public void Execute(EditFeatureCommand command)
+		public FeatureCommandResult Execute(EditFeatureCommand command)
 		{
-			this.Validate(command);
+			FeatureCommandResult result = FeatureCommandHandlerHelper.Validate(command, this.WriteRepository, this.ReadRepository);
+
+			if (!result.Valid)
+			{
+				return result;
+			}
 
 			Feature feature = new Feature(command.Id, command.DateAdded, command.Name, command.UserId, command.Ticket, command.IsActive, command.IsEnabled, command.StrategyId);
 
 			this.WriteRepository.Update(feature);
-		}
 
-		private void Validate(EditFeatureCommand command)
-		{
-			if (this.WriteRepository == null)
-			{
-				throw new Exception("WriteRespository can not be a null value;");
-			}
-
-			if (command == null)
-			{
-				throw new ArgumentNullException("command");
-			}
-
-			if (string.IsNullOrWhiteSpace(command.Id))
-			{
-				throw new ArgumentException("command.Id cannot be null or white space.");
-			}
+			return result;
 		}
 	}
 }

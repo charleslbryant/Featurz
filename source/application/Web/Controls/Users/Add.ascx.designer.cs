@@ -22,31 +22,40 @@ namespace Featurz.Web.Controls.Users {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Messages;
         
         /// <summary>
-        /// Email control.
+        /// Username control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Email;
+        protected global::System.Web.UI.WebControls.TextBox Username;
         
         /// <summary>
-        /// FirstName control.
+        /// UserEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox FirstName;
+        protected global::System.Web.UI.WebControls.TextBox UserEmail;
         
         /// <summary>
-        /// LastName control.
+        /// UserFirstName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox LastName;
+        protected global::System.Web.UI.WebControls.TextBox UserFirstName;
+        
+        /// <summary>
+        /// UserLastName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox UserLastName;
         
         /// <summary>
         /// UserRoles control.
@@ -67,13 +76,13 @@ namespace Featurz.Web.Controls.Users {
         protected global::System.Web.UI.WebControls.CheckBoxList UserGroups;
         
         /// <summary>
-        /// IsEnabled control.
+        /// UserIsEnabled control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox IsEnabled;
+        protected global::System.Web.UI.WebControls.CheckBox UserIsEnabled;
         
         /// <summary>
         /// Submit control.

@@ -1,12 +1,12 @@
-﻿namespace Featurz.Application.QueryResult.User
+﻿namespace Featurz.Application.Command.User
 {
 	using System;
 	using System.Collections.Generic;
-	using Archer.Core.Query;
+	using Archer.Core.Command;
 
-	public class GetUserQueryResult : IQueryResult
+	public class UserCommand : ICommand
 	{
-		public GetUserQueryResult(string id, DateTime dateAdded, string firstName, string lastName, string email, ICollection<string> roles, ICollection<string> groups, bool isEnabled)
+		public UserCommand(string id, DateTime dateAdded, string firstName, string lastName, string email, ICollection<string> roles, ICollection<string> groups, bool isEnabled)
 		{
 			this.Id = id;
 			this.DateAdded = dateAdded;
@@ -31,6 +31,8 @@
 		public bool IsEnabled { get; private set; }
 
 		public string LastName { get; private set; }
+
+		public string Message { get; set; }
 
 		public ICollection<string> Roles { get; private set; }
 	}

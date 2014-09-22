@@ -3,10 +3,9 @@
 	using System;
 	using System.Collections.Generic;
 	using Archer.Core.Entity;
-	using Featurz.Application.Command;
-	using Featurz.Application.Query;
+	using Featurz.Application.Query.User;
 	using Featurz.Web.Model;
-	using Featurz.Web.ViewModel;
+	using Featurz.Web.ViewModel.User;
 
 	public partial class Edit : BaseUserControl
 	{
@@ -14,11 +13,11 @@
 
 		public Edit()
 		{
-			this.Vm = new UserEditVm();
+			this.Vm = new UserVm();
 			this.model = new UserModel(this.Config, this.QueryDispatcher, this.CommandDispatcher);
 		}
 
-		public UserEditVm Vm { get; private set; }
+		public UserVm Vm { get; private set; }
 
 		protected void CancelForm(object sendder, EventArgs e)
 		{
@@ -35,62 +34,91 @@
 
 		protected void SubmitForm(object sender, EventArgs e)
 		{
-			EditUserCommand command = this.GetEditUserCommand();
+			this.ControlToViewModel(this.Vm);
 
-			command = this.model.EditUser(command);
+			this.Vm = this.model.EditUser(this.Vm);
 
-			if (command.Valid)
+			if (this.Vm.Valid)
 			{
 				this.Navigate(PagesModel.Users);
 			}
 
-			this.Vm = this.model.SetUserEditVm(command, this.Vm);
+			this.ViewModelToControl(this.Vm);
 		}
 
 		private void Bind()
 		{
-			BindUserOwner();
-			BindFormValues();
+			this.BindUserRoles();
+			this.BindUserGroups();
+			this.BindFormFields();
 		}
 
-		private void BindFormValues()
+		private void BindFormFields()
 		{
-			string id = Request.QueryString["id"];
-			GetUserByIdQuery query = new GetUserByIdQuery(id);
-			this.Vm = this.model.GetUserById(query);
+			this.Vm.Id = Request.QueryString["id"];
+			this.Vm = this.model.GetUserById(this.Vm);
+			this.ViewModelToControl(this.Vm);
+		}
 
-			this.UserId.Text = this.Vm.Id;
-			this.UserName.Text = this.Vm.Name;
-			this.UserTicket.Text = this.Vm.Ticket;
-			this.UserOwner.SelectedValue = this.Vm.UserId;
-			this.UserActive.Checked = this.Vm.IsActive;
-			this.UserEnabled.Checked = this.Vm.IsEnabled;
+		private void BindUserGroups()
+		{
+			GetUserGroupsQuery query = new GetUserGroupsQuery(0, 1, "Id", SortDirection.Ascending);
+
+			ICollection<UserGroupVm> owners = this.model.GetUserGroups(query);
+			this.UserGroups.DataTextField = "Name";
+			this.UserGroups.DataValueField = "Id";
+			this.UserGroups.DataSource = owners;
+			this.UserGroups.DataBind();
 		}
 
 		private void BindUserOwner()
 		{
-			GetUserOwnersQuery query = new GetUserOwnersQuery(0, 1, "Id", SortDirection.Ascending);
+			GetUserGroupsQuery query = new GetUserGroupsQuery(0, 1, "Id", SortDirection.Ascending);
 
-			ICollection<UserOwnerVm> owners = this.model.GetUserOwners(query);
-			this.UserOwner.DataTextField = "Name";
-			this.UserOwner.DataValueField = "Id";
-			this.UserOwner.DataSource = owners;
-			this.UserOwner.DataBind();
-
-			this.UserOwner.Items.Insert(0, "Select Owner");
-			this.UserOwner.SelectedIndex = 0;
+			ICollection<UserGroupVm> groups = this.model.GetUserGroups(query);
+			this.UserGroups.DataTextField = "Name";
+			this.UserGroups.DataValueField = "Id";
+			this.UserGroups.DataSource = groups;
+			this.UserGroups.DataBind();
 		}
 
-		private EditUserCommand GetEditUserCommand()
+		private void BindUserRoles()
 		{
-			string id = this.UserId.Text;
-			string name = this.UserName.Text;
-			string ticket = this.UserTicket.Text;
-			string owner = this.UserOwner.SelectedValue;
-			bool active = this.UserActive.Checked;
-			bool enabled = this.UserEnabled.Checked;
+			GetUserRolesQuery query = new GetUserRolesQuery(0, 1, "Id", SortDirection.Ascending);
 
-			return new EditUserCommand(id, name, owner, ticket, active, enabled, 0);
+			ICollection<UserRoleVm> roles = this.model.GetUserRoles(query);
+			this.UserRoles.DataTextField = "Name";
+			this.UserRoles.DataValueField = "Id";
+			this.UserRoles.DataSource = roles;
+			this.UserRoles.DataBind();
+		}
+
+		private void ControlToViewModel(UserVm vm)
+		{
+			vm.Id = this.Username.Text;
+			DateTime date = DateTime.MinValue;
+			DateTime.TryParse(this.UserDateAdded.Text, out date);
+			vm.DateAdded = date;
+			vm.FirstName = this.UserFirstName.Text;
+			vm.LastName = this.UserLastName.Text;
+			vm.Email = this.UserEmail.Text;
+			ICollection<string> roles = new List<string>();
+			vm.Roles = roles;
+			ICollection<string> groups = new List<string>();
+			vm.Groups = groups;
+			vm.IsEnabled = this.UserIsEnabled.Checked;
+		}
+
+		private void ViewModelToControl(UserVm vm)
+		{
+			this.Username.Text = vm.Username;
+			this.UserDateAdded.Text = vm.DateAdded.ToShortDateString();
+			this.UserFirstName.Text = vm.FirstName;
+			this.UserLastName.Text = vm.LastName;
+			this.UserEmail.Text = vm.Email;
+			//this.UserRoles = null;
+			//this.UserGroups = null;
+			this.UserIsEnabled.Checked = vm.IsEnabled;
 		}
 	}
 }

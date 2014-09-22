@@ -14,12 +14,12 @@
 
 		public Add()
 		{
-			this.Vm = new FeatureAddVm();
+			this.Vm = new FeatureVm();
 			this.model = new FeatureModel(this.Config, this.QueryDispatcher, this.CommandDispatcher);
 			this.PageTitle = "Add Feature";
 		}
 
-		public FeatureAddVm Vm { get; private set; }
+		public FeatureVm Vm { get; private set; }
 
 		protected void CancelForm(object sendder, EventArgs e)
 		{
@@ -36,16 +36,16 @@
 
 		protected void SubmitForm(object sender, EventArgs e)
 		{
-			AddFeatureCommand command = this.GetAddFeatureCommand();
+			this.ControlToViewModel(this.Vm);
 
-			command = this.model.AddFeature(command);
+			this.Vm = this.model.AddFeature(this.Vm);
 
-			if (command.Valid)
+			if (this.Vm.Valid)
 			{
 				this.Navigate(PagesModel.Features);
 			}
 
-			this.Vm = this.model.SetFeatureAddVm(command, this.Vm);
+			this.ViewModelToControl(this.Vm);
 		}
 
 		private void Bind()
@@ -62,7 +62,18 @@
 			this.FeatureOwner.SelectedIndex = 0;
 		}
 
-		private AddFeatureCommand GetAddFeatureCommand()
+		private void ControlToViewModel(FeatureVm vm)
+		{
+			vm.Id = Guid.NewGuid().ToString();
+			vm.DateAdded = DateTime.Now;
+			vm.Name = this.FeatureName.Text;
+			vm.Ticket = this.FeatureTicket.Text;
+			vm.UserId = this.FeatureOwner.SelectedValue;
+			vm.IsActive = this.FeatureActive.Checked;
+			vm.IsEnabled = this.FeatureEnabled.Checked;
+		}
+
+		private FeatureCommand GetAddFeatureCommand()
 		{
 			string id = Guid.NewGuid().ToString();
 			DateTime date = DateTime.Now;
@@ -72,7 +83,16 @@
 			bool active = this.FeatureActive.Checked;
 			bool enabled = this.FeatureEnabled.Checked;
 
-			return new AddFeatureCommand(id, date, name, owner, ticket, active, enabled, 0);
+			return new FeatureCommand(id, date, name, owner, ticket, active, enabled, 0);
+		}
+
+		private void ViewModelToControl(FeatureVm vm)
+		{
+			this.FeatureName.Text = vm.Name;
+			this.FeatureTicket.Text = vm.Ticket;
+			this.FeatureOwner.SelectedValue = vm.UserId;
+			this.FeatureActive.Checked = vm.IsActive;
+			this.FeatureEnabled.Checked = vm.IsEnabled;
 		}
 	}
 }

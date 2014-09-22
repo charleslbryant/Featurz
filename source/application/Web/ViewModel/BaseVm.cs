@@ -1,10 +1,7 @@
 ﻿namespace Featurz.Web.ViewModel
 {
 	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-	using System.Web;
-	using Featurz.Web.Model;
+	using Featurz.Application.Message;
 
 	public class BaseVm
 	{
@@ -16,5 +13,7 @@
 		public string Message { get; set; }
 
 		public MessagesModel.MessageStyles MessageStyle { get; set; }
+
+		public bool Valid { get; set; }
 	}
 }

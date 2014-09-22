@@ -4,11 +4,11 @@
 	using System.Collections.Generic;
 	using Archer.Core.Command;
 	using Archer.Core.Configuration;
-	using Archer.Core.Exceptions;
 	using Archer.Core.Query;
 	using Featurz.Application.Command.Feature;
+	using Featurz.Application.CommandResult.Feature;
 	using Featurz.Application.Entity;
-	using Featurz.Application.Exceptions;
+	using Featurz.Application.Message;
 	using Featurz.Application.Query.Feature;
 	using Featurz.Application.QueryResult.Feature;
 	using Featurz.Web.ViewModel.Feature;
@@ -26,70 +26,40 @@
 			this.commandDispatcher = commandDispatcher;
 		}
 
-		public AddFeatureCommand AddFeature(AddFeatureCommand command)
+		public FeatureVm AddFeature(FeatureVm vm)
 		{
-			if (command == null)
+			if (vm == null)
 			{
-				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "command"));
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "vm"));
 			}
 
-			this.ValidateAddFeatureCommand(command);
+			AddFeatureCommand command = new AddFeatureCommand(vm.Id, vm.DateAdded, vm.Name, vm.UserId, vm.Ticket, vm.IsActive, vm.IsEnabled, vm.StrategyId);
 
-			if (!command.Valid)
-			{
-				return command;
-			}
+			FeatureCommandResult result = this.commandDispatcher.Dispatch<AddFeatureCommand, FeatureCommandResult, Feature>(command);
 
-			try
-			{
-				this.commandDispatcher.Dispatch<AddFeatureCommand, Feature>(command);
-			}
-			catch (DuplicateItemException)
-			{
-				command.Valid = false;
-				command.InvalidName = string.Format(MessagesModel.DuplicateFeatureException, "name", command.Name, "name");
-			}
-			catch (DuplicateKeyException)
-			{
-				command.Valid = false;
-				command.Message = string.Format(MessagesModel.DuplicateKeyException, command.Id);
-			}
-			return command;
+			vm = FeatureModelHelper.CommandResultToFeatureVm(result);
+
+			return vm;
 		}
 
 		//TODO: Decide what happens if we happen to have a duplicate key here.
-		public EditFeatureCommand EditFeature(EditFeatureCommand command)
+		public FeatureVm EditFeature(FeatureVm vm)
 		{
-			if (command == null)
+			if (vm == null)
 			{
-				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "command"));
+				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "vm"));
 			}
 
-			this.ValidateEditFeatureCommand(command);
+			EditFeatureCommand command = new EditFeatureCommand(vm.Id, vm.DateAdded, vm.Name, vm.UserId, vm.Ticket, vm.IsActive, vm.IsEnabled, vm.StrategyId);
 
-			if (!command.Valid)
-			{
-				return command;
-			}
+			FeatureCommandResult result = this.commandDispatcher.Dispatch<EditFeatureCommand, FeatureCommandResult, Feature>(command);
 
-			try
-			{
-				this.commandDispatcher.Dispatch<EditFeatureCommand, Feature>(command);
-			}
-			catch (DuplicateItemException)
-			{
-				command.Valid = false;
-				command.InvalidName = string.Format(MessagesModel.DuplicateFeatureException, "name", command.Name, "name");
-			}
-			catch (DuplicateKeyException)
-			{
-				command.Valid = false;
-				command.Message = string.Format(MessagesModel.DuplicateKeyException, command.Id);
-			}
-			return command;
+			vm = FeatureModelHelper.CommandResultToFeatureVm(result);
+
+			return vm;
 		}
 
-		public FeatureEditVm GetFeatureById(GetFeatureByIdQuery query)
+		public FeatureVm GetFeatureById(GetFeatureByIdQuery query)
 		{
 			if (query == null)
 			{
@@ -98,7 +68,7 @@
 
 			GetFeatureQueryResult result = this.queryDispatcher.Dispatch<GetFeatureByIdQuery, GetFeatureQueryResult, Feature>(query);
 
-			FeatureEditVm vm = FeatureModelHelper.ToFeatureEditVm(result);
+			FeatureVm vm = FeatureModelHelper.QueryResultToFeatureVm(result);
 
 			return vm;
 		}
@@ -116,7 +86,7 @@
 
 			foreach (var user in results.Owners)
 			{
-				FeatureOwnerVm owner = FeatureModelHelper.ToFeatureOwnerVm(user);
+				FeatureOwnerVm owner = FeatureModelHelper.ResultToFeatureOwnerVm(user);
 				owners.Add(owner);
 			}
 
@@ -132,141 +102,9 @@
 
 			GetFeaturesQueryResult results = this.queryDispatcher.Dispatch<GetFeaturesQuery, GetFeaturesQueryResult, Feature>(query);
 
-			FeatureListVm vm = FeatureModelHelper.ToFeatureListVm(results, this.config);
+			FeatureListVm vm = FeatureModelHelper.ResultToFeatureListVm(results, this.config);
 
 			return vm;
-		}
-
-		public FeatureAddVm SetFeatureAddVm(AddFeatureCommand command, FeatureAddVm vm)
-		{
-			if (command == null)
-			{
-				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "command"));
-			}
-
-			if (vm == null)
-			{
-				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "vm"));
-			}
-
-			if (command.Valid)
-			{
-				return vm;
-			}
-
-			vm.Message = MessagesModel.FormError;
-
-			if (!string.IsNullOrWhiteSpace(command.Message))
-			{
-				vm.Message = command.Message;
-			}
-
-			vm.MessageStyle = MessagesModel.MessageStyles.Error;
-
-			if (!string.IsNullOrWhiteSpace(command.InvalidName))
-			{
-				vm.NameMessage = MessagesModel.ItemMessage + command.InvalidName;
-				vm.NameError = MessagesModel.ItemError;
-				vm.NameGroupError = MessagesModel.ItemGroupError;
-			}
-
-			if (!string.IsNullOrWhiteSpace(command.InvalidTicket))
-			{
-				vm.TicketMessage = MessagesModel.ItemMessage + command.InvalidTicket;
-				vm.TicketError = MessagesModel.ItemError;
-				vm.TicketGroupError = MessagesModel.ItemGroupError;
-			}
-
-			return vm;
-		}
-
-		public FeatureEditVm SetFeatureEditVm(EditFeatureCommand command, FeatureEditVm vm)
-		{
-			if (command == null)
-			{
-				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "command"));
-			}
-
-			if (vm == null)
-			{
-				throw new ArgumentNullException(string.Format(MessagesModel.NullValueError, "vm"));
-			}
-
-			if (command.Valid)
-			{
-				return vm;
-			}
-
-			vm.Message = MessagesModel.FormError;
-
-			if (!string.IsNullOrWhiteSpace(command.Message))
-			{
-				vm.Message = command.Message;
-			}
-
-			vm.MessageStyle = MessagesModel.MessageStyles.Error;
-
-			if (!string.IsNullOrWhiteSpace(command.InvalidName))
-			{
-				vm.NameMessage = MessagesModel.ItemMessage + command.InvalidName;
-				vm.NameError = MessagesModel.ItemError;
-				vm.NameGroupError = MessagesModel.ItemGroupError;
-			}
-
-			if (!string.IsNullOrWhiteSpace(command.InvalidTicket))
-			{
-				vm.TicketMessage = MessagesModel.ItemMessage + command.InvalidTicket;
-				vm.TicketError = MessagesModel.ItemError;
-				vm.TicketGroupError = MessagesModel.ItemGroupError;
-			}
-
-			return vm;
-		}
-
-		private AddFeatureCommand ValidateAddFeatureCommand(AddFeatureCommand command)
-		{
-			if (string.IsNullOrWhiteSpace(command.Name))
-			{
-				command.Valid = false;
-				command.InvalidName = MessagesModel.Required;
-			}
-
-			if (command.Name != null && command.Name.Length > 100)
-			{
-				command.Valid = false;
-				command.InvalidName = string.Format(MessagesModel.MaxLength, "100");
-			}
-
-			if (command.Ticket != null && command.Ticket.Length > 50)
-			{
-				command.Valid = false;
-				command.InvalidTicket = string.Format(MessagesModel.MaxLength, "50");
-			}
-
-			return command;
-		}
-
-		private EditFeatureCommand ValidateEditFeatureCommand(EditFeatureCommand command)
-		{
-			if (string.IsNullOrWhiteSpace(command.Name))
-			{
-				command.Valid = false;
-				command.InvalidName = MessagesModel.Required;
-			}
-
-			if (command.Name != null && command.Name.Length > 100)
-			{
-				command.Valid = false;
-				command.InvalidName = string.Format(MessagesModel.MaxLength, "100");
-			}
-
-			if (command.Ticket != null && command.Ticket.Length > 50)
-			{
-				command.Valid = false;
-				command.InvalidTicket = string.Format(MessagesModel.MaxLength, "50");
-			}
-
-			return command;
 		}
 	}
 }

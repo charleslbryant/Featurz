@@ -9,12 +9,12 @@
 			<div class="box-body no-padding">
 				<div class="box-body">
 					<div id="Messages" runat="server"></div>
-					<div class="form-group <%: Vm.NameGroupError %>">
-						<label class="control-label" for="FeatureName"><i class="fa <%: Vm.NameError %>"></i>Name<span><%: Vm.NameMessage %></span></label>
+					<div class="form-group <%: Vm.NameMessage.GroupError %>">
+						<label class="control-label" for="FeatureName"><i class="fa <%: Vm.NameMessage.Error %>"></i>Name<span><%: Vm.NameMessage.Message %></span></label>
 						<asp:TextBox CssClass="form-control" ID="FeatureName" runat="server" MaxLength="100"></asp:TextBox>
 					</div>
-					<div class="form-group <%: Vm.TicketGroupError %>">
-						<label class="control-label" for="FeatureTicket"><i class="fa <%: Vm.TicketError %>"></i>Ticket<span><%: Vm.TicketMessage %></span></label>
+					<div class="form-group <%: Vm.TicketMessage.GroupError %>">
+						<label class="control-label" for="FeatureTicket"><i class="fa <%: Vm.TicketMessage.Error %>"></i>Ticket<span><%: Vm.TicketMessage.Message %></span></label>
 						<asp:TextBox CssClass="form-control" ID="FeatureTicket" runat="server" MaxLength="50"></asp:TextBox>
 					</div>
 					<div class="form-group">

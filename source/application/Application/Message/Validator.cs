@@ -1,4 +1,4 @@
-﻿namespace Featurz.Web.Model
+﻿namespace Featurz.Application.Message
 {
 	using System;
 

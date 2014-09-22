@@ -1,4 +1,4 @@
-﻿namespace Featurz.Application.Query
+﻿namespace Featurz.Application.Query.User
 {
 	using System;
 	using Archer.Core.Query;

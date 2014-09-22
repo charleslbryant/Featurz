@@ -20,11 +20,12 @@
 			this.kernel = kernel;
 		}
 
-		public void Dispatch<TCommand, TEntity>(TCommand command) 
-			where TCommand : ICommand
+		public TResult Dispatch<TParameter, TResult, TEntity>(TParameter command) 
+			where TParameter : ICommand
+			where TResult : ICommandResult
 			where TEntity : IEntity
 		{
-			var handler = this.kernel.Get<ICommandHandler<TCommand, TEntity>>();
+			var handler = this.kernel.Get<ICommandHandler<TParameter, TResult, TEntity>>();
 
 			var config = this.kernel.Get<IConfiguration>();
 			IReadRepository<TEntity> read = this.kernel.Get<IReadRepository<TEntity>>();
@@ -34,7 +35,7 @@
 			handler.ReadRepository = read;
 			handler.WriteRepository = write;
 
-			handler.Execute(command);
+			return handler.Execute(command);
 		}
 	}
 }

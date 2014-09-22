@@ -4,6 +4,7 @@
 	using System.Collections.Generic;
 	using Archer.Core.Configuration;
 	using Featurz.Application.Entity;
+	using Featurz.Application.Message;
 	using Featurz.Application.QueryResult.User;
 	using Featurz.Web.Model;
 	using Featurz.Web.ViewModel.User;
@@ -106,7 +107,7 @@
 			{
 				Group result = new Group("1", "admin", null);
 
-				UserGroupVm actual = UserModelHelper.ToUserGroupVm(result);
+				UserGroupVm actual = UserModelHelper.ResultToUserGroupVm(result);
 
 				Assert.AreEqual("admin", actual.Name);
 			}
@@ -117,7 +118,7 @@
 			{
 				Group result = null;
 
-				UserGroupVm actual = UserModelHelper.ToUserGroupVm(result);
+				UserGroupVm actual = UserModelHelper.ResultToUserGroupVm(result);
 			}
 		}
 
@@ -139,7 +140,7 @@
 
 				IConfiguration config = GetConfig();
 
-				UserListVm actual = UserModelHelper.ToUserListVm(results, config);
+				UserListVm actual = UserModelHelper.ResultToUserListVm(results, config);
 
 				Assert.AreEqual(3, actual.Users.Count);
 			}
@@ -152,7 +153,7 @@
 
 				IConfiguration config = GetConfig();
 
-				UserListVm actual = UserModelHelper.ToUserListVm(results, config);
+				UserListVm actual = UserModelHelper.ResultToUserListVm(results, config);
 
 				Assert.AreEqual(MessagesModel.NoItemsFound, actual.Message);
 				Assert.AreEqual(MessagesModel.MessageStyles.Info, actual.MessageStyle);
@@ -167,7 +168,7 @@
 
 				IConfiguration config = null;
 
-				UserListVm actual = UserModelHelper.ToUserListVm(results, config);
+				UserListVm actual = UserModelHelper.ResultToUserListVm(results, config);
 			}
 
 			[TestMethod]
@@ -178,7 +179,7 @@
 
 				IConfiguration config = GetConfig();
 
-				UserListVm actual = UserModelHelper.ToUserListVm(results, config);
+				UserListVm actual = UserModelHelper.ResultToUserListVm(results, config);
 			}
 
 			private static IConfiguration GetConfig()
@@ -196,7 +197,7 @@
 			{
 				Role result = new Role("1", "admin");
 
-				UserRoleVm actual = UserModelHelper.ToUserRoleVm(result);
+				UserRoleVm actual = UserModelHelper.ResultToUserRoleVm(result);
 
 				Assert.AreEqual("admin", actual.Name);
 			}
@@ -207,7 +208,7 @@
 			{
 				Role result = null;
 
-				UserRoleVm actual = UserModelHelper.ToUserRoleVm(result);
+				UserRoleVm actual = UserModelHelper.ResultToUserRoleVm(result);
 			}
 		}
 	}

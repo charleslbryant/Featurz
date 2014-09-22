@@ -6,8 +6,8 @@
 	using Archer.Core.Repository;
 
 	public interface IQueryHandler<in TParameter, out TResult, TEntity>
-		where TResult : IQueryResult
 		where TParameter : IQuery
+		where TResult : IQueryResult
 		where TEntity : IEntity
 	{
 		IConfiguration Config { get; set; }

@@ -51,11 +51,19 @@
     <Compile Include="CommandHandler\User\AddUserCommandHandler.cs" />
     <Compile Include="CommandHandler\Feature\AddFeatureCommandHandler.cs" />
     <Compile Include="CommandHandler\BaseCommandHandler.cs" />
-    <Compile Include="Command\User\AddUserCommand.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="CommandHandler\User\EditUserCommandHandler.cs" />
+    <Compile Include="CommandHandler\User\UserCommandHandlerHelper.cs" />
+    <Compile Include="CommandResult\CommandResultBase.cs" />
+    <Compile Include="CommandResult\Feature\FeatureCommandResult.cs" />
+    <Compile Include="CommandResult\User\UserCommandResult.cs" />
     <Compile Include="Command\Feature\EditFeatureCommand.cs" />
     <Compile Include="Command\Feature\AddFeatureCommand.cs" />
+    <Compile Include="Command\User\EditUserCommand.cs" />
+    <Compile Include="Command\User\AddUserCommand.cs" />
+    <Compile Include="Command\User\UserCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Command\Feature\FeatureCommand.cs" />
     <Compile Include="Entity\Feature.cs" />
     <Compile Include="Entity\FeatureContext.cs" />
     <Compile Include="Entity\Group.cs" />
@@ -64,19 +72,22 @@
     <Compile Include="Exceptions\DuplicateItemException.cs" />
     <Compile Include="Exceptions\FeaturzException.cs" />
     <Compile Include="Feature\IFeatureActivationStrategy.cs" />
+    <Compile Include="Message\MessagesModel.cs" />
+    <Compile Include="Message\Validator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryHandler\BaseQueryHandler.cs" />
-    <Compile Include="QueryHandler\Feature\GetFeatureOwnerQueryHandler.cs" />
+    <Compile Include="QueryHandler\Feature\GetFeatureOwnersQueryHandler.cs" />
     <Compile Include="QueryHandler\Feature\GetFeatureByIdQueryHandler.cs" />
     <Compile Include="QueryHandler\Feature\IsFeatureActiveQueryHandler.cs" />
     <Compile Include="QueryHandler\Feature\GetFeaturesQueryHandler.cs" />
-    <Compile Include="QueryHandler\User\GetFeaturesQueryHandler.cs" />
+    <Compile Include="QueryHandler\User\GetUsersQueryHandler.cs" />
     <Compile Include="QueryHandler\User\GetUserRolesQueryHandler.cs" />
     <Compile Include="QueryHandler\User\GetUserGroupsQueryHandler.cs" />
     <Compile Include="QueryResult\Feature\GetFeatureOwnersQueryResult.cs" />
     <Compile Include="QueryResult\Feature\GetFeaturesQueryResult.cs" />
     <Compile Include="QueryResult\Feature\GetFeatureQueryResult.cs" />
     <Compile Include="QueryResult\Feature\IsFeatureActiveQueryResult.cs" />
+    <Compile Include="QueryResult\User\GetUserQueryResult.cs" />
     <Compile Include="QueryResult\User\GetUsersQueryResult.cs" />
     <Compile Include="QueryResult\User\GetUserGroupsQueryResult.cs">
       <SubType>Code</SubType>
@@ -90,6 +101,7 @@
     <Compile Include="Query\PageableQuery.cs" />
     <Compile Include="Query\Feature\IsFeatureActiveQuery.cs" />
     <Compile Include="Query\Feature\GetFeatureByIdQuery.cs" />
+    <Compile Include="Query\User\GetUserByIdQuery.cs" />
     <Compile Include="Query\User\GetUserRolesQuery.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -110,6 +122,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommandHandler\Feature\FeatureCommandHandlerHelper.cs" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

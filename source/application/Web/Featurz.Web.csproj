@@ -316,6 +316,7 @@
     <Content Include="Controls\Features\Add.ascx" />
     <Content Include="Controls\Features\List.ascx" />
     <Content Include="Controls\Users\Add.ascx" />
+    <Content Include="Controls\Users\Edit.ascx" />
     <Content Include="Controls\Users\List.ascx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -888,6 +889,13 @@
     <Compile Include="Controls\Users\Add.ascx.designer.cs">
       <DependentUpon>Add.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Users\Edit.ascx.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Users\Edit.ascx.designer.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Users\List.ascx.cs">
       <DependentUpon>List.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -901,12 +909,10 @@
     <Compile Include="Model\UserModelHelper.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\Validator.cs" />
     <Compile Include="Model\FeatureModelHelper.cs" />
     <Compile Include="Model\PagesModel.cs" />
     <Compile Include="ViewModel\BaseVm.cs" />
-    <Compile Include="ViewModel\Feature\FeatureEditVm.cs" />
-    <Compile Include="ViewModel\Feature\FeatureAddVm.cs" />
+    <Compile Include="ViewModel\Feature\FeatureVm.cs" />
     <Compile Include="Controls\Features\List.ascx.cs">
       <DependentUpon>List.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -925,7 +931,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\FeatureModel.cs" />
-    <Compile Include="Model\MessagesModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -944,10 +949,8 @@
     <Compile Include="ViewModel\Feature\FeatureListVm.cs" />
     <Compile Include="ViewModel\Feature\FeatureListItemVm.cs" />
     <Compile Include="ViewModel\Feature\FeatureOwnerVm.cs" />
+    <Compile Include="ViewModel\User\UserVm.cs" />
     <Compile Include="ViewModel\User\UserListItemVm.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="ViewModel\User\UserAddVm.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ViewModel\User\UserGroupVm.cs" />

@@ -9,12 +9,12 @@
 			<div class="box-body no-padding">
 				<div class="box-body">
 					<div id="Messages" runat="server"></div>
-					<div class="form-group <%: Vm.NameGroupError %>">
-						<label class="control-label" for="FeatureName"><i class="fa <%: Vm.NameError %>"></i>Name: <span><%: Vm.NameMessage %></span></label>
+					<div class="form-group <%: Vm.NameMessage.GroupError %>">
+						<label class="control-label" for="FeatureName"><i class="fa <%: Vm.NameMessage.Error %>"></i>Name: <span><%: Vm.NameMessage.Message %></span></label>
 						<asp:Label ID="FeatureName" runat="server"></asp:Label>
 					</div>
-					<div class="form-group <%: Vm.TicketGroupError %>">
-						<label class="control-label" for="FeatureTicket"><i class="fa <%: Vm.TicketError %>"></i>Ticket<span><%: Vm.TicketMessage %></span></label>
+					<div class="form-group <%: Vm.TicketMessage.GroupError %>">
+						<label class="control-label" for="FeatureTicket"><i class="fa <%: Vm.TicketMessage.Error %>"></i>Ticket<span><%: Vm.TicketMessage.Message %></span></label>
 						<asp:TextBox CssClass="form-control" ID="FeatureTicket" runat="server" MaxLength="50"></asp:TextBox>
 					</div>
 					<div class="form-group">
@@ -30,20 +30,24 @@
 						<asp:CheckBox CssClass="" ID="FeatureEnabled" runat="server" Checked="true" />
 					</div>
 					<div class="form-group">
-						<div>Feature Id:
-							<asp:Label ID="FeatureId" runat="server"></asp:Label></div>
-						<div>Date Added:
-							<asp:Label ID="FeatureDateAdded" runat="server"></asp:Label></div>
+						<div>
+							Feature Id:
+							<asp:Label ID="FeatureId" runat="server"></asp:Label>
+						</div>
+						<div>
+							Date Added:
+							<asp:Label ID="FeatureDateAdded" runat="server"></asp:Label>
+						</div>
+					</div>
+					<div class="form-group">
+						<asp:Button CssClass="btn btn-default" ID="Submit" runat="server" OnClick="SubmitForm" Text="Submit" />
+						<asp:Button CssClass="btn btn-default" ID="Cancel" runat="server" OnClick="CancelForm" Text="Cancel" />
+					</div>
 				</div>
-				<div class="form-group">
-					<asp:Button CssClass="btn btn-default" ID="Submit" runat="server" OnClick="SubmitForm" Text="Submit" />
-					<asp:Button CssClass="btn btn-default" ID="Cancel" runat="server" OnClick="CancelForm" Text="Cancel" />
-				</div>
+				<!-- /.box-body -->
 			</div>
 			<!-- /.box-body -->
 		</div>
-		<!-- /.box-body -->
+		<!-- /.box -->
 	</div>
-	<!-- /.box -->
-</div>
 </div>

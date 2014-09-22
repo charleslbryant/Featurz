@@ -10,6 +10,10 @@
 
 		public DateTime DateAdded { get; set; }
 
+		public string Enabled { get; set; }
+
+		public string EnabledClass { get; set; }
+
 		public string Id { get; set; }
 
 		public string Name { get; set; }

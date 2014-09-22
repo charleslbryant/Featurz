@@ -5,6 +5,7 @@
 	using Archer.Core.Command;
 	using Archer.Core.Query;
 	using Featurz.Application.Command.Feature;
+	using Featurz.Application.CommandResult.Feature;
 	using Featurz.Application.Entity;
 	using Featurz.Application.Query.Feature;
 	using Featurz.Application.QueryResult.Feature;
@@ -38,9 +39,9 @@
 
 		public void Post(Feature feature)
 		{
-			AddFeatureCommand command = new AddFeatureCommand(feature.Id, feature.DateAdded, feature.Name, feature.UserId, feature.Ticket, feature.IsActive, feature.IsEnabled, feature.StrategyId);
+			FeatureCommand command = new FeatureCommand(feature.Id, feature.DateAdded, feature.Name, feature.UserId, feature.Ticket, feature.IsActive, feature.IsEnabled, feature.StrategyId);
 
-			this.commandDispatcher.Dispatch<AddFeatureCommand, Feature>(command);
+			FeatureCommandResult result = this.commandDispatcher.Dispatch<FeatureCommand, FeatureCommandResult, Feature>(command);
 		}
 
 		public void Put(int id, [FromBody]string value)

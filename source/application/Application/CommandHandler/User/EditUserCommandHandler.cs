@@ -2,40 +2,31 @@
 {
 	using System;
 	using Archer.Core.Command;
-	using Featurz.Application.Command.Feature;
+	using Featurz.Application.Command.User;
+	using Featurz.Application.CommandResult.User;
 	using Featurz.Application.Entity;
+	using Featurz.Application.Message;
 
-	public class EditUserCommandHandler : BaseCommandHandler<Feature>, ICommandHandler<EditFeatureCommand, Feature>
+	public class EditUserCommandHandler : BaseCommandHandler<User>, ICommandHandler<EditUserCommand, UserCommandResult, User>
 	{
-		public EditFeatureCommandHandler()
+		public EditUserCommandHandler()
 		{
 		}
 
-		public void Execute(EditFeatureCommand command)
+		public UserCommandResult Execute(EditUserCommand command)
 		{
-			this.Validate(command);
+			UserCommandResult result = UserCommandHandlerHelper.Validate(command, this.WriteRepository, this.ReadRepository);
 
-			Feature feature = new Feature(command.Id, command.Name, command.UserId, command.Ticket, command.IsActive, command.IsEnabled, command.StrategyId);
-
-			this.WriteRepository.Update(feature);
-		}
-
-		private void Validate(EditFeatureCommand command)
-		{
-			if (this.WriteRepository == null)
+			if (!result.Valid)
 			{
-				throw new Exception("WriteRespository can not be a null value;");
+				return result;
 			}
 
-			if (command == null)
-			{
-				throw new ArgumentNullException("command");
-			}
+			User user = new User(command.Id, command.DateAdded, command.FirstName, command.LastName, command.Email, command.Roles, command.Groups, command.IsEnabled);
 
-			if (string.IsNullOrWhiteSpace(command.Id))
-			{
-				throw new ArgumentException("command.Id cannot be null or white space.");
-			}
+			this.WriteRepository.Update(user);
+
+			return result;
 		}
 	}
 }

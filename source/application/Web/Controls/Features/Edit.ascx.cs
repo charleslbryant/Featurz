@@ -3,7 +3,6 @@
 	using System;
 	using System.Collections.Generic;
 	using Archer.Core.Entity;
-	using Featurz.Application.Command.Feature;
 	using Featurz.Application.Query.Feature;
 	using Featurz.Web.Model;
 	using Featurz.Web.ViewModel.Feature;
@@ -14,12 +13,12 @@
 
 		public Edit()
 		{
-			this.Vm = new FeatureEditVm();
+			this.Vm = new FeatureVm();
 			this.model = new FeatureModel(this.Config, this.QueryDispatcher, this.CommandDispatcher);
 			this.PageTitle = "Edit Feature";
 		}
 
-		public FeatureEditVm Vm { get; private set; }
+		public FeatureVm Vm { get; private set; }
 
 		protected void CancelForm(object sendder, EventArgs e)
 		{
@@ -36,16 +35,16 @@
 
 		protected void SubmitForm(object sender, EventArgs e)
 		{
-			EditFeatureCommand command = this.GetEditFeatureCommand();
+			this.ControlToViewModel(this.Vm);
 
-			command = this.model.EditFeature(command);
+			this.Vm = this.model.EditFeature(this.Vm);
 
-			if (command.Valid)
+			if (this.Vm.Valid)
 			{
-				this.Navigate(PagesModel.Features);
+				this.Navigate(PagesModel.Users);
 			}
 
-			this.Vm = this.model.SetFeatureEditVm(command, this.Vm);
+			this.ViewModelToControl(this.Vm);
 		}
 
 		private void Bind()
@@ -83,17 +82,26 @@
 			this.FeatureDateAdded.Text = this.Vm.DateAdded.ToShortDateString();
 		}
 
-		private EditFeatureCommand GetEditFeatureCommand()
+		private void ControlToViewModel(FeatureVm vm)
 		{
-			string id = this.FeatureId.Text;
+			vm.Id = this.FeatureId.Text;
 			DateTime date = DateTime.Parse(this.FeatureDateAdded.Text);
-			string name = this.FeatureName.Text;
-			string ticket = this.FeatureTicket.Text;
-			string owner = this.FeatureOwner.SelectedValue;
-			bool active = this.FeatureActive.Checked;
-			bool enabled = this.FeatureEnabled.Checked;
+			vm.Name = this.FeatureName.Text;
+			vm.Ticket = this.FeatureTicket.Text;
+			vm.UserId = this.FeatureOwner.SelectedValue;
+			vm.IsActive = this.FeatureActive.Checked;
+			vm.IsEnabled = this.FeatureEnabled.Checked;
+		}
 
-			return new EditFeatureCommand(id, date, name, owner, ticket, active, enabled, 0);
+		private void ViewModelToControl(FeatureVm vm)
+		{
+			this.FeatureId.Text = vm.Id;
+			this.FeatureDateAdded.Text = vm.DateAdded.ToShortDateString();
+			this.FeatureName.Text = vm.Name;
+			this.FeatureTicket.Text = vm.Ticket;
+			this.FeatureOwner.SelectedValue = vm.UserId;
+			this.FeatureActive.Checked = vm.IsActive;
+			this.FeatureEnabled.Checked = vm.IsEnabled;
 		}
 	}
 }

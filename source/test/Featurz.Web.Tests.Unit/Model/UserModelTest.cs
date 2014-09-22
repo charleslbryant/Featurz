@@ -2,9 +2,7 @@
 {
 	using System;
 	using System.Collections.Generic;
-	using System.Linq;
 	using Archer.Core.Entity;
-	using Featurz.Application.Command.User;
 	using Featurz.Application.Entity;
 	using Featurz.Application.Query.User;
 	using Featurz.Application.QueryResult.User;
@@ -12,7 +10,6 @@
 	using Featurz.Web.ViewModel.User;
 	using Microsoft.VisualStudio.TestTools.UnitTesting;
 	using NSubstitute;
-	using NSubstitute.Core;
 
 	[TestClass]
 	public class UserModelTest
@@ -22,123 +19,12 @@
 		public class AddUserTest : UserModelTestBase
 		{
 			[TestMethod]
-			public void AddUser_Should_Add_User()
-			{
-				AddUserCommand command = GetAddCommand();
-
-				this.Sut.AddUser(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-				ICall call = calls.First();
-				string called = call.GetMethodInfo().Name;
-				Assert.AreEqual(1, calls.Count());
-				Assert.AreEqual("Dispatch", called);
-			}
-
-			[TestMethod]
-			public void AddUser_Should_Not_Add_User_When_Command_Is_Invalid()
-			{
-				AddUserCommand command = GetAddCommand();
-				command.Valid = false;
-
-				this.Sut.AddUser(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-
-				Assert.AreEqual(0, calls.Count());
-			}
-
-			[TestMethod]
-			public void AddUser_Should_Not_Add_User_When_Email_Has_Invalid_Length()
-			{
-				string email = "a".PadLeft(256, 'a') + "@.abc.comx";
-
-				AddUserCommand command = GetAddCommand(null, null, null, null, email);
-
-				this.Sut.AddUser(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-
-				Assert.AreEqual(0, calls.Count());
-			}
-
-			[TestMethod]
-			public void AddUser_Should_Not_Add_User_When_FirstName_Has_Invalid_Length()
-			{
-				string firstName = "a".PadLeft(101, 'a');
-
-				AddUserCommand command = GetAddCommand(null, null, firstName);
-
-				this.Sut.AddUser(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-
-				Assert.AreEqual(0, calls.Count());
-			}
-
-			[TestMethod]
-			public void AddUser_Should_Not_Add_User_When_LastName_Has_Invalid_Length()
-			{
-				string lastName = "a".PadLeft(101, 'a');
-
-				AddUserCommand command = GetAddCommand(null, null, null, lastName);
-
-				this.Sut.AddUser(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-
-				Assert.AreEqual(0, calls.Count());
-			}
-
-			[TestMethod]
-			public void AddUser_Should_Not_Add_User_When_No_Email()
-			{
-				string email = string.Empty;
-
-				AddUserCommand command = GetAddCommand(null, null, null, null, email);
-
-				this.Sut.AddUser(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-
-				Assert.AreEqual(0, calls.Count());
-			}
-
-			[TestMethod]
-			public void AddUser_Should_Not_Add_User_When_No_FirstName()
-			{
-				string firstName = string.Empty;
-
-				AddUserCommand command = GetAddCommand(null, null, firstName);
-
-				this.Sut.AddUser(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-
-				Assert.AreEqual(0, calls.Count());
-			}
-
-			[TestMethod]
-			public void AddUser_Should_Not_Add_User_When_No_LastName()
-			{
-				string lastName = string.Empty;
-
-				AddUserCommand command = GetAddCommand(null, null, null, lastName);
-
-				this.Sut.AddUser(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-
-				Assert.AreEqual(0, calls.Count());
-			}
-
-			[TestMethod]
 			[ExpectedException(typeof(ArgumentNullException))]
 			public void AddUser_Should_Throws_Exception_When_Command_Null()
 			{
-				AddUserCommand command = null;
+				UserVm vm = null;
 
-				var actual = this.Sut.AddUser(command);
+				var actual = this.Sut.AddUser(vm);
 			}
 
 			[TestInitialize]
@@ -163,9 +49,9 @@
 		//		ICollection<string> groups = null;
 		//		bool isEnabled = true;
 
-		//		EditUserCommand command = new EditUserCommand(id, name, userId);
+		//		EditUserCommand vm = new EditUserCommand(id, name, userId);
 
-		//		this.Sut.EditUser(command);
+		//		this.Sut.EditUser(vm);
 
 		//		var calls = this.CommandDispatch.ReceivedCalls();
 		//		ICall call = calls.First();
@@ -185,10 +71,10 @@
 		//		ICollection<string> groups = null;
 		//		bool isEnabled = true;
 
-		//		EditUserCommand command = new EditUserCommand(id, name, userId);
-		//		command.Valid = false;
+		//		EditUserCommand vm = new EditUserCommand(id, name, userId);
+		//		vm.Valid = false;
 
-		//		this.Sut.EditUser(command);
+		//		this.Sut.EditUser(vm);
 
 		//		var calls = this.CommandDispatch.ReceivedCalls();
 
@@ -202,9 +88,9 @@
 		//		string name = "a".PadLeft(101, 'a');
 		//		string userId = "tester";
 
-		//		EditUserCommand command = new EditUserCommand(id, name, userId);
+		//		EditUserCommand vm = new EditUserCommand(id, name, userId);
 
-		//		this.Sut.EditUser(command);
+		//		this.Sut.EditUser(vm);
 
 		//		var calls = this.CommandDispatch.ReceivedCalls();
 
@@ -218,9 +104,9 @@
 		//		string name = "";
 		//		string userId = "tester";
 
-		//		EditUserCommand command = new EditUserCommand(id, name, userId);
+		//		EditUserCommand vm = new EditUserCommand(id, name, userId);
 
-		//		this.Sut.EditUser(command);
+		//		this.Sut.EditUser(vm);
 
 		//		var calls = this.CommandDispatch.ReceivedCalls();
 
@@ -239,9 +125,9 @@
 		//		bool isEnabled = true;
 		//		string ticket = "a".PadLeft(101, 'a');
 
-		//		EditUserCommand command = new EditUserCommand(id, name, userId, ticket);
+		//		EditUserCommand vm = new EditUserCommand(id, name, userId, ticket);
 
-		//		this.Sut.EditUser(command);
+		//		this.Sut.EditUser(vm);
 
 		//		var calls = this.CommandDispatch.ReceivedCalls();
 
@@ -252,9 +138,9 @@
 		//	[ExpectedException(typeof(ArgumentNullException))]
 		//	public void EditUser_Should_Throws_Exception_When_Command_Null()
 		//	{
-		//		EditUserCommand command = null;
+		//		EditUserCommand vm = null;
 
-		//		var actual = this.Sut.EditUser(command);
+		//		var actual = this.Sut.EditUser(vm);
 		//	}
 
 		//	[TestInitialize]
@@ -319,101 +205,13 @@
 				return query;
 			}
 		}
-
-		[TestClass]
-		public class SetUserAddVmTest : UserModelTestBase
-		{
-			[TestInitialize]
-			public void SetupTest()
-			{
-				this.Initialize();
-			}
-
-			[TestMethod]
-			public void SetUserAddVm_Should_Set_Vm()
-			{
-				AddUserCommand command = GetAddCommand();
-				UserAddVm vm = new UserAddVm();
-				command.Valid = false;
-
-				this.Sut.SetUserAddVm(command, vm);
-
-				Assert.AreEqual(MessagesModel.FormError, vm.Message);
-			}
-
-			[TestMethod]
-			public void SetUserAddVm_Should_Set_Vm_When_Email_Invalid()
-			{
-				AddUserCommand command = GetAddCommand();
-				UserAddVm vm = new UserAddVm();
-				command.Valid = false;
-				string expectedInvalid = "I'm broken";
-				command.InvalidEmail = expectedInvalid;
-
-				this.Sut.SetUserAddVm(command, vm);
-
-				Assert.AreEqual(MessagesModel.ItemMessage + expectedInvalid, vm.EmailMessage.Message);
-				Assert.AreEqual(MessagesModel.ItemError, vm.EmailMessage.Error);
-				Assert.AreEqual(MessagesModel.ItemGroupError, vm.EmailMessage.GroupError);
-			}
-
-			[TestMethod]
-			public void SetUserAddVm_Should_Set_Vm_When_FirstName_Invalid()
-			{
-				AddUserCommand command = GetAddCommand();
-				UserAddVm vm = new UserAddVm();
-				command.Valid = false;
-				string expectedInvalid = "I'm broken";
-				command.InvalidFirstName = expectedInvalid;
-
-				this.Sut.SetUserAddVm(command, vm);
-
-				Assert.AreEqual(MessagesModel.ItemMessage + expectedInvalid, vm.FirstNameMessage.Message);
-				Assert.AreEqual(MessagesModel.ItemError, vm.FirstNameMessage.Error);
-				Assert.AreEqual(MessagesModel.ItemGroupError, vm.FirstNameMessage.GroupError);
-			}
-
-			[TestMethod]
-			public void SetUserAddVm_Should_Set_Vm_When_LastName_Invalid()
-			{
-				AddUserCommand command = GetAddCommand();
-				UserAddVm vm = new UserAddVm();
-				command.Valid = false;
-				string expectedInvalid = "I'm broken";
-				command.InvalidLastName = expectedInvalid;
-
-				this.Sut.SetUserAddVm(command, vm);
-
-				Assert.AreEqual(MessagesModel.ItemMessage + expectedInvalid, vm.LastNameMessage.Message);
-				Assert.AreEqual(MessagesModel.ItemError, vm.LastNameMessage.Error);
-				Assert.AreEqual(MessagesModel.ItemGroupError, vm.LastNameMessage.GroupError);
-			}
-
-			[TestMethod]
-			[ExpectedException(typeof(ArgumentNullException))]
-			public void SetUserAddVm_Should_Throw_Exception_When_Command_Is_Null()
-			{
-				AddUserCommand command = null;
-				UserAddVm vm = new UserAddVm();
-				this.Sut.SetUserAddVm(command, vm);
-			}
-
-			[TestMethod]
-			[ExpectedException(typeof(ArgumentNullException))]
-			public void SetUserAddVm_Should_Throw_Exception_When_Vm_Is_Null()
-			{
-				AddUserCommand command = GetAddCommand();
-				UserAddVm vm = null;
-				this.Sut.SetUserAddVm(command, vm);
-			}
-		}
 	}
 
 	public class UserModelTestBase : ModelTestBase
 	{
 		protected UserModel Sut { get; private set; }
 
-		protected AddUserCommand GetAddCommand(string id = null, DateTime? date = null, string firstName = null, string lastName = null, string email = null, ICollection<string> roles = null, ICollection<string> groups = null, bool? isEnabled = null)
+		protected UserVm GetUserVm(string id = null, DateTime? date = null, string firstName = null, string lastName = null, string email = null, ICollection<string> roles = null, ICollection<string> groups = null, bool? isEnabled = null)
 		{
 			string defaultId = id ?? "id1";
 			DateTime defaultDate = date ?? DateTime.Now;
@@ -424,9 +222,17 @@
 			ICollection<string> defaultGroups = groups ?? new List<string>();
 			bool defaultEnabled = isEnabled ?? true;
 
-			AddUserCommand command = new AddUserCommand(defaultId, defaultDate, defaultFirstName, defaultLastName, defaultEmail, defaultRoles, defaultGroups, defaultEnabled);
+			UserVm vm = new UserVm();
+			vm.Id = defaultId;
+			vm.DateAdded = defaultDate;
+			vm.FirstName = defaultFirstName;
+			vm.LastName = defaultLastName;
+			vm.Email = defaultEmail;
+			vm.Roles = defaultRoles;
+			vm.Groups = defaultGroups;
+			vm.IsEnabled = defaultEnabled;
 
-			return command;
+			return vm;
 		}
 
 		protected void Initialize()
@@ -434,21 +240,5 @@
 			base.InitializeBase();
 			this.Sut = new UserModel(this.Config, this.QueryDispatch, this.CommandDispatch);
 		}
-
-		//protected EditUserCommand GetEditCommand(string id = null, DateTime? date = null, string firstName = null, string lastName = null, string email = null, ICollection<string> roles = null, ICollection<string> groups = null, bool? isEnabled = null)
-		//{
-		//	string defaultId = id ?? "id1";
-		//	DateTime defaultDate = date ?? DateTime.Now;
-		//	string defaultFirstName = firstName ?? "UserFirst";
-		//	string defaultLastName = lastName ?? "UserLast";
-		//	string defaultEmail = email ?? "tester@abc.comx";
-		//	ICollection<string> defaultRoles = roles ?? new List<string>();
-		//	ICollection<string> defaultGroups = groups ?? new List<string>();
-		//	bool defaultEnabled = isEnabled ?? true;
-
-		//	EditUserCommand command = new EditUserCommand(defaultId, defaultDate, defaultFirstName, defaultLastName, defaultEmail, defaultRoles, defaultGroups, defaultEnabled);
-
-		//	return command;
-		//}
 	}
 }

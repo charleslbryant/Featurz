@@ -20,6 +20,7 @@ Scenarios
 1. Add Feature
   1. [x] Add new feature. v0.1.0
   1. [x] Add invalid feature returns error. v0.1.0
+  1. [ ] Common form.
 1. List Features
   1. [x] List all features. v0.1.0
   1. [x] Link to edit feature. v0.1.0
@@ -35,6 +36,7 @@ Scenarios
 1. Edit Feature
   1. [x] Edit feature. v0.1.0
   1. [x] Edit invalid feature returns error. v0.1.0
+  1. [ ] Common form.
 1. Feature Metrics
   1. [ ] Count enabled active features by date range.
   1. [ ] Count enabled inactive features by date range.
@@ -46,6 +48,7 @@ Scenarios
 1. Add User
   1. [ ] Add new user. v0.1.0
   1. [ ] Add invalid user returns error. v0.1.0
+  1. [ ] Common form.
 1. List Users
   1. [ ] List all users. v0.1.0
   1. [ ] List users by enabled.
@@ -53,30 +56,35 @@ Scenarios
 1. Edit User
   1. [ ] Edit User. v0.1.0
   1. [ ] Toggle user enabled.
+  1. [ ] Common form.
 
 ####User Role
 
 1. Add User Role
   1. [ ] Add new user role. v0.1.0
   1. [ ] Add invalid user role returns error. v0.1.0
+  1. [ ] Common form.
 1. List User Roles
   1. [ ] List all user roles. v0.1.0
   1. [ ] List user roles by enabled. 
   1. [ ] Common grid list.
 1. Edit User Role
   1. [ ] Toggle user role enabled.
+  1. [ ] Common form.
 
 ####User Group
 
 1. Add User Group
   1. [ ] Add new user group. v0.1.0
   1. [ ] Add invalid user group returns error. v0.1.0
+  1. [ ] Common form.
 1. List User Groups
   1. [ ] List all user groups. v0.1.0
   1. [ ] List user groups by enabled. 
   1. [ ] Common grid list.
 1. Edit User Group
   1. [ ] Toggle user group enabled.
+  1. [ ] Common form.
 
 ###4. Feature Activation Strategy
 
@@ -106,3 +114,6 @@ Each feature activation strategy should support these scenarios along with any a
   1. [ ] Page list.
   1. [ ] Sort list.
   1. [ ] Filter list.
+1. Form
+  1. [ ] Client side validation.
+    1. [ ] Valid email address.

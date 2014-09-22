@@ -9,29 +9,39 @@
 			<div class="box-body no-padding">
 				<div class="box-body">
 					<div id="Messages" runat="server"></div>
-					<div class="form-group <%: Vm.NameGroupError %>">
-						<label class="control-label" for="UserName"><i class="fa <%: Vm.NameError %>"></i>Name: <span><%: Vm.NameMessage %></span></label>
-						<asp:Label ID="UserName" runat="server"></asp:Label>
+					<div class="form-group <%: Vm.EmailMessage.GroupError %>">
+						<label class="control-label" for="UserEmail"><i class="fa <%: Vm.EmailMessage.Error %>"></i>Email<span><%: Vm.EmailMessage.Message %></span></label>
+						<asp:TextBox CssClass="form-control" ID="UserEmail" runat="server" MaxLength="100"></asp:TextBox>
 					</div>
-					<div class="form-group <%: Vm.TicketGroupError %>">
-						<label class="control-label" for="UserTicket"><i class="fa <%: Vm.TicketError %>"></i>Ticket<span><%: Vm.TicketMessage %></span></label>
-						<asp:TextBox CssClass="form-control" ID="UserTicket" runat="server" MaxLength="50"></asp:TextBox>
+					<div class="form-group <%: Vm.FirstNameMessage.GroupError %>">
+						<label class="control-label" for="UserFirstName"><i class="fa <%: Vm.FirstNameMessage.Error %>"></i>First Name<span><%: Vm.FirstNameMessage.Message %></span></label>
+						<asp:TextBox CssClass="form-control" ID="UserFirstName" runat="server" MaxLength="100"></asp:TextBox>
 					</div>
-					<div class="form-group">
-						<label class="control-label" for="UserOwner"><i class="fa"></i>Owner</label>
-						<asp:DropDownList CssClass="form-control" ID="UserOwner" runat="server"></asp:DropDownList>
-					</div>
-					<div class="form-group">
-						<label class="control-label" for="UserActive"><i class="fa"></i>Is Active</label>
-						<asp:CheckBox CssClass="" ID="UserActive" runat="server" Checked="true" />
+					<div class="form-group <%: Vm.LastNameMessage.GroupError %>">
+						<label class="control-label" for="UserLastName"><i class="fa <%: Vm.LastNameMessage.Error %>"></i>Last Name<span><%: Vm.LastNameMessage.Message %></span></label>
+						<asp:TextBox CssClass="form-control" ID="UserLastName" runat="server" MaxLength="100"></asp:TextBox>
 					</div>
 					<div class="form-group">
-						<label class="control-label" for="UserEnabled"><i class="fa"></i>Enabled</label>
-						<asp:CheckBox CssClass="" ID="UserEnabled" runat="server" Checked="true" />
+						<label class="control-label" for="UserRoles"><i class="fa"></i>User Roles</label>
+						<asp:CheckBoxList ID="UserRoles" runat="server" ClientIDMode="Static"></asp:CheckBoxList>
 					</div>
 					<div class="form-group">
-						User Id:
-						<asp:Label ID="UserId" runat="server"></asp:Label>
+						<label class="control-label" for="UserGroups"><i class="fa"></i>User Groups</label>
+						<asp:CheckBoxList ID="UserGroups" runat="server" ClientIDMode="Static"></asp:CheckBoxList>
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="UserIsEnabled"><i class="fa"></i>Enabled</label>
+						<asp:CheckBox CssClass="" ID="UserIsEnabled" runat="server" Checked="true" />
+					</div>
+					<div class="form-group">
+						<div>
+							Username:
+							<asp:Label ID="Username" runat="server"></asp:Label>
+						</div>
+						<div>
+							Date Added:
+							<asp:Label ID="UserDateAdded" runat="server"></asp:Label>
+						</div>
 					</div>
 					<div class="form-group">
 						<asp:Button CssClass="btn btn-default" ID="Submit" runat="server" OnClick="SubmitForm" Text="Submit" />

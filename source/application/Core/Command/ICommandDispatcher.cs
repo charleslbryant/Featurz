@@ -5,8 +5,9 @@
 
 	public interface ICommandDispatcher
 	{
-		void Dispatch<TParameter, TEntity>(TParameter command) 
+		TResult Dispatch<TParameter, TResult, TEntity>(TParameter command) 
 			where TParameter : ICommand
+			where TResult : ICommandResult
 			where TEntity : IEntity;
 	}
 }

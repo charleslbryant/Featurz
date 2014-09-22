@@ -73,7 +73,7 @@ namespace Featurz.Web.App_Start
 
 			kernel.Bind(x => x
 					.FromAssembliesMatching("Featurz.Application.dll")
-					.SelectAllClasses().InheritedFrom(typeof(ICommandHandler<,>))
+					.SelectAllClasses().InheritedFrom(typeof(ICommandHandler<,,>))
 					.BindAllInterfaces());
 		}
 	}

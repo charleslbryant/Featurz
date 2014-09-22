@@ -3,7 +3,6 @@
 	using System;
 	using System.Collections.Generic;
 	using Archer.Core.Entity;
-	using Featurz.Application.Command.User;
 	using Featurz.Application.Query.User;
 	using Featurz.Web.Model;
 	using Featurz.Web.ViewModel.User;
@@ -14,12 +13,12 @@
 
 		public Add()
 		{
-			this.Vm = new UserAddVm();
+			this.Vm = new UserVm();
 			this.model = new UserModel(this.Config, this.QueryDispatcher, this.CommandDispatcher);
 			this.PageTitle = "Add User";
 		}
 
-		public UserAddVm Vm { get; private set; }
+		public UserVm Vm { get; private set; }
 
 		protected void CancelForm(object sendder, EventArgs e)
 		{
@@ -36,16 +35,16 @@
 
 		protected void SubmitForm(object sender, EventArgs e)
 		{
-			AddUserCommand command = this.GetAddUserCommand();
+			this.ControlToViewModel(this.Vm);
 
-			command = this.model.AddUser(command);
+			this.Vm = this.model.AddUser(this.Vm);
 
-			if (command.Valid)
+			if (this.Vm.Valid)
 			{
 				this.Navigate(PagesModel.Users);
 			}
 
-			this.Vm = this.model.SetUserAddVm(command, this.Vm);
+			this.ViewModelToControl(this.Vm);
 		}
 
 		private void Bind()
@@ -76,18 +75,30 @@
 			this.UserRoles.DataBind();
 		}
 
-		private AddUserCommand GetAddUserCommand()
+		private void ControlToViewModel(UserVm vm)
 		{
-			string id = Guid.NewGuid().ToString();
-			DateTime date = DateTime.Now;
-			string firstName = this.FirstName.Text;
-			string lastName = this.LastName.Text;
-			string email = this.Email.Text;
+			vm.Id = this.Username.Text;
+			vm.DateAdded = DateTime.Now;
+			vm.FirstName = this.UserFirstName.Text;
+			vm.LastName = this.UserLastName.Text;
+			vm.Email = this.UserEmail.Text;
 			ICollection<string> roles = new List<string>();
+			vm.Roles = roles;
 			ICollection<string> groups = new List<string>();
-			bool isEnabled = this.IsEnabled.Checked;
+			vm.Groups = groups;
+			vm.IsEnabled = this.UserIsEnabled.Checked;
+		}
 
-			return new AddUserCommand(id, date, firstName, lastName, email, roles, groups, isEnabled);
+		private void ViewModelToControl(UserVm vm)
+		{
+			this.Username.Text = vm.Username;
+			//this.UserDateAdded.Text = vm.DateAdded.ToShortDateString();
+			this.UserFirstName.Text = vm.FirstName;
+			this.UserLastName.Text = vm.LastName;
+			this.UserEmail.Text = vm.Email;
+			//this.UserRoles = null;
+			//this.UserGroups = null;
+			this.UserIsEnabled.Checked = vm.IsEnabled;
 		}
 	}
 }

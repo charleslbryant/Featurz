@@ -14,7 +14,7 @@
 	using NSubstitute;
 
 	[TestClass]
-	public class AddUserCommandHandlerTest
+	public class EditUserCommandHandlerTest
 	{
 		[TestClass]
 		public class ExecuteTest
@@ -22,9 +22,9 @@
 			[TestMethod]
 			public void Execute_Should_Not_Add_Invalid_User()
 			{
-				AddUserCommandHandler sut = GetCommandHandler();
+				EditUserCommandHandler sut = GetCommandHandler();
 
-				AddUserCommand command = UserCommandHandlerTestHelper.GetAddCommand("a".PadLeft(101, 'a'));
+				EditUserCommand command = UserCommandHandlerTestHelper.GetEditCommand("a".PadLeft(101, 'a'));
 
 				string expectedInvalid = string.Format(MessagesModel.MaxLength, "100");
 
@@ -35,9 +35,9 @@
 				Assert.AreEqual(0, calls);
 			}
 
-			private AddUserCommandHandler GetCommandHandler()
+			private EditUserCommandHandler GetCommandHandler()
 			{
-				AddUserCommandHandler sut = new AddUserCommandHandler();
+				EditUserCommandHandler sut = new EditUserCommandHandler();
 				IReadRepository<User> read = Substitute.For<IReadRepository<User>>();
 				sut.ReadRepository = read;
 				IWriteRepository<User> write = Substitute.For<IWriteRepository<User>>();

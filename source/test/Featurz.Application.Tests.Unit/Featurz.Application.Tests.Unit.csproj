@@ -59,8 +59,16 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="CommandHandler\Feature\EditFeatureCommandHandlerTest.cs" />
+    <Compile Include="CommandHandler\Feature\FeatureCommandHandlerHelperTest.cs" />
     <Compile Include="CommandHandler\Feature\AddFeatureCommandHandlerTest.cs" />
+    <Compile Include="CommandHandler\Feature\FeatureCommandHandlerTestHelper.cs" />
+    <Compile Include="CommandHandler\User\EditUserCommandHandlerTest.cs" />
     <Compile Include="CommandHandler\User\AddUserCommandHandlerTest.cs" />
+    <Compile Include="CommandHandler\User\UserCommandHandlerHelperTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="CommandHandler\User\UserCommandHandlerTestHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

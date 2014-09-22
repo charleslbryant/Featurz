@@ -5,6 +5,7 @@
 	using System.Linq;
 	using Archer.Core.Entity;
 	using Featurz.Application.Command.Feature;
+	using Featurz.Application.CommandResult.Feature;
 	using Featurz.Application.Entity;
 	using Featurz.Application.Query.Feature;
 	using Featurz.Application.QueryResult.Feature;
@@ -22,81 +23,12 @@
 		public class AddFeatureTest : FeatureModelTestBase
 		{
 			[TestMethod]
-			public void AddFeature_Should_Add_Feature()
-			{
-				AddFeatureCommand command = this.GetAddCommand();
-
-				this.Sut.AddFeature(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-				ICall call = calls.First();
-				string called = call.GetMethodInfo().Name;
-				Assert.AreEqual(1, calls.Count());
-				Assert.AreEqual("Dispatch", called);
-			}
-
-			[TestMethod]
-			public void AddFeature_Should_Not_Add_Feature_When_Command_Is_Invalid()
-			{
-				AddFeatureCommand command = this.GetAddCommand();
-				command.Valid = false;
-
-				this.Sut.AddFeature(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-
-				Assert.AreEqual(0, calls.Count());
-			}
-
-			[TestMethod]
-			public void AddFeature_Should_Not_Add_Feature_When_Name_Has_Invalid_Length()
-			{
-				string name = "a".PadLeft(101, 'a');
-
-				AddFeatureCommand command = this.GetAddCommand(null, null, name);
-
-				this.Sut.AddFeature(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-
-				Assert.AreEqual(0, calls.Count());
-			}
-
-			[TestMethod]
-			public void AddFeature_Should_Not_Add_Feature_When_No_Name()
-			{
-				string name = "";
-
-				AddFeatureCommand command = this.GetAddCommand(null, null, name);
-
-				this.Sut.AddFeature(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-
-				Assert.AreEqual(0, calls.Count());
-			}
-
-			[TestMethod]
-			public void AddFeature_Should_Not_Add_Feature_When_Ticket_Has_Invalid_Length()
-			{
-				string ticket = "a".PadLeft(101, 'a');
-
-				AddFeatureCommand command = this.GetAddCommand(null, null, null, null, ticket);
-
-				this.Sut.AddFeature(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-
-				Assert.AreEqual(0, calls.Count());
-			}
-
-			[TestMethod]
 			[ExpectedException(typeof(ArgumentNullException))]
 			public void AddFeature_Should_Throws_Exception_When_Command_Null()
 			{
-				AddFeatureCommand command = null;
+				FeatureVm vm = null;
 
-				var actual = this.Sut.AddFeature(command);
+				var actual = this.Sut.AddFeature(vm);
 			}
 
 			[TestInitialize]
@@ -111,81 +43,12 @@
 		public class EditFeatureTest : FeatureModelTestBase
 		{
 			[TestMethod]
-			public void EditFeature_Should_Edit_Feature()
-			{
-				EditFeatureCommand command = this.GetEditCommand();
-
-				this.Sut.EditFeature(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-				ICall call = calls.First();
-				string called = call.GetMethodInfo().Name;
-				Assert.AreEqual(1, calls.Count());
-				Assert.AreEqual("Dispatch", called);
-			}
-
-			[TestMethod]
-			public void EditFeature_Should_Not_Edit_Feature_When_Command_Is_Invalid()
-			{
-				EditFeatureCommand command = this.GetEditCommand();
-				command.Valid = false;
-
-				this.Sut.EditFeature(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-
-				Assert.AreEqual(0, calls.Count());
-			}
-
-			[TestMethod]
-			public void EditFeature_Should_Not_Edit_Feature_When_Name_Has_Invalid_Length()
-			{
-				string name = "a".PadLeft(101, 'a');
-
-				EditFeatureCommand command = this.GetEditCommand(null, null, name);
-
-				this.Sut.EditFeature(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-
-				Assert.AreEqual(0, calls.Count());
-			}
-
-			[TestMethod]
-			public void EditFeature_Should_Not_Edit_Feature_When_No_Name()
-			{
-				string name = "";
-
-				EditFeatureCommand command = this.GetEditCommand(null, null, name);
-
-				this.Sut.EditFeature(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-
-				Assert.AreEqual(0, calls.Count());
-			}
-
-			[TestMethod]
-			public void EditFeature_Should_Not_Edit_Feature_When_Ticket_Has_Invalid_Length()
-			{
-				string ticket = "a".PadLeft(101, 'a');
-
-				EditFeatureCommand command = this.GetEditCommand(null, null, null, null, ticket);
-
-				this.Sut.EditFeature(command);
-
-				var calls = this.CommandDispatch.ReceivedCalls();
-
-				Assert.AreEqual(0, calls.Count());
-			}
-
-			[TestMethod]
 			[ExpectedException(typeof(ArgumentNullException))]
 			public void EditFeature_Should_Throws_Exception_When_Command_Null()
 			{
-				EditFeatureCommand command = null;
+				FeatureVm vm = null;
 
-				var actual = this.Sut.EditFeature(command);
+				var actual = this.Sut.EditFeature(vm);
 			}
 
 			[TestInitialize]
@@ -303,85 +166,13 @@
 				return query;
 			}
 		}
-
-		[TestClass]
-		public class SetFeatureAddVmTest : FeatureModelTestBase
-		{
-			[TestMethod]
-			public void SetFeatureAddVm_Should_Set_Vm()
-			{
-				AddFeatureCommand command = this.GetAddCommand();
-				FeatureAddVm vm = new FeatureAddVm();
-				command.Valid = false;
-
-				this.Sut.SetFeatureAddVm(command, vm);
-
-				Assert.AreEqual(MessagesModel.FormError, vm.Message);
-			}
-
-			[TestMethod]
-			public void SetFeatureAddVm_Should_Set_Vm_When_Name_Invalid()
-			{
-				AddFeatureCommand command = this.GetAddCommand();
-				FeatureAddVm vm = new FeatureAddVm();
-				command.Valid = false;
-				string expectedInvalid = "I'm broken";
-				command.InvalidName = expectedInvalid;
-
-				this.Sut.SetFeatureAddVm(command, vm);
-
-				Assert.AreEqual(MessagesModel.ItemMessage + expectedInvalid, vm.NameMessage);
-				Assert.AreEqual(MessagesModel.ItemError, vm.NameError);
-				Assert.AreEqual(MessagesModel.ItemGroupError, vm.NameGroupError);
-			}
-
-			[TestMethod]
-			public void SetFeatureAddVm_Should_Set_Vm_When_Ticket_Invalid()
-			{
-				AddFeatureCommand command = this.GetAddCommand();
-				FeatureAddVm vm = new FeatureAddVm();
-				command.Valid = false;
-				string expectedInvalid = "I'm broken";
-				command.InvalidTicket = expectedInvalid;
-
-				this.Sut.SetFeatureAddVm(command, vm);
-
-				Assert.AreEqual(MessagesModel.ItemMessage + expectedInvalid, vm.TicketMessage);
-				Assert.AreEqual(MessagesModel.ItemError, vm.TicketError);
-				Assert.AreEqual(MessagesModel.ItemGroupError, vm.TicketGroupError);
-			}
-
-			[TestMethod]
-			[ExpectedException(typeof(ArgumentNullException))]
-			public void SetFeatureAddVm_Should_Throw_Exception_When_Command_Is_Null()
-			{
-				AddFeatureCommand command = null;
-				FeatureAddVm vm = new FeatureAddVm();
-				this.Sut.SetFeatureAddVm(command, vm);
-			}
-
-			[TestMethod]
-			[ExpectedException(typeof(ArgumentNullException))]
-			public void SetFeatureAddVm_Should_Throw_Exception_When_Vm_Is_Null()
-			{
-				AddFeatureCommand command = this.GetAddCommand();
-				FeatureAddVm vm = null;
-				this.Sut.SetFeatureAddVm(command, vm);
-			}
-
-			[TestInitialize]
-			public void SetupTest()
-			{
-				this.Initialize();
-			}
-		}
 	}
 
 	public class FeatureModelTestBase : ModelTestBase
 	{
 		protected FeatureModel Sut { get; private set; }
 
-		protected AddFeatureCommand GetAddCommand(string id = null, DateTime? date = null, string name = null, string userId = null, string ticket = null)
+		protected FeatureVm GetFeatureVm(string id = null, DateTime? date = null, string name = null, string userId = null, string ticket = null)
 		{
 			string defaultId = id ?? "id1";
 			DateTime defaultDate = date ?? DateTime.Now;
@@ -389,22 +180,14 @@
 			string defaultUserId = userId ?? "tester";
 			string defaultTicket = ticket ?? "";
 
-			AddFeatureCommand command = new AddFeatureCommand(defaultId, defaultDate, defaultName, defaultUserId, defaultTicket);
+			FeatureVm vm = new FeatureVm();
+			vm.Id = defaultId;
+			vm.DateAdded = defaultDate;
+			vm.Name = defaultName;
+			vm.UserId = defaultUserId;
+			vm.Ticket = defaultTicket;
 
-			return command;
-		}
-
-		protected EditFeatureCommand GetEditCommand(string id = null, DateTime? date = null, string name = null, string userId = null, string ticket = null)
-		{
-			string defaultId = id ?? "id1";
-			DateTime defaultDate = date ?? DateTime.Now;
-			string defaultName = name ?? "Feature 1";
-			string defaultUserId = userId ?? "tester";
-			string defaultTicket = ticket ?? "";
-
-			EditFeatureCommand command = new EditFeatureCommand(defaultId, defaultDate, defaultName, defaultUserId, defaultTicket);
-
-			return command;
+			return vm;
 		}
 
 		protected void Initialize()

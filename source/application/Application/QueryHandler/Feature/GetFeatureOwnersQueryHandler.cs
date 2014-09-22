@@ -7,9 +7,9 @@
 	using Featurz.Application.Query.Feature;
 	using Featurz.Application.QueryResult.Feature;
 
-	public class GetFeatureOwnerQueryHandler : BaseQueryHandler<User>, IQueryHandler<GetFeatureOwnersQuery, GetFeatureOwnersQueryResult, User>
+	public class GetFeatureOwnersQueryHandler : BaseQueryHandler<User>, IQueryHandler<GetFeatureOwnersQuery, GetFeatureOwnersQueryResult, User>
 	{
-		public GetFeatureOwnerQueryHandler()
+		public GetFeatureOwnersQueryHandler()
 			: base()
 		{
 		}

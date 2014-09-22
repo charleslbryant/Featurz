@@ -25,6 +25,7 @@
 			where TEntity : IEntity
 		{
 			var handler = this.kernel.Get<IQueryHandler<TParameter, TResult, TEntity>>();
+			
 			var config = this.kernel.Get<IConfiguration>();
 			IReadRepository<TEntity> read = this.kernel.Get<IReadRepository<TEntity>>();
 			read.Initialize(config);
@@ -32,6 +33,7 @@
 			write.Initialize(config);
 			handler.ReadRepository = read;
 			handler.WriteRepository = write;
+
 			return handler.Retrieve(query);
 		}
 	}
