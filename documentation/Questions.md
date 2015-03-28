@@ -38,3 +38,12 @@ metrics.
 - How to map routes to a user control loader where the loader would load user
 controls based on route. /user/list route would load userlist user control in
 the default.aspx user control loader.
+
+Other Names for Feature Flags:
+
+- toggles
+- switches
+- flippers
+- buckets
+- experiments
+- settings
