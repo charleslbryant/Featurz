@@ -25,11 +25,13 @@
 			{
 				handler = new IsFeatureActiveQueryHandler();
 				handler.Config = new AppConfig();
-				IReadRepository<Feature> read = new MongoReadRepository<Feature>();
+				
+                IReadRepository<Feature> read = new MongoReadRepository<Feature>();
 				read.Initialize(handler.Config);
-				IWriteRepository<Feature> write = new MongoWriteRepository<Feature>();
-				write.Initialize(handler.Config);
 				handler.ReadRepository = read;
+				
+                IWriteRepository<Feature> write = new MongoWriteRepository<Feature>();
+				write.Initialize(handler.Config);
 				handler.WriteRepository = write;
 			}
 
