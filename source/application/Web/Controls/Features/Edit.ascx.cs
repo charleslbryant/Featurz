@@ -41,7 +41,7 @@
 
 			if (this.Vm.Valid)
 			{
-				this.Navigate(PagesModel.Users);
+				this.Navigate(PagesModel.Features);
 			}
 
 			this.ViewModelToControl(this.Vm);

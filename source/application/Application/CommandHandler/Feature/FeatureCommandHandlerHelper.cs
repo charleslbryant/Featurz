@@ -49,15 +49,6 @@
 				result.InvalidName = string.Format(MessagesModel.MaxLength, "100");
 			}
 
-			// TODO: Research how to handle concurrency in MongoDb.
-			// I am still a MongoDb newbie so there is probably a better way to handle concurrency issues.
-			// For now, if a duplicate is found we will throw an exception.
-			if (FeatureCommandHandlerHelper.IsDuplicateName(command.Name, read))
-			{
-				result.Valid = false;
-				result.InvalidName = string.Format("A feature already exists with the name {0}", command.Name);
-			}
-
 			if (command.Ticket != null && command.Ticket.Length > 100)
 			{
 				result.Valid = false;
@@ -73,7 +64,7 @@
 			return features;
 		}
 
-		private static bool IsDuplicateName(string name, IReadRepository<Feature> read)
+		public static bool IsDuplicateName(string name, IReadRepository<Feature> read)
 		{
 			if (string.IsNullOrWhiteSpace(name))
 			{

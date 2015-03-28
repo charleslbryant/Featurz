@@ -16,6 +16,15 @@
 		{
 			FeatureCommandResult result = FeatureCommandHandlerHelper.Validate(command, this.WriteRepository, this.ReadRepository);
 
+            // TODO: Research how to handle concurrency in MongoDb.
+            // I am still a MongoDb newbie so there is probably a better way to handle concurrency issues.
+            // For now, if a duplicate is found we will throw an exception.
+            if (FeatureCommandHandlerHelper.IsDuplicateName(command.Name, this.ReadRepository))
+            {
+                result.Valid = false;
+                result.InvalidName = string.Format("A feature already exists with the name {0}", command.Name);
+            }
+
 			if (!result.Valid)
 			{
 				return result;
